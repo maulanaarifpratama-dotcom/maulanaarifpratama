@@ -640,6 +640,7 @@ function Home() {
         <Marquee />
         <About />
         <Expertise />
+        <Industries />
         <Work />
         <Moments />
         <Experience />
