@@ -65,9 +65,9 @@ const projects = [
     n: "03",
     tag: "Childcare · Education",
     title: "LittleChamp Daycare",
-    desc: "CMO scope: brand positioning, parent-funnel design and full-service digital acquisition for a premium early-years daycare network.",
+    desc: "CMO mandate end-to-end: brand positioning, parent-acquisition funnels, an AI Chatbot for 24/7 enrollment concierge, and a custom Growth Intelligence System unifying ads, CRM and occupancy data into one decision cockpit.",
     img: projLittlechamp,
-    meta: ["Positioning", "Lead Gen", "Local SEO"],
+    meta: ["CMO", "AI Chatbot", "Growth Intelligence", "Lead Gen"],
   },
   {
     n: "04",
