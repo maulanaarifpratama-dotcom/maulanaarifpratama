@@ -55,7 +55,11 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: auto; } /* Lenis manages smooth scroll */
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+  .lenis.lenis-stopped { overflow: clip; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -66,6 +70,7 @@
   }
   ::selection { background: var(--accent); color: var(--accent-foreground); }
 }
+
 
 @layer utilities {
   .font-display { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.02em; }
