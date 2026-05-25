@@ -65,9 +65,9 @@ const projects = [
     n: "03",
     tag: "Childcare · Education",
     title: "LittleChamp Daycare",
-    desc: "CMO scope: brand positioning, parent-funnel design and full-service digital acquisition for a premium early-years daycare network.",
+    desc: "CMO mandate end-to-end: brand positioning, parent-acquisition funnels, an AI Chatbot for 24/7 enrollment concierge, and a custom Growth Intelligence System unifying ads, CRM and occupancy data into one decision cockpit.",
     img: projLittlechamp,
-    meta: ["Positioning", "Lead Gen", "Local SEO"],
+    meta: ["CMO", "AI Chatbot", "Growth Intelligence", "Lead Gen"],
   },
   {
     n: "04",
@@ -607,8 +607,14 @@ function Contact() {
           </div>
         </Reveal>
         <Reveal delay={0.4}>
-          <div className="mt-20 flex items-center justify-center gap-8 text-xs uppercase tracking-[0.2em] text-muted-foreground font-mono">
-            <a href="https://instagram.com/arif.uno" className="hover:text-foreground transition-colors">Instagram</a>
+          <div className="mt-20 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs uppercase tracking-[0.2em] text-muted-foreground font-mono">
+            <a href="https://www.linkedin.com/in/maulana-arif-pratama" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>
+            <span className="w-1 h-1 rounded-full bg-border" />
+            <a href="https://www.instagram.com/arifpratamadigital/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Instagram</a>
+            <span className="w-1 h-1 rounded-full bg-border" />
+            <a href="https://github.com/maulanaarifpratama-dotcom" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">GitHub</a>
+            <span className="w-1 h-1 rounded-full bg-border" />
+            <a href="https://www.facebook.com/maulana.pratama/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Facebook</a>
             <span className="w-1 h-1 rounded-full bg-border" />
             <a href="mailto:maulana.arif.pratama@gmail.com" className="hover:text-foreground transition-colors">Email</a>
             <span className="w-1 h-1 rounded-full bg-border" />
