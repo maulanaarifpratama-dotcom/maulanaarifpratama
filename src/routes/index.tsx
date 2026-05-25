@@ -3,6 +3,14 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import { useRef } from "react";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
+import { SmoothScroll } from "@/components/fx/SmoothScroll";
+import { CustomCursor } from "@/components/fx/CustomCursor";
+import { ScrollProgress } from "@/components/fx/ScrollProgress";
+import { Magnetic } from "@/components/fx/Magnetic";
+import { Tilt } from "@/components/fx/Tilt";
+import { ScrambleText } from "@/components/fx/ScrambleText";
+import { MouseLight } from "@/components/fx/MouseLight";
+import { ClientOnly } from "@/components/fx/ClientOnly";
 import heroBg from "@/assets/hero-bg.jpg";
 import heroVideoAsset from "@/assets/hero-video.mp4.asset.json";
 import portrait from "@/assets/portrait.jpg";
@@ -15,6 +23,7 @@ import projPasarbaik from "@/assets/project-pasarbaik.jpg";
 import projHalalpro from "@/assets/project-halalpro.jpg";
 import projLittlechamp from "@/assets/project-littlechamp.jpg";
 import projResinid from "@/assets/project-resinid.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
