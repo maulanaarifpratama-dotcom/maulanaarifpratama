@@ -17,8 +17,11 @@ export function Tilt({
   const spy = useSpring(py, { stiffness: 200, damping: 20 });
   const rx = useTransform(spy, [-0.5, 0.5], [max, -max]);
   const ry = useTransform(spx, [-0.5, 0.5], [-max, max]);
-  const gx = useTransform(spx, [-0.5, 0.5], ["0%", "100%"]);
-  const gy = useTransform(spy, [-0.5, 0.5], ["0%", "100%"]);
+  const bg = useTransform([spx, spy], (v: number[]) => {
+    const gxv = `${(v[0] + 0.5) * 100}%`;
+    const gyv = `${(v[1] + 0.5) * 100}%`;
+    return `radial-gradient(circle at ${gxv} ${gyv}, rgba(255,210,140,0.5), transparent 55%)`;
+  });
 
   const onMove = (e: React.PointerEvent<HTMLDivElement>) => {
     const el = ref.current;
@@ -45,15 +48,10 @@ export function Tilt({
         <motion.div
           aria-hidden
           className="pointer-events-none absolute inset-0 mix-blend-soft-light opacity-70"
-          style={{
-            background: useTransform(
-              [gx, gy] as never,
-              ([gxv, gyv]: string[]) =>
-                `radial-gradient(circle at ${gxv} ${gyv}, rgba(255,210,140,0.55), transparent 55%)`
-            ),
-          }}
+          style={{ background: bg }}
         />
       </div>
     </motion.div>
   );
 }
+
