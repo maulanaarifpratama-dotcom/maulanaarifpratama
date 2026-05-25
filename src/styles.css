@@ -55,7 +55,11 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: auto; } /* Lenis manages smooth scroll */
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+  .lenis.lenis-stopped { overflow: clip; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -66,6 +70,7 @@
   }
   ::selection { background: var(--accent); color: var(--accent-foreground); }
 }
+
 
 @layer utilities {
   .font-display { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.02em; }
@@ -86,9 +91,14 @@
   }
 
   .marquee { animation: marquee 40s linear infinite; }
+  .marquee-rev { animation: marquee-rev 50s linear infinite; }
   @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
+  }
+  @keyframes marquee-rev {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
   }
   @keyframes sweep {
     0%, 100% { transform: translateX(-30%); opacity: 0; }
@@ -101,4 +111,48 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--border), transparent);
   }
+
+  .noise {
+    position: relative;
+  }
+  .noise::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: var(--grain);
+    background-size: 180px;
+    opacity: 0.08;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    animation: noise 1.2s steps(6) infinite;
+  }
+  @keyframes noise {
+    0%   { transform: translate(0,0); }
+    20%  { transform: translate(-2%, 1%); }
+    40%  { transform: translate(1%, -2%); }
+    60%  { transform: translate(-1%, 2%); }
+    80%  { transform: translate(2%, -1%); }
+    100% { transform: translate(0,0); }
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1px oklch(0.96 0.005 100 / 0.55);
+    color: transparent;
+  }
+
+  .clip-reveal {
+    clip-path: inset(0 0 100% 0);
+    animation: clipReveal 1.1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+  @keyframes clipReveal {
+    to { clip-path: inset(0 0 0 0); }
+  }
+
+  .float-blob {
+    animation: floatBlob 14s ease-in-out infinite alternate;
+  }
+  @keyframes floatBlob {
+    0%   { transform: translate(0,0) scale(1); }
+    100% { transform: translate(4%, -3%) scale(1.08); }
+  }
 }
+

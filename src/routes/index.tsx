@@ -3,6 +3,14 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import { useRef } from "react";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
+import { SmoothScroll } from "@/components/fx/SmoothScroll";
+import { CustomCursor } from "@/components/fx/CustomCursor";
+import { ScrollProgress } from "@/components/fx/ScrollProgress";
+import { Magnetic } from "@/components/fx/Magnetic";
+import { Tilt } from "@/components/fx/Tilt";
+import { ScrambleText } from "@/components/fx/ScrambleText";
+import { MouseLight } from "@/components/fx/MouseLight";
+import { ClientOnly } from "@/components/fx/ClientOnly";
 import heroBg from "@/assets/hero-bg.jpg";
 import heroVideoAsset from "@/assets/hero-video.mp4.asset.json";
 import portrait from "@/assets/portrait.jpg";
@@ -15,6 +23,7 @@ import projPasarbaik from "@/assets/project-pasarbaik.jpg";
 import projHalalpro from "@/assets/project-halalpro.jpg";
 import projLittlechamp from "@/assets/project-littlechamp.jpg";
 import projResinid from "@/assets/project-resinid.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -207,20 +216,27 @@ function Hero() {
             and AI builder. Eight years turning ambition into measurable impact.
           </p>
           <div className="flex items-center gap-4">
-            <a
-              href="#work"
-              className="group inline-flex items-center gap-3 bg-foreground text-background px-6 py-3 rounded-full text-sm font-medium hover:bg-accent transition-all duration-300"
-            >
-              View selected work
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
-            <a
-              href="#contact"
-              className="text-sm uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Contact
-            </a>
+            <Magnetic strength={0.4}>
+              <a
+                href="#work"
+                data-cursor="View"
+                className="group inline-flex items-center gap-3 bg-foreground text-background px-6 py-3 rounded-full text-sm font-medium hover:bg-accent transition-all duration-300"
+              >
+                <ScrambleText text="View selected work" duration={900} />
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </a>
+            </Magnetic>
+            <Magnetic strength={0.3}>
+              <a
+                href="#contact"
+                data-cursor="Talk"
+                className="text-sm uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Contact
+              </a>
+            </Magnetic>
           </div>
+
         </motion.div>
       </div>
 
@@ -238,21 +254,33 @@ function Hero() {
 }
 
 function Marquee() {
+  const row = [...marqueeWords, ...marqueeWords, ...marqueeWords];
   return (
-    <section aria-hidden className="relative border-y border-border py-6 overflow-hidden bg-surface/40">
-      <div className="flex whitespace-nowrap marquee">
-        {[...marqueeWords, ...marqueeWords, ...marqueeWords].map((w, i) => (
+    <section aria-hidden className="relative border-y border-border py-10 overflow-hidden bg-surface/40 noise">
+      <div className="flex whitespace-nowrap marquee -skew-y-1">
+        {row.map((w, i) => (
           <span
-            key={i}
-            className="font-display text-3xl md:text-5xl px-8 text-muted-foreground/70"
+            key={`a-${i}`}
+            className="font-display text-4xl md:text-6xl px-8 text-foreground"
           >
             {w} <span className="text-accent">✦</span>
+          </span>
+        ))}
+      </div>
+      <div className="flex whitespace-nowrap marquee-rev skew-y-1 mt-2">
+        {row.map((w, i) => (
+          <span
+            key={`b-${i}`}
+            className="font-display text-4xl md:text-6xl px-8 text-stroke"
+          >
+            {w} <span className="opacity-40">/</span>
           </span>
         ))}
       </div>
     </section>
   );
 }
+
 
 function About() {
   return (
@@ -366,7 +394,10 @@ function Expertise() {
 function Industries() {
   return (
     <section id="industries" className="relative py-32 md:py-44 border-t border-border bg-background overflow-hidden">
-      <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ background: "radial-gradient(ellipse at 80% 20%, oklch(0.78 0.15 65 / 0.18), transparent 50%)" }} />
+      <ClientOnly><MouseLight /></ClientOnly>
+      <div className="absolute -top-32 -right-24 w-[40rem] h-[40rem] rounded-full opacity-30 blur-3xl float-blob pointer-events-none" style={{ background: "radial-gradient(circle, oklch(0.78 0.15 65 / 0.45), transparent 70%)" }} />
+      <div className="absolute -bottom-32 -left-24 w-[36rem] h-[36rem] rounded-full opacity-20 blur-3xl float-blob pointer-events-none" style={{ background: "radial-gradient(circle, oklch(0.55 0.18 250 / 0.5), transparent 70%)", animationDelay: "-7s" }} />
+
       <div className="relative max-w-[1400px] mx-auto px-6 md:px-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <Reveal>
@@ -415,8 +446,11 @@ function Industries() {
 
 function Work() {
   return (
-    <section id="work" className="relative py-32 md:py-48 border-t border-border bg-surface/30">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+    <section id="work" className="relative py-32 md:py-48 border-t border-border bg-surface/30 overflow-hidden">
+      <ClientOnly>
+        <MouseLight />
+      </ClientOnly>
+      <div className="relative max-w-[1400px] mx-auto px-6 md:px-10">
         <div className="mb-20">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.28em] text-accent mb-4 font-mono">
@@ -434,47 +468,57 @@ function Work() {
             return (
               <Reveal key={p.n}>
                 <article className={`grid md:grid-cols-12 gap-8 md:gap-14 items-center ${reversed ? "md:[&>div:first-child]:order-2" : ""}`}>
-                  <div className="md:col-span-7 relative group overflow-hidden rounded-sm">
-                    <div className="aspect-[4/3] overflow-hidden">
-                      <img
-                        src={p.img}
-                        alt={p.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="absolute inset-0 ring-1 ring-inset ring-border pointer-events-none" />
-                    <div className="absolute top-4 left-4 text-xs font-mono text-foreground/80 bg-background/60 backdrop-blur px-3 py-1 rounded-full border border-border">
-                      {p.tag}
-                    </div>
+                  <div className="md:col-span-7">
+                    <Tilt className="relative group overflow-hidden rounded-sm will-change-transform">
+                      <div className="aspect-[4/3] overflow-hidden">
+                        <img
+                          src={p.img}
+                          alt={p.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-tr from-background/60 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute inset-0 ring-1 ring-inset ring-border pointer-events-none" />
+                      <div className="absolute top-4 left-4 text-xs font-mono text-foreground/80 bg-background/60 backdrop-blur px-3 py-1 rounded-full border border-border">
+                        {p.tag}
+                      </div>
+                      <div className="absolute bottom-4 right-4 text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/70 bg-background/50 backdrop-blur px-3 py-1 rounded-full border border-border">
+                        {p.n} / 06
+                      </div>
+                    </Tilt>
                   </div>
                   <div className="md:col-span-5">
                     <div className="font-mono text-xs text-muted-foreground mb-4">
                       Case · {p.n}
                     </div>
                     <h3 className="font-display text-4xl md:text-5xl leading-tight tracking-tight mb-5">
-                      {p.title}
+                      <ScrambleText text={p.title} duration={700} trigger="hover" />
                     </h3>
                     <p className="text-muted-foreground leading-relaxed mb-8">{p.desc}</p>
                     <ul className="flex flex-wrap gap-2 mb-8">
                       {p.meta.map((m) => (
                         <li
                           key={m}
-                          className="text-[11px] uppercase tracking-[0.18em] border border-border px-3 py-1.5 rounded-full text-muted-foreground"
+                          className="text-[11px] uppercase tracking-[0.18em] border border-border px-3 py-1.5 rounded-full text-muted-foreground hover:text-accent hover:border-accent transition-colors"
                         >
                           {m}
                         </li>
                       ))}
                     </ul>
-                    <a
-                      href="#contact"
-                      className="inline-flex items-center gap-2 text-sm border-b border-accent pb-1 hover:text-accent transition-colors"
-                    >
-                      Read the story <span>→</span>
-                    </a>
+                    <Magnetic strength={0.3}>
+                      <a
+                        href="#contact"
+                        data-cursor="Open"
+                        className="inline-flex items-center gap-2 text-sm border-b border-accent pb-1 hover:text-accent transition-colors"
+                      >
+                        Read the story <span>→</span>
+                      </a>
+                    </Magnetic>
                   </div>
                 </article>
               </Reveal>
+
             );
           })}
         </div>
@@ -591,21 +635,28 @@ function Contact() {
         </Reveal>
         <Reveal delay={0.3}>
           <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="mailto:maulana.arif.pratama@gmail.com"
-              className="group inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-full text-sm font-medium hover:bg-accent transition-all duration-300"
-            >
-              maulana.arif.pratama@gmail.com
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
-            <a
-              href="https://wa.me/6282112455705"
-              className="text-sm uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground transition-colors border border-border px-6 py-4 rounded-full"
-            >
-              +62 821-1245-5705
-            </a>
+            <Magnetic strength={0.45}>
+              <a
+                href="mailto:maulana.arif.pratama@gmail.com"
+                data-cursor="Email"
+                className="group inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-full text-sm font-medium hover:bg-accent transition-all duration-300 shadow-[0_0_60px_rgba(255,180,80,0.25)]"
+              >
+                maulana.arif.pratama@gmail.com
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </a>
+            </Magnetic>
+            <Magnetic strength={0.35}>
+              <a
+                href="https://wa.me/6282112455705"
+                data-cursor="WA"
+                className="text-sm uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground transition-colors border border-border px-6 py-4 rounded-full"
+              >
+                +62 821-1245-5705
+              </a>
+            </Magnetic>
           </div>
         </Reveal>
+
         <Reveal delay={0.4}>
           <div className="mt-20 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs uppercase tracking-[0.2em] text-muted-foreground font-mono">
             <a href="https://www.linkedin.com/in/maulana-arif-pratama" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>
@@ -640,6 +691,11 @@ function Footer() {
 function Home() {
   return (
     <div className="bg-background text-foreground">
+      <ClientOnly>
+        <SmoothScroll />
+        <CustomCursor />
+        <ScrollProgress />
+      </ClientOnly>
       <Nav />
       <main>
         <Hero />
@@ -656,3 +712,4 @@ function Home() {
     </div>
   );
 }
+
