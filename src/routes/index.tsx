@@ -216,20 +216,27 @@ function Hero() {
             and AI builder. Eight years turning ambition into measurable impact.
           </p>
           <div className="flex items-center gap-4">
-            <a
-              href="#work"
-              className="group inline-flex items-center gap-3 bg-foreground text-background px-6 py-3 rounded-full text-sm font-medium hover:bg-accent transition-all duration-300"
-            >
-              View selected work
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
-            <a
-              href="#contact"
-              className="text-sm uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Contact
-            </a>
+            <Magnetic strength={0.4}>
+              <a
+                href="#work"
+                data-cursor="View"
+                className="group inline-flex items-center gap-3 bg-foreground text-background px-6 py-3 rounded-full text-sm font-medium hover:bg-accent transition-all duration-300"
+              >
+                <ScrambleText text="View selected work" duration={900} />
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </a>
+            </Magnetic>
+            <Magnetic strength={0.3}>
+              <a
+                href="#contact"
+                data-cursor="Talk"
+                className="text-sm uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Contact
+              </a>
+            </Magnetic>
           </div>
+
         </motion.div>
       </div>
 
