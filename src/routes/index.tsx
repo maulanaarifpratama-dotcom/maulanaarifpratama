@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import heroBg from "@/assets/hero-bg.jpg";
+import heroVideoAsset from "@/assets/hero-video.mp4.asset.json";
 import portrait from "@/assets/portrait.jpg";
 import tiktokImg from "@/assets/tiktok-summit.jpg";
 import waImg from "@/assets/whatsapp-summit.jpg";
@@ -11,6 +12,9 @@ import googleImg from "@/assets/google.jpg";
 import projImpactory from "@/assets/project-impactory.jpg";
 import projBisabaik from "@/assets/project-bisabaik.jpg";
 import projPasarbaik from "@/assets/project-pasarbaik.jpg";
+import projHalalpro from "@/assets/project-halalpro.jpg";
+import projLittlechamp from "@/assets/project-littlechamp.jpg";
+import projResinid from "@/assets/project-resinid.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -43,28 +47,65 @@ const expertise = [
 const projects = [
   {
     n: "01",
-    tag: "AI SaaS",
+    tag: "Health · Supplements",
+    title: "Halal Pro Supplement",
+    desc: "Led as CEO from product launch to digital revenue scale. Built the brand, performance funnels and marketplace engine for a premium halal sports nutrition line.",
+    img: projHalalpro,
+    meta: ["Brand", "Meta Ads", "TikTok Shop", "Marketplace"],
+  },
+  {
+    n: "02",
+    tag: "AI · SaaS",
     title: "Impactory.id",
     desc: "An AI-powered platform for impact organizations — grant discovery, proposal drafting, document intelligence and reporting workflows.",
     img: projImpactory,
     meta: ["Azure AI Foundry", "RAG", "Prompt Governance"],
   },
   {
-    n: "02",
-    tag: "Crowdfunding",
+    n: "03",
+    tag: "Childcare · Education",
+    title: "LittleChamp Daycare",
+    desc: "CMO scope: brand positioning, parent-funnel design and full-service digital acquisition for a premium early-years daycare network.",
+    img: projLittlechamp,
+    meta: ["Positioning", "Lead Gen", "Local SEO"],
+  },
+  {
+    n: "04",
+    tag: "Crowdfunding · Impact",
     title: "BisaBaik.or.id",
     desc: "End-to-end donation platform with campaign pages, payment gateway integration and an SEO foundation engineered for trust.",
     img: projBisabaik,
     meta: ["Platform", "Payments", "SEO"],
   },
   {
-    n: "03",
-    tag: "Marketplace",
+    n: "05",
+    tag: "Home Decor · Lifestyle",
+    title: "ResinID Home Decor",
+    desc: "Built the digital sales engine for a designer resin home-decor brand — visual identity, e-commerce stack and creator-led performance media.",
+    img: projResinid,
+    meta: ["E-commerce", "Creator Ads", "Brand"],
+  },
+  {
+    n: "06",
+    tag: "Marketplace · Commerce",
     title: "PasarBaik.com",
     desc: "An aggregator concept connecting impact-driven products, communities and ethical commerce into one storefront.",
     img: projPasarbaik,
     meta: ["Aggregator", "Commerce", "Brand"],
   },
+];
+
+const industries = [
+  { n: "01", t: "Health & Supplements", b: "Halal Pro · Muscle First" },
+  { n: "02", t: "Childcare & Early Education", b: "LittleChamp Daycare" },
+  { n: "03", t: "Home & Lifestyle Decor", b: "ResinID" },
+  { n: "04", t: "Humanitarian & NGO", b: "ACT · PalestinaID · PPPA Daarul Qur'an" },
+  { n: "05", t: "Social Impact Platforms", b: "Bisa Baik · Impactory · PasarBaik" },
+  { n: "06", t: "Education & Study Abroad", b: "KuliahdiTurki · StudydiTurki · BelajardiTurki" },
+  { n: "07", t: "Travel & Hospitality", b: "Biru Marmara Travel · Shilla at Sawangan" },
+  { n: "08", t: "Natural & Consumer Goods", b: "Adev Natural Indonesia" },
+  { n: "09", t: "Fitness & Sports Nutrition", b: "Muscle First" },
+  { n: "10", t: "Foundations & Faith-based", b: "Daarul Qur'an · Yayasan RPB" },
 ];
 
 const experience = [
@@ -92,16 +133,38 @@ function Hero() {
   return (
     <section ref={ref} id="top" className="relative h-[100svh] w-full overflow-hidden grain">
       <motion.div style={{ y, opacity }} className="absolute inset-0">
-        <img
-          src={heroBg}
-          alt=""
-          className="w-full h-full object-cover kenburns"
-          width={1920}
-          height={1080}
+        <video
+          src={heroVideoAsset.url}
+          poster={heroBg}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover scale-110"
         />
+        {/* TVC color grade + vignette */}
+        <div className="absolute inset-0 mix-blend-soft-light" style={{ background: "linear-gradient(180deg, oklch(0.78 0.15 65 / 0.18), oklch(0.55 0.18 250 / 0.12))" }} />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
+        <div className="absolute inset-0 pointer-events-none" style={{ boxShadow: "inset 0 0 220px 60px oklch(0 0 0 / 0.85)" }} />
+        {/* Scanline overlay */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.06] mix-blend-overlay" style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent 0 2px, oklch(1 0 0) 2px 3px)" }} />
+        {/* Light sweep */}
+        <div className="absolute -inset-x-20 top-1/3 h-40 opacity-30 blur-3xl animate-[sweep_9s_ease-in-out_infinite]" style={{ background: "linear-gradient(90deg, transparent, oklch(0.85 0.16 65 / 0.5), transparent)" }} />
       </motion.div>
+
+      {/* Cinematic letterbox bars */}
+      <div className="pointer-events-none absolute top-0 inset-x-0 h-[6vh] bg-background z-20" />
+      <div className="pointer-events-none absolute bottom-0 inset-x-0 h-[6vh] bg-background z-20" />
+
+      {/* Corner TVC marks */}
+      <div className="pointer-events-none absolute top-[7vh] left-6 md:left-10 z-30 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] text-accent/80">
+        <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" /> Rec · 00:00:24
+      </div>
+      <div className="pointer-events-none absolute top-[7vh] right-6 md:right-10 z-30 text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">
+        Reel 01 / 06 · 24fps · 2.39:1
+      </div>
 
       <div className="relative h-full max-w-[1400px] mx-auto px-6 md:px-10 flex flex-col justify-end pb-24 md:pb-32">
         <motion.div
@@ -295,6 +358,56 @@ function Expertise() {
             </Reveal>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function Industries() {
+  return (
+    <section id="industries" className="relative py-32 md:py-44 border-t border-border bg-background overflow-hidden">
+      <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ background: "radial-gradient(ellipse at 80% 20%, oklch(0.78 0.15 65 / 0.18), transparent 50%)" }} />
+      <div className="relative max-w-[1400px] mx-auto px-6 md:px-10">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.28em] text-accent mb-4 font-mono">
+              ✦ Industries Operated
+            </p>
+            <h2 className="font-display text-4xl md:text-6xl leading-tight tracking-tight max-w-2xl">
+              Ten verticals. One operating playbook.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="text-muted-foreground max-w-sm">
+              From supplements to study-abroad, daycare to humanitarian relief —
+              brands I've directed, scaled or built from zero.
+            </p>
+          </Reveal>
+        </div>
+
+        <ul className="border-t border-border">
+          {industries.map((it, i) => (
+            <Reveal key={it.n} delay={i * 0.03}>
+              <li className="group relative border-b border-border">
+                <div className="grid grid-cols-12 items-center py-6 md:py-8 gap-4 px-2 md:px-4 transition-colors duration-500 group-hover:bg-surface">
+                  <span className="col-span-2 md:col-span-1 font-mono text-xs text-muted-foreground">
+                    {it.n}
+                  </span>
+                  <h3 className="col-span-10 md:col-span-5 font-display text-2xl md:text-4xl tracking-tight">
+                    {it.t}
+                  </h3>
+                  <p className="col-span-12 md:col-span-5 text-sm text-muted-foreground md:text-right">
+                    {it.b}
+                  </p>
+                  <span className="hidden md:block col-span-1 text-right text-accent opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+                    ↗
+                  </span>
+                </div>
+                <span className="absolute left-0 bottom-0 h-px w-0 bg-accent group-hover:w-full transition-all duration-700" />
+              </li>
+            </Reveal>
+          ))}
+        </ul>
       </div>
     </section>
   );
@@ -527,6 +640,7 @@ function Home() {
         <Marquee />
         <About />
         <Expertise />
+        <Industries />
         <Work />
         <Moments />
         <Experience />
