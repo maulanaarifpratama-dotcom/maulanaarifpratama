@@ -47,28 +47,65 @@ const expertise = [
 const projects = [
   {
     n: "01",
-    tag: "AI SaaS",
+    tag: "Health · Supplements",
+    title: "Halal Pro Supplement",
+    desc: "Led as CEO from product launch to digital revenue scale. Built the brand, performance funnels and marketplace engine for a premium halal sports nutrition line.",
+    img: projHalalpro,
+    meta: ["Brand", "Meta Ads", "TikTok Shop", "Marketplace"],
+  },
+  {
+    n: "02",
+    tag: "AI · SaaS",
     title: "Impactory.id",
     desc: "An AI-powered platform for impact organizations — grant discovery, proposal drafting, document intelligence and reporting workflows.",
     img: projImpactory,
     meta: ["Azure AI Foundry", "RAG", "Prompt Governance"],
   },
   {
-    n: "02",
-    tag: "Crowdfunding",
+    n: "03",
+    tag: "Childcare · Education",
+    title: "LittleChamp Daycare",
+    desc: "CMO scope: brand positioning, parent-funnel design and full-service digital acquisition for a premium early-years daycare network.",
+    img: projLittlechamp,
+    meta: ["Positioning", "Lead Gen", "Local SEO"],
+  },
+  {
+    n: "04",
+    tag: "Crowdfunding · Impact",
     title: "BisaBaik.or.id",
     desc: "End-to-end donation platform with campaign pages, payment gateway integration and an SEO foundation engineered for trust.",
     img: projBisabaik,
     meta: ["Platform", "Payments", "SEO"],
   },
   {
-    n: "03",
-    tag: "Marketplace",
+    n: "05",
+    tag: "Home Decor · Lifestyle",
+    title: "ResinID Home Decor",
+    desc: "Built the digital sales engine for a designer resin home-decor brand — visual identity, e-commerce stack and creator-led performance media.",
+    img: projResinid,
+    meta: ["E-commerce", "Creator Ads", "Brand"],
+  },
+  {
+    n: "06",
+    tag: "Marketplace · Commerce",
     title: "PasarBaik.com",
     desc: "An aggregator concept connecting impact-driven products, communities and ethical commerce into one storefront.",
     img: projPasarbaik,
     meta: ["Aggregator", "Commerce", "Brand"],
   },
+];
+
+const industries = [
+  { n: "01", t: "Health & Supplements", b: "Halal Pro · Muscle First" },
+  { n: "02", t: "Childcare & Early Education", b: "LittleChamp Daycare" },
+  { n: "03", t: "Home & Lifestyle Decor", b: "ResinID" },
+  { n: "04", t: "Humanitarian & NGO", b: "ACT · PalestinaID · PPPA Daarul Qur'an" },
+  { n: "05", t: "Social Impact Platforms", b: "Bisa Baik · Impactory · PasarBaik" },
+  { n: "06", t: "Education & Study Abroad", b: "KuliahdiTurki · StudydiTurki · BelajardiTurki" },
+  { n: "07", t: "Travel & Hospitality", b: "Biru Marmara Travel · Shilla at Sawangan" },
+  { n: "08", t: "Natural & Consumer Goods", b: "Adev Natural Indonesia" },
+  { n: "09", t: "Fitness & Sports Nutrition", b: "Muscle First" },
+  { n: "10", t: "Foundations & Faith-based", b: "Daarul Qur'an · Yayasan RPB" },
 ];
 
 const experience = [
