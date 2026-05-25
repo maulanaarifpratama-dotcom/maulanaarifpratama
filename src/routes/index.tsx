@@ -632,21 +632,28 @@ function Contact() {
         </Reveal>
         <Reveal delay={0.3}>
           <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="mailto:maulana.arif.pratama@gmail.com"
-              className="group inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-full text-sm font-medium hover:bg-accent transition-all duration-300"
-            >
-              maulana.arif.pratama@gmail.com
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
-            <a
-              href="https://wa.me/6282112455705"
-              className="text-sm uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground transition-colors border border-border px-6 py-4 rounded-full"
-            >
-              +62 821-1245-5705
-            </a>
+            <Magnetic strength={0.45}>
+              <a
+                href="mailto:maulana.arif.pratama@gmail.com"
+                data-cursor="Email"
+                className="group inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-full text-sm font-medium hover:bg-accent transition-all duration-300 shadow-[0_0_60px_rgba(255,180,80,0.25)]"
+              >
+                maulana.arif.pratama@gmail.com
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </a>
+            </Magnetic>
+            <Magnetic strength={0.35}>
+              <a
+                href="https://wa.me/6282112455705"
+                data-cursor="WA"
+                className="text-sm uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground transition-colors border border-border px-6 py-4 rounded-full"
+              >
+                +62 821-1245-5705
+              </a>
+            </Magnetic>
           </div>
         </Reveal>
+
         <Reveal delay={0.4}>
           <div className="mt-20 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs uppercase tracking-[0.2em] text-muted-foreground font-mono">
             <a href="https://www.linkedin.com/in/maulana-arif-pratama" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>
