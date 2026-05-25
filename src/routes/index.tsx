@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import heroBg from "@/assets/hero-bg.jpg";
+import heroVideoAsset from "@/assets/hero-video.mp4.asset.json";
 import portrait from "@/assets/portrait.jpg";
 import tiktokImg from "@/assets/tiktok-summit.jpg";
 import waImg from "@/assets/whatsapp-summit.jpg";
@@ -11,6 +12,9 @@ import googleImg from "@/assets/google.jpg";
 import projImpactory from "@/assets/project-impactory.jpg";
 import projBisabaik from "@/assets/project-bisabaik.jpg";
 import projPasarbaik from "@/assets/project-pasarbaik.jpg";
+import projHalalpro from "@/assets/project-halalpro.jpg";
+import projLittlechamp from "@/assets/project-littlechamp.jpg";
+import projResinid from "@/assets/project-resinid.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
