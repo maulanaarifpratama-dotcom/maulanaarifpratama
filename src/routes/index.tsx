@@ -443,8 +443,11 @@ function Industries() {
 
 function Work() {
   return (
-    <section id="work" className="relative py-32 md:py-48 border-t border-border bg-surface/30">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+    <section id="work" className="relative py-32 md:py-48 border-t border-border bg-surface/30 overflow-hidden">
+      <ClientOnly>
+        <MouseLight />
+      </ClientOnly>
+      <div className="relative max-w-[1400px] mx-auto px-6 md:px-10">
         <div className="mb-20">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.28em] text-accent mb-4 font-mono">
@@ -462,47 +465,57 @@ function Work() {
             return (
               <Reveal key={p.n}>
                 <article className={`grid md:grid-cols-12 gap-8 md:gap-14 items-center ${reversed ? "md:[&>div:first-child]:order-2" : ""}`}>
-                  <div className="md:col-span-7 relative group overflow-hidden rounded-sm">
-                    <div className="aspect-[4/3] overflow-hidden">
-                      <img
-                        src={p.img}
-                        alt={p.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="absolute inset-0 ring-1 ring-inset ring-border pointer-events-none" />
-                    <div className="absolute top-4 left-4 text-xs font-mono text-foreground/80 bg-background/60 backdrop-blur px-3 py-1 rounded-full border border-border">
-                      {p.tag}
-                    </div>
+                  <div className="md:col-span-7">
+                    <Tilt className="relative group overflow-hidden rounded-sm will-change-transform">
+                      <div className="aspect-[4/3] overflow-hidden">
+                        <img
+                          src={p.img}
+                          alt={p.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-tr from-background/60 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute inset-0 ring-1 ring-inset ring-border pointer-events-none" />
+                      <div className="absolute top-4 left-4 text-xs font-mono text-foreground/80 bg-background/60 backdrop-blur px-3 py-1 rounded-full border border-border">
+                        {p.tag}
+                      </div>
+                      <div className="absolute bottom-4 right-4 text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/70 bg-background/50 backdrop-blur px-3 py-1 rounded-full border border-border">
+                        {p.n} / 06
+                      </div>
+                    </Tilt>
                   </div>
                   <div className="md:col-span-5">
                     <div className="font-mono text-xs text-muted-foreground mb-4">
                       Case · {p.n}
                     </div>
                     <h3 className="font-display text-4xl md:text-5xl leading-tight tracking-tight mb-5">
-                      {p.title}
+                      <ScrambleText text={p.title} duration={700} trigger="hover" />
                     </h3>
                     <p className="text-muted-foreground leading-relaxed mb-8">{p.desc}</p>
                     <ul className="flex flex-wrap gap-2 mb-8">
                       {p.meta.map((m) => (
                         <li
                           key={m}
-                          className="text-[11px] uppercase tracking-[0.18em] border border-border px-3 py-1.5 rounded-full text-muted-foreground"
+                          className="text-[11px] uppercase tracking-[0.18em] border border-border px-3 py-1.5 rounded-full text-muted-foreground hover:text-accent hover:border-accent transition-colors"
                         >
                           {m}
                         </li>
                       ))}
                     </ul>
-                    <a
-                      href="#contact"
-                      className="inline-flex items-center gap-2 text-sm border-b border-accent pb-1 hover:text-accent transition-colors"
-                    >
-                      Read the story <span>→</span>
-                    </a>
+                    <Magnetic strength={0.3}>
+                      <a
+                        href="#contact"
+                        data-cursor="Open"
+                        className="inline-flex items-center gap-2 text-sm border-b border-accent pb-1 hover:text-accent transition-colors"
+                      >
+                        Read the story <span>→</span>
+                      </a>
+                    </Magnetic>
                   </div>
                 </article>
               </Reveal>
+
             );
           })}
         </div>
