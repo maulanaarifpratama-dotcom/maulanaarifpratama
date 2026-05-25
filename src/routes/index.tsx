@@ -363,6 +363,56 @@ function Expertise() {
   );
 }
 
+function Industries() {
+  return (
+    <section id="industries" className="relative py-32 md:py-44 border-t border-border bg-background overflow-hidden">
+      <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ background: "radial-gradient(ellipse at 80% 20%, oklch(0.78 0.15 65 / 0.18), transparent 50%)" }} />
+      <div className="relative max-w-[1400px] mx-auto px-6 md:px-10">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.28em] text-accent mb-4 font-mono">
+              ✦ Industries Operated
+            </p>
+            <h2 className="font-display text-4xl md:text-6xl leading-tight tracking-tight max-w-2xl">
+              Ten verticals. One operating playbook.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="text-muted-foreground max-w-sm">
+              From supplements to study-abroad, daycare to humanitarian relief —
+              brands I've directed, scaled or built from zero.
+            </p>
+          </Reveal>
+        </div>
+
+        <ul className="border-t border-border">
+          {industries.map((it, i) => (
+            <Reveal key={it.n} delay={i * 0.03}>
+              <li className="group relative border-b border-border">
+                <div className="grid grid-cols-12 items-center py-6 md:py-8 gap-4 px-2 md:px-4 transition-colors duration-500 group-hover:bg-surface">
+                  <span className="col-span-2 md:col-span-1 font-mono text-xs text-muted-foreground">
+                    {it.n}
+                  </span>
+                  <h3 className="col-span-10 md:col-span-5 font-display text-2xl md:text-4xl tracking-tight">
+                    {it.t}
+                  </h3>
+                  <p className="col-span-12 md:col-span-5 text-sm text-muted-foreground md:text-right">
+                    {it.b}
+                  </p>
+                  <span className="hidden md:block col-span-1 text-right text-accent opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+                    ↗
+                  </span>
+                </div>
+                <span className="absolute left-0 bottom-0 h-px w-0 bg-accent group-hover:w-full transition-all duration-700" />
+              </li>
+            </Reveal>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 function Work() {
   return (
     <section id="work" className="relative py-32 md:py-48 border-t border-border bg-surface/30">
