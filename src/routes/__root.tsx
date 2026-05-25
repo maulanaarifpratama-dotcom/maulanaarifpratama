@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Maulana Arif Pratama" },
+      { name: "description", content: "Maulana Arif Pratama CV" },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Maulana Arif Pratama" },
+      { property: "og:description", content: "Maulana Arif Pratama CV" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Maulana Arif Pratama" },
+      { name: "twitter:description", content: "Maulana Arif Pratama CV" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0923033d-098e-4a93-a57f-0812bc54705d/id-preview-0718c099--7489c39a-6c81-4f95-b379-b56d02173854.lovable.app-1779730551657.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0923033d-098e-4a93-a57f-0812bc54705d/id-preview-0718c099--7489c39a-6c81-4f95-b379-b56d02173854.lovable.app-1779730551657.png" },
     ],
     links: [
       {
