@@ -649,6 +649,11 @@ function Footer() {
 function Home() {
   return (
     <div className="bg-background text-foreground">
+      <ClientOnly>
+        <SmoothScroll />
+        <CustomCursor />
+        <ScrollProgress />
+      </ClientOnly>
       <Nav />
       <main>
         <Hero />
@@ -665,3 +670,4 @@ function Home() {
     </div>
   );
 }
+
