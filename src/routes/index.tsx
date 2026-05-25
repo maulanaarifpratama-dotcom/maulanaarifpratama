@@ -133,16 +133,38 @@ function Hero() {
   return (
     <section ref={ref} id="top" className="relative h-[100svh] w-full overflow-hidden grain">
       <motion.div style={{ y, opacity }} className="absolute inset-0">
-        <img
-          src={heroBg}
-          alt=""
-          className="w-full h-full object-cover kenburns"
-          width={1920}
-          height={1080}
+        <video
+          src={heroVideoAsset.url}
+          poster={heroBg}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover scale-110"
         />
+        {/* TVC color grade + vignette */}
+        <div className="absolute inset-0 mix-blend-soft-light" style={{ background: "linear-gradient(180deg, oklch(0.78 0.15 65 / 0.18), oklch(0.55 0.18 250 / 0.12))" }} />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
+        <div className="absolute inset-0 pointer-events-none" style={{ boxShadow: "inset 0 0 220px 60px oklch(0 0 0 / 0.85)" }} />
+        {/* Scanline overlay */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.06] mix-blend-overlay" style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent 0 2px, oklch(1 0 0) 2px 3px)" }} />
+        {/* Light sweep */}
+        <div className="absolute -inset-x-20 top-1/3 h-40 opacity-30 blur-3xl animate-[sweep_9s_ease-in-out_infinite]" style={{ background: "linear-gradient(90deg, transparent, oklch(0.85 0.16 65 / 0.5), transparent)" }} />
       </motion.div>
+
+      {/* Cinematic letterbox bars */}
+      <div className="pointer-events-none absolute top-0 inset-x-0 h-[6vh] bg-background z-20" />
+      <div className="pointer-events-none absolute bottom-0 inset-x-0 h-[6vh] bg-background z-20" />
+
+      {/* Corner TVC marks */}
+      <div className="pointer-events-none absolute top-[7vh] left-6 md:left-10 z-30 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] text-accent/80">
+        <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" /> Rec · 00:00:24
+      </div>
+      <div className="pointer-events-none absolute top-[7vh] right-6 md:right-10 z-30 text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">
+        Reel 01 / 06 · 24fps · 2.39:1
+      </div>
 
       <div className="relative h-full max-w-[1400px] mx-auto px-6 md:px-10 flex flex-col justify-end pb-24 md:pb-32">
         <motion.div
