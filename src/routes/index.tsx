@@ -254,21 +254,33 @@ function Hero() {
 }
 
 function Marquee() {
+  const row = [...marqueeWords, ...marqueeWords, ...marqueeWords];
   return (
-    <section aria-hidden className="relative border-y border-border py-6 overflow-hidden bg-surface/40">
-      <div className="flex whitespace-nowrap marquee">
-        {[...marqueeWords, ...marqueeWords, ...marqueeWords].map((w, i) => (
+    <section aria-hidden className="relative border-y border-border py-10 overflow-hidden bg-surface/40 noise">
+      <div className="flex whitespace-nowrap marquee -skew-y-1">
+        {row.map((w, i) => (
           <span
-            key={i}
-            className="font-display text-3xl md:text-5xl px-8 text-muted-foreground/70"
+            key={`a-${i}`}
+            className="font-display text-4xl md:text-6xl px-8 text-foreground"
           >
             {w} <span className="text-accent">✦</span>
+          </span>
+        ))}
+      </div>
+      <div className="flex whitespace-nowrap marquee-rev skew-y-1 mt-2">
+        {row.map((w, i) => (
+          <span
+            key={`b-${i}`}
+            className="font-display text-4xl md:text-6xl px-8 text-stroke"
+          >
+            {w} <span className="opacity-40">/</span>
           </span>
         ))}
       </div>
     </section>
   );
 }
+
 
 function About() {
   return (
