@@ -142,9 +142,10 @@ function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
 
   return (
-    <section ref={ref} id="top" className="relative h-[100svh] w-full overflow-hidden grain">
+    <section ref={ref} id="top" data-hero-section className="relative h-[100svh] w-full overflow-hidden grain">
       <motion.div style={{ y, opacity }} className="absolute inset-0">
         <video
+          data-hero-video
           src={heroVideoAsset.url}
           poster={heroBg}
           autoPlay
