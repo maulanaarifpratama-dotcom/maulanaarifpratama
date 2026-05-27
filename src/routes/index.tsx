@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import { SmoothScroll } from "@/components/fx/SmoothScroll";
+import { CinematicScroll } from "@/components/fx/CinematicScroll";
 import { CustomCursor } from "@/components/fx/CustomCursor";
 import { ScrollProgress } from "@/components/fx/ScrollProgress";
 import { Magnetic } from "@/components/fx/Magnetic";
@@ -256,8 +257,8 @@ function Hero() {
 function Marquee() {
   const row = [...marqueeWords, ...marqueeWords, ...marqueeWords];
   return (
-    <section aria-hidden className="relative border-y border-border py-10 overflow-hidden bg-surface/40 noise">
-      <div className="flex whitespace-nowrap marquee -skew-y-1">
+    <section aria-hidden data-pin-fade className="relative border-y border-border py-10 overflow-hidden bg-surface/40 noise">
+      <div data-pin-layer className="flex whitespace-nowrap marquee -skew-y-1">
         {row.map((w, i) => (
           <span
             key={`a-${i}`}
@@ -267,7 +268,7 @@ function Marquee() {
           </span>
         ))}
       </div>
-      <div className="flex whitespace-nowrap marquee-rev skew-y-1 mt-2">
+      <div data-pin-layer className="flex whitespace-nowrap marquee-rev skew-y-1 mt-2">
         {row.map((w, i) => (
           <span
             key={`b-${i}`}
@@ -395,8 +396,8 @@ function Industries() {
   return (
     <section id="industries" className="relative py-32 md:py-44 border-t border-border bg-background overflow-hidden">
       <ClientOnly><MouseLight /></ClientOnly>
-      <div className="absolute -top-32 -right-24 w-[40rem] h-[40rem] rounded-full opacity-30 blur-3xl float-blob pointer-events-none" style={{ background: "radial-gradient(circle, oklch(0.78 0.15 65 / 0.45), transparent 70%)" }} />
-      <div className="absolute -bottom-32 -left-24 w-[36rem] h-[36rem] rounded-full opacity-20 blur-3xl float-blob pointer-events-none" style={{ background: "radial-gradient(circle, oklch(0.55 0.18 250 / 0.5), transparent 70%)", animationDelay: "-7s" }} />
+      <div data-parallax-bg="-18" className="absolute -top-32 -right-24 w-[40rem] h-[40rem] rounded-full opacity-30 blur-3xl float-blob pointer-events-none" style={{ background: "radial-gradient(circle, oklch(0.78 0.15 65 / 0.45), transparent 70%)" }} />
+      <div data-parallax-bg="-12" className="absolute -bottom-32 -left-24 w-[36rem] h-[36rem] rounded-full opacity-20 blur-3xl float-blob pointer-events-none" style={{ background: "radial-gradient(circle, oklch(0.55 0.18 250 / 0.5), transparent 70%)", animationDelay: "-7s" }} />
 
       <div className="relative max-w-[1400px] mx-auto px-6 md:px-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
@@ -475,6 +476,7 @@ function Work() {
                           src={p.img}
                           alt={p.title}
                           loading="lazy"
+                          data-parallax-bg="-12"
                           className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-110"
                         />
                       </div>
@@ -693,6 +695,7 @@ function Home() {
     <div className="bg-background text-foreground">
       <ClientOnly>
         <SmoothScroll />
+        <CinematicScroll />
         <CustomCursor />
         <ScrollProgress />
       </ClientOnly>
