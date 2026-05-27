@@ -19,7 +19,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function CinematicScroll() {
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const mm = ScrollTrigger.matchMedia ?? null;
+      const hasMM = typeof ScrollTrigger.matchMedia === "function";
 
       const build = (intensity: number) => {
         const triggers: ScrollTrigger[] = [];
