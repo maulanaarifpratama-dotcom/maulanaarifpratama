@@ -476,6 +476,7 @@ function Work() {
                           src={p.img}
                           alt={p.title}
                           loading="lazy"
+                          data-parallax-bg="-12"
                           className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-110"
                         />
                       </div>
