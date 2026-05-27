@@ -309,7 +309,7 @@ function About() {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-display text-4xl md:text-6xl leading-tight tracking-tight text-balance">
+            <h2 data-section-title className="font-display text-4xl md:text-6xl leading-tight tracking-tight text-balance">
               I build the systems behind the growth — and the meaning behind the metrics.
             </h2>
           </Reveal>
