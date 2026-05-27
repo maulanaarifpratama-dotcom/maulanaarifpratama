@@ -257,8 +257,8 @@ function Hero() {
 function Marquee() {
   const row = [...marqueeWords, ...marqueeWords, ...marqueeWords];
   return (
-    <section aria-hidden className="relative border-y border-border py-10 overflow-hidden bg-surface/40 noise">
-      <div className="flex whitespace-nowrap marquee -skew-y-1">
+    <section aria-hidden data-pin-fade className="relative border-y border-border py-10 overflow-hidden bg-surface/40 noise">
+      <div data-pin-layer className="flex whitespace-nowrap marquee -skew-y-1">
         {row.map((w, i) => (
           <span
             key={`a-${i}`}
@@ -268,7 +268,7 @@ function Marquee() {
           </span>
         ))}
       </div>
-      <div className="flex whitespace-nowrap marquee-rev skew-y-1 mt-2">
+      <div data-pin-layer className="flex whitespace-nowrap marquee-rev skew-y-1 mt-2">
         {row.map((w, i) => (
           <span
             key={`b-${i}`}
