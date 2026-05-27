@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import { SmoothScroll } from "@/components/fx/SmoothScroll";
+import { CinematicScroll } from "@/components/fx/CinematicScroll";
 import { CustomCursor } from "@/components/fx/CustomCursor";
 import { ScrollProgress } from "@/components/fx/ScrollProgress";
 import { Magnetic } from "@/components/fx/Magnetic";
