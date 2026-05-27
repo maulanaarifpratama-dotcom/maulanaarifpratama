@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { CaseStudyModal, type CaseStudy } from "@/components/CaseStudyModal";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import { SmoothScroll } from "@/components/fx/SmoothScroll";
