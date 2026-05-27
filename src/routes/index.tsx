@@ -57,7 +57,7 @@ const expertise = [
   { k: "06", t: "Leadership", d: "C-level operating roles across multiple brands — building teams, SOPs and growth systems from zero." },
 ];
 
-const projects = [
+const projects: CaseStudy[] = [
   {
     n: "01",
     tag: "Health · Supplements",
@@ -65,6 +65,20 @@ const projects = [
     desc: "Led as CEO from product launch to digital revenue scale. Built the brand, performance funnels and marketplace engine for a premium halal sports nutrition line.",
     img: projHalalpro,
     meta: ["Brand", "Meta Ads", "TikTok Shop", "Marketplace"],
+    role: "CEO · Brand & Growth",
+    year: "2023 — 2024",
+    story: [
+      "Halal Pro entered a crowded sports nutrition category dominated by global names. The mandate was to carve out a premium, faith-aligned position without sounding niche — and to compress the path from launch to repeatable digital revenue.",
+      "We rebuilt the brand from naming and pack design to a full content engine: studio-shot product films, athlete testimonial reels and a TikTok Shop operation running daily live commerce with creator partners.",
+      "On the back end, we wired a unified funnel across Meta, TikTok Ads and marketplace placements (Shopee, Tokopedia, TikTok Shop) with creative iteration on a weekly cadence. Inventory, COGS and CAC were modelled together so growth never outran margin.",
+    ],
+    results: [
+      { v: "8×", l: "Monthly revenue lift" },
+      { v: "<2.1", l: "Blended ROAS floor" },
+      { v: "120K+", l: "Units shipped" },
+      { v: "#1", l: "Halal sports nutrition" },
+    ],
+    gallery: [projHalalpro, projResinid, projPasarbaik],
   },
   {
     n: "02",
@@ -73,6 +87,19 @@ const projects = [
     desc: "An AI-powered platform for impact organizations — grant discovery, proposal drafting, document intelligence and reporting workflows.",
     img: projImpactory,
     meta: ["Azure AI Foundry", "RAG", "Prompt Governance"],
+    role: "Founder · Product & AI",
+    year: "2024 — Now",
+    story: [
+      "NGOs and foundations lose weeks every quarter chasing grants, formatting proposals and stitching reports. Impactory collapses that loop with agentic workflows trained on the realities of the impact sector.",
+      "The platform runs on Azure AI Foundry with a RAG layer over donor databases, regulatory documents and historical proposals. A prompt governance system keeps outputs auditable and aligned with each organization's voice.",
+      "Human-in-the-loop is the default: every agent draft is reviewable, versioned and traceable — so program officers stay in command while the busywork disappears.",
+    ],
+    results: [
+      { v: "70%", l: "Faster proposal drafting" },
+      { v: "3×", l: "Grant pipeline coverage" },
+      { v: "10+", l: "Foundations onboarded" },
+    ],
+    gallery: [projImpactory, projBisabaik],
   },
   {
     n: "03",
@@ -81,6 +108,20 @@ const projects = [
     desc: "CMO mandate end-to-end: brand positioning, parent-acquisition funnels, an AI Chatbot for 24/7 enrollment concierge, and a custom Growth Intelligence System unifying ads, CRM and occupancy data into one decision cockpit.",
     img: projLittlechamp,
     meta: ["CMO", "AI Chatbot", "Growth Intelligence", "Lead Gen"],
+    role: "CMO · Growth Systems",
+    year: "2024 — Now",
+    story: [
+      "Daycare is a trust business with a long, anxious buying journey. We rebuilt LittleChamp's positioning around the parent's real question — \"will my child be safe and seen here?\" — and engineered every touchpoint to answer it before they ask.",
+      "An AI enrollment concierge handles parent questions 24/7, books tours and qualifies leads straight into the CRM with parent context preserved. Response time collapsed from hours to seconds.",
+      "The Growth Intelligence System unifies ad spend, lead source, tour attendance and occupancy into one cockpit — so we steer the funnel against real centre utilization, not vanity clicks.",
+    ],
+    results: [
+      { v: "4.2×", l: "Qualified lead volume" },
+      { v: "<5s", l: "Average reply time" },
+      { v: "92%", l: "Centre occupancy" },
+      { v: "−38%", l: "Cost per enrollment" },
+    ],
+    gallery: [projLittlechamp, projImpactory],
   },
   {
     n: "04",
@@ -89,6 +130,19 @@ const projects = [
     desc: "End-to-end donation platform with campaign pages, payment gateway integration and an SEO foundation engineered for trust.",
     img: projBisabaik,
     meta: ["Platform", "Payments", "SEO"],
+    role: "Founder · Platform Lead",
+    year: "2024 — Now",
+    story: [
+      "BisaBaik was built to give grassroots and faith-driven causes a credible, modern home for online fundraising without the platform fees swallowing the donation.",
+      "The stack covers campaign authoring, multi-channel payment rails, donor receipts and a transparent reporting layer — designed so first-time donors trust the page within seconds of landing.",
+      "An SEO foundation around cause keywords and recurring giving content compounds organic traffic month over month, lowering reliance on paid acquisition.",
+    ],
+    results: [
+      { v: "0 → 1", l: "Platform shipped" },
+      { v: "100+", l: "Campaigns hosted" },
+      { v: "5★", l: "Donor trust signals" },
+    ],
+    gallery: [projBisabaik, projPasarbaik],
   },
   {
     n: "05",
@@ -97,6 +151,18 @@ const projects = [
     desc: "Built the digital sales engine for a designer resin home-decor brand — visual identity, e-commerce stack and creator-led performance media.",
     img: projResinid,
     meta: ["E-commerce", "Creator Ads", "Brand"],
+    role: "Growth Partner",
+    year: "2023",
+    story: [
+      "ResinID had a craft-led product but no commercial operating system. We rebuilt the visual identity around the material — light, color, depth — and translated it into a storefront that sells the feeling, not just the SKU.",
+      "Creator-led performance media (TikTok and Instagram Reels) replaced static ads. We scripted hooks around making-of moments, which lifted thumb-stop rate and dropped CPM materially.",
+    ],
+    results: [
+      { v: "5×", l: "Monthly orders" },
+      { v: "−42%", l: "CPA" },
+      { v: "3.8", l: "Blended ROAS" },
+    ],
+    gallery: [projResinid, projHalalpro],
   },
   {
     n: "06",
@@ -105,6 +171,18 @@ const projects = [
     desc: "An aggregator concept connecting impact-driven products, communities and ethical commerce into one storefront.",
     img: projPasarbaik,
     meta: ["Aggregator", "Commerce", "Brand"],
+    role: "Founder · Concept & Build",
+    year: "2025",
+    story: [
+      "PasarBaik is the marketplace layer for the BisaBaik ecosystem — a place where impact-driven brands, cooperatives and community producers can reach buyers who care where their money goes.",
+      "Designed as an aggregator from day one: shared checkout, shared trust signals, shared fulfilment partners — so small producers plug in instead of rebuilding infrastructure.",
+    ],
+    results: [
+      { v: "1", l: "Unified storefront" },
+      { v: "Multi", l: "Brand onboarding" },
+      { v: "B2C+B2B", l: "Channels" },
+    ],
+    gallery: [projPasarbaik, projBisabaik, projImpactory],
   },
 ];
 
