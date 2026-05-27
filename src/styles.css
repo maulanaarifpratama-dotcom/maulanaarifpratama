@@ -121,10 +121,11 @@
     position: absolute; inset: 0;
     background-image: var(--grain);
     background-size: 180px;
-    opacity: 0.08;
+    opacity: var(--grain-intensity-noise, 0.08);
     pointer-events: none;
     mix-blend-mode: overlay;
     animation: noise 1.2s steps(6) infinite;
+    transition: opacity 200ms linear;
   }
   @keyframes noise {
     0%   { transform: translate(0,0); }
