@@ -783,6 +783,7 @@ function Footer() {
 }
 
 function Home() {
+  const [active, setActive] = useState<CaseStudy | null>(null);
   return (
     <div className="bg-background text-foreground">
       <ClientOnly>
@@ -800,12 +801,13 @@ function Home() {
         <About />
         <Expertise />
         <Industries />
-        <Work />
+        <Work onOpen={setActive} />
         <Moments />
         <Experience />
         <Contact />
       </main>
       <Footer />
+      <CaseStudyModal project={active} onClose={() => setActive(null)} />
     </div>
   );
 }
