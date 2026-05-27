@@ -127,7 +127,7 @@ export function CinematicScroll() {
         };
       };
 
-      if (mm) {
+      if (hasMM) {
         ScrollTrigger.matchMedia({
           "(min-width: 768px)": () => build(1),
           "(max-width: 767px)": () => build(0.45),
