@@ -13,6 +13,7 @@ export function ScrambleText({
   duration?: number;
   trigger?: "mount" | "hover";
 }) {
+  const [mounted, setMounted] = useState(false);
   const [display, setDisplay] = useState(text);
   const raf = useRef<number>(0);
 
@@ -38,10 +39,15 @@ export function ScrambleText({
   };
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     if (trigger === "mount") run();
     return () => cancelAnimationFrame(raf.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [text]);
+  }, [text, mounted]);
 
   const handlers =
     trigger === "hover" ? { onPointerEnter: run, onFocus: run } : {};
