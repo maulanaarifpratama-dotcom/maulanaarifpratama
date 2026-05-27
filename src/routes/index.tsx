@@ -525,7 +525,7 @@ function Industries() {
   );
 }
 
-function Work() {
+function Work({ onOpen }: { onOpen: (p: CaseStudy) => void }) {
   return (
     <section id="work" data-section-reveal className="relative py-32 md:py-48 border-t border-border bg-surface/30 overflow-hidden">
       <ClientOnly>
@@ -551,23 +551,34 @@ function Work() {
                 <article className={`grid md:grid-cols-12 gap-8 md:gap-14 items-center ${reversed ? "md:[&>div:first-child]:order-2" : ""}`}>
                   <div className="md:col-span-7">
                     <Tilt className="relative group overflow-hidden rounded-sm will-change-transform">
-                      <div className="aspect-[4/3] overflow-hidden">
-                        <img
-                          src={p.img}
-                          alt={p.title}
-                          loading="lazy"
-                          data-parallax-bg="-12"
-                          className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-110"
-                        />
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-tr from-background/60 via-transparent to-transparent pointer-events-none" />
-                      <div className="absolute inset-0 ring-1 ring-inset ring-border pointer-events-none" />
-                      <div className="absolute top-4 left-4 text-xs font-mono text-foreground/80 bg-background/60 backdrop-blur px-3 py-1 rounded-full border border-border">
-                        {p.tag}
-                      </div>
-                      <div className="absolute bottom-4 right-4 text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/70 bg-background/50 backdrop-blur px-3 py-1 rounded-full border border-border">
-                        {p.n} / 06
-                      </div>
+                      <button
+                        type="button"
+                        onClick={() => onOpen(p)}
+                        data-cursor="Open"
+                        aria-label={`Open case study: ${p.title}`}
+                        className="block w-full text-left"
+                      >
+                        <div className="aspect-[4/3] overflow-hidden">
+                          <img
+                            src={p.img}
+                            alt={p.title}
+                            loading="lazy"
+                            data-parallax-bg="-12"
+                            className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-110"
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-tr from-background/60 via-transparent to-transparent pointer-events-none" />
+                        <div className="absolute inset-0 ring-1 ring-inset ring-border pointer-events-none" />
+                        <div className="absolute top-4 left-4 text-xs font-mono text-foreground/80 bg-background/60 backdrop-blur px-3 py-1 rounded-full border border-border">
+                          {p.tag}
+                        </div>
+                        <div className="absolute bottom-4 right-4 text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/70 bg-background/50 backdrop-blur px-3 py-1 rounded-full border border-border">
+                          {p.n} / 06
+                        </div>
+                        <div className="pointer-events-none absolute bottom-4 left-4 text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/0 group-hover:text-accent transition-colors duration-500 bg-background/0 group-hover:bg-background/60 backdrop-blur px-3 py-1 rounded-full border border-transparent group-hover:border-border">
+                          View case →
+                        </div>
+                      </button>
                     </Tilt>
                   </div>
                   <div className="md:col-span-5">
@@ -589,13 +600,14 @@ function Work() {
                       ))}
                     </ul>
                     <Magnetic strength={0.3}>
-                      <a
-                        href="#contact"
+                      <button
+                        type="button"
+                        onClick={() => onOpen(p)}
                         data-cursor="Open"
                         className="inline-flex items-center gap-2 text-sm border-b border-accent pb-1 hover:text-accent transition-colors"
                       >
                         Read the story <span>→</span>
-                      </a>
+                      </button>
                     </Magnetic>
                   </div>
                 </article>
