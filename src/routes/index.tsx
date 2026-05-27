@@ -608,7 +608,7 @@ function Experience() {
 
 function Contact() {
   return (
-    <section id="contact" className="relative py-32 md:py-48 border-t border-border overflow-hidden grain">
+    <section id="contact" data-section-reveal className="relative py-32 md:py-48 border-t border-border overflow-hidden grain">
       <div
         className="absolute inset-0 opacity-60"
         style={{
