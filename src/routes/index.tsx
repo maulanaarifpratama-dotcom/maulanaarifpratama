@@ -694,6 +694,7 @@ function Home() {
     <div className="bg-background text-foreground">
       <ClientOnly>
         <SmoothScroll />
+        <CinematicScroll />
         <CustomCursor />
         <ScrollProgress />
       </ClientOnly>
