@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { SmoothScroll } from "@/components/fx/SmoothScroll";
 import { CinematicScroll } from "@/components/fx/CinematicScroll";
 import { FilmTreatment } from "@/components/fx/FilmTreatment";
+import { HeroTimeline } from "@/components/fx/HeroTimeline";
 import { CustomCursor } from "@/components/fx/CustomCursor";
 import { ScrollProgress } from "@/components/fx/ScrollProgress";
 import { Magnetic } from "@/components/fx/Magnetic";
