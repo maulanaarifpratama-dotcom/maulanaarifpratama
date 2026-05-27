@@ -695,6 +695,7 @@ function Home() {
       <ClientOnly>
         <SmoothScroll />
         <CinematicScroll />
+        <FilmTreatment />
         <CustomCursor />
         <ScrollProgress />
       </ClientOnly>
