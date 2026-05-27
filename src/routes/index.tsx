@@ -394,7 +394,7 @@ function Expertise() {
 
 function Industries() {
   return (
-    <section id="industries" className="relative py-32 md:py-44 border-t border-border bg-background overflow-hidden">
+    <section id="industries" data-section-reveal className="relative py-32 md:py-44 border-t border-border bg-background overflow-hidden">
       <ClientOnly><MouseLight /></ClientOnly>
       <div data-parallax-bg="-18" className="absolute -top-32 -right-24 w-[40rem] h-[40rem] rounded-full opacity-30 blur-3xl float-blob pointer-events-none" style={{ background: "radial-gradient(circle, oklch(0.78 0.15 65 / 0.45), transparent 70%)" }} />
       <div data-parallax-bg="-12" className="absolute -bottom-32 -left-24 w-[36rem] h-[36rem] rounded-full opacity-20 blur-3xl float-blob pointer-events-none" style={{ background: "radial-gradient(circle, oklch(0.55 0.18 250 / 0.5), transparent 70%)", animationDelay: "-7s" }} />
@@ -405,7 +405,7 @@ function Industries() {
             <p className="text-xs uppercase tracking-[0.28em] text-accent mb-4 font-mono">
               ✦ Industries Operated
             </p>
-            <h2 className="font-display text-4xl md:text-6xl leading-tight tracking-tight max-w-2xl">
+            <h2 data-section-title className="font-display text-4xl md:text-6xl leading-tight tracking-tight max-w-2xl">
               Ten verticals. One operating playbook.
             </h2>
           </Reveal>
