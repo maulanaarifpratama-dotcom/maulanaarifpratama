@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { SmoothScroll } from "@/components/fx/SmoothScroll";
 import { CinematicScroll } from "@/components/fx/CinematicScroll";
 import { FilmTreatment } from "@/components/fx/FilmTreatment";
+import { HeroTimeline } from "@/components/fx/HeroTimeline";
 import { CustomCursor } from "@/components/fx/CustomCursor";
 import { ScrollProgress } from "@/components/fx/ScrollProgress";
 import { Magnetic } from "@/components/fx/Magnetic";
@@ -142,9 +143,10 @@ function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
 
   return (
-    <section ref={ref} id="top" className="relative h-[100svh] w-full overflow-hidden grain">
+    <section ref={ref} id="top" data-hero-section className="relative h-[100svh] w-full overflow-hidden grain">
       <motion.div style={{ y, opacity }} className="absolute inset-0">
         <video
+          data-hero-video
           src={heroVideoAsset.url}
           poster={heroBg}
           autoPlay
@@ -284,7 +286,7 @@ function Marquee() {
 
 function About() {
   return (
-    <section id="about" className="relative py-32 md:py-48 max-w-[1400px] mx-auto px-6 md:px-10">
+    <section id="about" data-section-reveal className="relative py-32 md:py-48 max-w-[1400px] mx-auto px-6 md:px-10">
       <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
         <Reveal className="md:col-span-4">
           <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
@@ -308,7 +310,7 @@ function About() {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-display text-4xl md:text-6xl leading-tight tracking-tight text-balance">
+            <h2 data-section-title className="font-display text-4xl md:text-6xl leading-tight tracking-tight text-balance">
               I build the systems behind the growth — and the meaning behind the metrics.
             </h2>
           </Reveal>
@@ -350,14 +352,14 @@ function About() {
 
 function Expertise() {
   return (
-    <section id="expertise" className="relative py-32 md:py-48 border-t border-border">
+    <section id="expertise" data-section-reveal className="relative py-32 md:py-48 border-t border-border">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.28em] text-accent mb-4 font-mono">
               ✦ Expertise
             </p>
-            <h2 className="font-display text-4xl md:text-6xl leading-tight tracking-tight max-w-2xl">
+            <h2 data-section-title className="font-display text-4xl md:text-6xl leading-tight tracking-tight max-w-2xl">
               Six disciplines, one operating system.
             </h2>
           </Reveal>
@@ -393,7 +395,7 @@ function Expertise() {
 
 function Industries() {
   return (
-    <section id="industries" className="relative py-32 md:py-44 border-t border-border bg-background overflow-hidden">
+    <section id="industries" data-section-reveal className="relative py-32 md:py-44 border-t border-border bg-background overflow-hidden">
       <ClientOnly><MouseLight /></ClientOnly>
       <div data-parallax-bg="-18" className="absolute -top-32 -right-24 w-[40rem] h-[40rem] rounded-full opacity-30 blur-3xl float-blob pointer-events-none" style={{ background: "radial-gradient(circle, oklch(0.78 0.15 65 / 0.45), transparent 70%)" }} />
       <div data-parallax-bg="-12" className="absolute -bottom-32 -left-24 w-[36rem] h-[36rem] rounded-full opacity-20 blur-3xl float-blob pointer-events-none" style={{ background: "radial-gradient(circle, oklch(0.55 0.18 250 / 0.5), transparent 70%)", animationDelay: "-7s" }} />
@@ -404,7 +406,7 @@ function Industries() {
             <p className="text-xs uppercase tracking-[0.28em] text-accent mb-4 font-mono">
               ✦ Industries Operated
             </p>
-            <h2 className="font-display text-4xl md:text-6xl leading-tight tracking-tight max-w-2xl">
+            <h2 data-section-title className="font-display text-4xl md:text-6xl leading-tight tracking-tight max-w-2xl">
               Ten verticals. One operating playbook.
             </h2>
           </Reveal>
@@ -446,7 +448,7 @@ function Industries() {
 
 function Work() {
   return (
-    <section id="work" className="relative py-32 md:py-48 border-t border-border bg-surface/30 overflow-hidden">
+    <section id="work" data-section-reveal className="relative py-32 md:py-48 border-t border-border bg-surface/30 overflow-hidden">
       <ClientOnly>
         <MouseLight />
       </ClientOnly>
@@ -456,7 +458,7 @@ function Work() {
             <p className="text-xs uppercase tracking-[0.28em] text-accent mb-4 font-mono">
               ✦ Selected Work
             </p>
-            <h2 className="font-display text-4xl md:text-6xl leading-tight tracking-tight max-w-3xl">
+            <h2 data-section-title className="font-display text-4xl md:text-6xl leading-tight tracking-tight max-w-3xl">
               Platforms built where impact and technology meet.
             </h2>
           </Reveal>
@@ -569,14 +571,14 @@ function Moments() {
 
 function Experience() {
   return (
-    <section id="experience" className="relative py-32 md:py-48 border-t border-border">
+    <section id="experience" data-section-reveal className="relative py-32 md:py-48 border-t border-border">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <div className="mb-20">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.28em] text-accent mb-4 font-mono">
               ✦ Trajectory
             </p>
-            <h2 className="font-display text-4xl md:text-6xl tracking-tight max-w-2xl">
+            <h2 data-section-title className="font-display text-4xl md:text-6xl tracking-tight max-w-2xl">
               A decade of operating roles.
             </h2>
           </Reveal>
@@ -607,7 +609,7 @@ function Experience() {
 
 function Contact() {
   return (
-    <section id="contact" className="relative py-32 md:py-48 border-t border-border overflow-hidden grain">
+    <section id="contact" data-section-reveal className="relative py-32 md:py-48 border-t border-border overflow-hidden grain">
       <div
         className="absolute inset-0 opacity-60"
         style={{
@@ -622,7 +624,7 @@ function Contact() {
           </p>
         </Reveal>
         <Reveal delay={0.1}>
-          <h2 className="font-display text-5xl md:text-8xl tracking-tighter leading-[0.95] text-balance max-w-5xl mx-auto">
+          <h2 data-section-title className="font-display text-5xl md:text-8xl tracking-tighter leading-[0.95] text-balance max-w-5xl mx-auto">
             Have an ambitious idea
             <br />
             <span className="italic text-accent">worth the effort?</span>
@@ -695,6 +697,7 @@ function Home() {
       <ClientOnly>
         <SmoothScroll />
         <CinematicScroll />
+        <HeroTimeline />
         <FilmTreatment />
         <CustomCursor />
         <ScrollProgress />
