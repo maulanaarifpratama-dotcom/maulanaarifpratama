@@ -351,14 +351,14 @@ function About() {
 
 function Expertise() {
   return (
-    <section id="expertise" className="relative py-32 md:py-48 border-t border-border">
+    <section id="expertise" data-section-reveal className="relative py-32 md:py-48 border-t border-border">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.28em] text-accent mb-4 font-mono">
               ✦ Expertise
             </p>
-            <h2 className="font-display text-4xl md:text-6xl leading-tight tracking-tight max-w-2xl">
+            <h2 data-section-title className="font-display text-4xl md:text-6xl leading-tight tracking-tight max-w-2xl">
               Six disciplines, one operating system.
             </h2>
           </Reveal>
