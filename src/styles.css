@@ -81,7 +81,8 @@
     content: "";
     position: absolute; inset: 0;
     background-image: var(--grain);
-    opacity: 0.06; pointer-events: none; mix-blend-mode: overlay;
+    opacity: var(--grain-intensity, 0.06); pointer-events: none; mix-blend-mode: overlay;
+    transition: opacity 200ms linear;
   }
 
   .kenburns { animation: kenburns 24s ease-in-out infinite alternate; }
