@@ -447,7 +447,7 @@ function Industries() {
 
 function Work() {
   return (
-    <section id="work" className="relative py-32 md:py-48 border-t border-border bg-surface/30 overflow-hidden">
+    <section id="work" data-section-reveal className="relative py-32 md:py-48 border-t border-border bg-surface/30 overflow-hidden">
       <ClientOnly>
         <MouseLight />
       </ClientOnly>
@@ -457,7 +457,7 @@ function Work() {
             <p className="text-xs uppercase tracking-[0.28em] text-accent mb-4 font-mono">
               ✦ Selected Work
             </p>
-            <h2 className="font-display text-4xl md:text-6xl leading-tight tracking-tight max-w-3xl">
+            <h2 data-section-title className="font-display text-4xl md:text-6xl leading-tight tracking-tight max-w-3xl">
               Platforms built where impact and technology meet.
             </h2>
           </Reveal>
