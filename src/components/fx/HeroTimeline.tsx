@@ -115,53 +115,29 @@ export function HeroTimeline() {
           .toArray<HTMLElement>("[data-section-reveal]")
           .forEach((section) => {
             const title = section.querySelector<HTMLElement>("[data-section-title]");
-            const body = section.querySelectorAll<HTMLElement>(
-              "[data-section-body], p, li"
-            );
+            if (!title) return;
 
-            const tl = gsap.timeline({
-              scrollTrigger: {
-                trigger: section,
-                start: "top 85%",
-                end: "top 35%",
-                scrub: 1,
+            const tween = gsap.fromTo(
+              title,
+              {
+                letterSpacing: `${0.14 * intensity}em`,
+                clipPath: "inset(0 0 70% 0)",
+                filter: "blur(6px)",
               },
-            });
-
-            if (title) {
-              tl.fromTo(
-                title,
-                {
-                  yPercent: 18 * intensity,
-                  opacity: 0,
-                  letterSpacing: `${0.18 * intensity}em`,
-                  fontWeight: 300,
-                  clipPath: "inset(0 0 100% 0)",
-                  filter: "blur(6px)",
+              {
+                letterSpacing: "-0.02em",
+                clipPath: "inset(0 0 0% 0)",
+                filter: "blur(0px)",
+                ease: "power2.out",
+                scrollTrigger: {
+                  trigger: section,
+                  start: "top 85%",
+                  end: "top 40%",
+                  scrub: 1,
                 },
-                {
-                  yPercent: 0,
-                  opacity: 1,
-                  letterSpacing: "-0.02em",
-                  fontWeight: 500,
-                  clipPath: "inset(0 0 0% 0)",
-                  filter: "blur(0px)",
-                  ease: "power2.out",
-                },
-                0
-              );
-            }
-
-            if (body.length) {
-              tl.fromTo(
-                body,
-                { y: 24 * intensity, opacity: 0 },
-                { y: 0, opacity: 1, stagger: 0.04, ease: "power1.out" },
-                0.1
-              );
-            }
-
-            if (tl.scrollTrigger) triggers.push(tl.scrollTrigger);
+              }
+            );
+            if (tween.scrollTrigger) triggers.push(tween.scrollTrigger);
           });
 
         return () => triggers.forEach((t) => t.kill());
