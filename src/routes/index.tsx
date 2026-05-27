@@ -285,7 +285,7 @@ function Marquee() {
 
 function About() {
   return (
-    <section id="about" className="relative py-32 md:py-48 max-w-[1400px] mx-auto px-6 md:px-10">
+    <section id="about" data-section-reveal className="relative py-32 md:py-48 max-w-[1400px] mx-auto px-6 md:px-10">
       <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
         <Reveal className="md:col-span-4">
           <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
