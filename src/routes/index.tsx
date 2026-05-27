@@ -570,14 +570,14 @@ function Moments() {
 
 function Experience() {
   return (
-    <section id="experience" className="relative py-32 md:py-48 border-t border-border">
+    <section id="experience" data-section-reveal className="relative py-32 md:py-48 border-t border-border">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <div className="mb-20">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.28em] text-accent mb-4 font-mono">
               ✦ Trajectory
             </p>
-            <h2 className="font-display text-4xl md:text-6xl tracking-tight max-w-2xl">
+            <h2 data-section-title className="font-display text-4xl md:text-6xl tracking-tight max-w-2xl">
               A decade of operating roles.
             </h2>
           </Reveal>
