@@ -165,9 +165,7 @@ function Hero() {
         <div className="absolute -inset-x-20 top-1/3 h-40 opacity-30 blur-3xl animate-[sweep_9s_ease-in-out_infinite]" style={{ background: "linear-gradient(90deg, transparent, oklch(0.85 0.16 65 / 0.5), transparent)" }} />
       </motion.div>
 
-      {/* Cinematic letterbox bars */}
-      <div className="pointer-events-none absolute top-0 inset-x-0 h-[6vh] bg-background z-20" />
-      <div className="pointer-events-none absolute bottom-0 inset-x-0 h-[6vh] bg-background z-20" />
+      {/* Cinematic letterbox bars now provided globally by <FilmTreatment /> */}
 
       {/* Corner TVC marks */}
       <div className="pointer-events-none absolute top-[7vh] left-6 md:left-10 z-30 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] text-accent/80">
