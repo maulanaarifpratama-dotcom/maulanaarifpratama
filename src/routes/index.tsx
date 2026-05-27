@@ -623,7 +623,7 @@ function Contact() {
           </p>
         </Reveal>
         <Reveal delay={0.1}>
-          <h2 className="font-display text-5xl md:text-8xl tracking-tighter leading-[0.95] text-balance max-w-5xl mx-auto">
+          <h2 data-section-title className="font-display text-5xl md:text-8xl tracking-tighter leading-[0.95] text-balance max-w-5xl mx-auto">
             Have an ambitious idea
             <br />
             <span className="italic text-accent">worth the effort?</span>
