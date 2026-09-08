@@ -5,6 +5,14 @@ import { MouseLight } from "@/components/fx/MouseLight";
 import { ScrambleText } from "@/components/fx/ScrambleText";
 import { Magnetic } from "@/components/fx/Magnetic";
 
+/**
+ * `evidence: "dashboard"` means the figure is legible in a platform screenshot
+ * bundled under src/assets/ads and is quotable verbatim. `"stated"` means it is
+ * asserted without an artefact in this repo — it still renders, but it is never
+ * badged as verified. See the evidence policy in src/data/cv.ts.
+ */
+export type Evidence = "dashboard" | "stated";
+
 export type CaseStudy = {
   n: string;
   tag: string;
@@ -15,7 +23,7 @@ export type CaseStudy = {
   role?: string;
   year?: string;
   story?: string[];
-  results?: { v: string; l: string }[];
+  results?: { v: string; l: string; evidence?: Evidence }[];
   gallery?: string[];
   link?: string;
 };
@@ -24,9 +32,12 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function CaseStudyModal({
   project,
+  total,
   onClose,
 }: {
   project: CaseStudy | null;
+  /** Case count, so the "01 / 09" marker stays honest when cases are added. */
+  total: number;
   onClose: () => void;
 }) {
   useEffect(() => {
@@ -77,7 +88,7 @@ export function CaseStudyModal({
             <div className="sticky top-0 z-20 flex items-center justify-between px-5 md:px-8 py-4 bg-background/60 backdrop-blur border-b border-border">
               <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                Case · {project.n} / 06 · {project.tag}
+                Case · {project.n} / {String(total).padStart(2, "0")} · {project.tag}
               </div>
               <Magnetic strength={0.3}>
                 <button
@@ -159,6 +170,15 @@ export function CaseStudyModal({
                       <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
                         {r.l}
                       </div>
+                      {r.evidence === "dashboard" && (
+                        <div
+                          title="Read directly off a platform dashboard screenshot"
+                          className="mt-2 inline-flex items-center gap-1.5 text-[9px] uppercase tracking-[0.2em] text-accent/70 font-mono"
+                        >
+                          <span className="w-1 h-1 rounded-full bg-accent/70" />
+                          Verified in-platform
+                        </div>
+                      )}
                     </motion.div>
                   ))}
                 </div>

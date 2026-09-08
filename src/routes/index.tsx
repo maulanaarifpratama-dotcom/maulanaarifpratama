@@ -2,6 +2,17 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef, useState } from "react";
 import { CaseStudyModal, type CaseStudy } from "@/components/CaseStudyModal";
+import { projects } from "@/data/projects";
+import {
+  profile,
+  headlineStats,
+  capabilities as expertise,
+  industries,
+  experience,
+  adsPortfolio,
+  skuBoard,
+  stack,
+} from "@/data/cv";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import { SmoothScroll } from "@/components/fx/SmoothScroll";
@@ -21,24 +32,18 @@ import portrait from "@/assets/portrait.jpg";
 import tiktokImg from "@/assets/tiktok-summit.jpg";
 import waImg from "@/assets/whatsapp-summit.jpg";
 import googleImg from "@/assets/google.jpg";
-import projImpactory from "@/assets/project-impactory.jpg";
-import projBisabaik from "@/assets/project-bisabaik.jpg";
-import projPasarbaik from "@/assets/project-pasarbaik.jpg";
-import projHalalpro from "@/assets/project-halalpro.jpg";
-import projLittlechamp from "@/assets/project-littlechamp.jpg";
-import projResinid from "@/assets/project-resinid.jpg";
 
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Maulana Arif Pratama — Digital Business Leader & AI Builder" },
+      { title: "Maulana Arif Pratama - Digital Business Leader & AI Builder" },
       {
         name: "description",
         content:
           "8+ years building growth engines, AI workflows, and social impact platforms. Managed IDR 20B+ in performance media across Meta, Google, TikTok.",
       },
-      { property: "og:title", content: "Maulana Arif Pratama — Digital Business Leader" },
+      { property: "og:title", content: "Maulana Arif Pratama - Digital Business Leader" },
       {
         property: "og:description",
         content: "Growth strategist, AI agent builder, social impact technologist.",
@@ -47,167 +52,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Home,
 });
-
-const expertise = [
-  { k: "01", t: "Growth Marketing", d: "Performance media, funnel design, CRO, and digital fundraising at scale across Meta, Google, TikTok and marketplaces." },
-  { k: "02", t: "AI & Automation", d: "Designing agent workflows on Azure AI Foundry, prompt governance, RAG pipelines, and human-in-the-loop systems." },
-  { k: "03", t: "Product & Platform", d: "From crowdfunding platforms to SaaS — web, payment rails, CRM/ERP, and marketing technology stacks." },
-  { k: "04", t: "Social Impact Tech", d: "Building digital infrastructure for NGOs, foundations and impact-driven commerce that scales." },
-  { k: "05", t: "Brand & Strategy", d: "Positioning, narrative and go-to-market for consumer brands, education and social enterprises." },
-  { k: "06", t: "Leadership", d: "C-level operating roles across multiple brands — building teams, SOPs and growth systems from zero." },
-];
-
-const projects: CaseStudy[] = [
-  {
-    n: "01",
-    tag: "Health · Supplements",
-    title: "Halal Pro Supplement",
-    desc: "Led as CEO from product launch to digital revenue scale. Built the brand, performance funnels and marketplace engine for a premium halal sports nutrition line.",
-    img: projHalalpro,
-    meta: ["Brand", "Meta Ads", "TikTok Shop", "Marketplace"],
-    role: "CEO · Brand & Growth",
-    year: "2023 — 2024",
-    story: [
-      "Halal Pro entered a crowded sports nutrition category dominated by global names. The mandate was to carve out a premium, faith-aligned position without sounding niche — and to compress the path from launch to repeatable digital revenue.",
-      "We rebuilt the brand from naming and pack design to a full content engine: studio-shot product films, athlete testimonial reels and a TikTok Shop operation running daily live commerce with creator partners.",
-      "On the back end, we wired a unified funnel across Meta, TikTok Ads and marketplace placements (Shopee, Tokopedia, TikTok Shop) with creative iteration on a weekly cadence. Inventory, COGS and CAC were modelled together so growth never outran margin.",
-    ],
-    results: [
-      { v: "8×", l: "Monthly revenue lift" },
-      { v: "<2.1", l: "Blended ROAS floor" },
-      { v: "120K+", l: "Units shipped" },
-      { v: "#1", l: "Halal sports nutrition" },
-    ],
-    gallery: [projHalalpro, projResinid, projPasarbaik],
-  },
-  {
-    n: "02",
-    tag: "AI · SaaS",
-    title: "Impactory.id",
-    desc: "An AI-powered platform for impact organizations — grant discovery, proposal drafting, document intelligence and reporting workflows.",
-    img: projImpactory,
-    meta: ["Azure AI Foundry", "RAG", "Prompt Governance"],
-    role: "Founder · Product & AI",
-    year: "2024 — Now",
-    story: [
-      "NGOs and foundations lose weeks every quarter chasing grants, formatting proposals and stitching reports. Impactory collapses that loop with agentic workflows trained on the realities of the impact sector.",
-      "The platform runs on Azure AI Foundry with a RAG layer over donor databases, regulatory documents and historical proposals. A prompt governance system keeps outputs auditable and aligned with each organization's voice.",
-      "Human-in-the-loop is the default: every agent draft is reviewable, versioned and traceable — so program officers stay in command while the busywork disappears.",
-    ],
-    results: [
-      { v: "70%", l: "Faster proposal drafting" },
-      { v: "3×", l: "Grant pipeline coverage" },
-      { v: "10+", l: "Foundations onboarded" },
-    ],
-    gallery: [projImpactory, projBisabaik],
-  },
-  {
-    n: "03",
-    tag: "Childcare · Education",
-    title: "LittleChamp Daycare",
-    desc: "CMO mandate end-to-end: brand positioning, parent-acquisition funnels, an AI Chatbot for 24/7 enrollment concierge, and a custom Growth Intelligence System unifying ads, CRM and occupancy data into one decision cockpit.",
-    img: projLittlechamp,
-    meta: ["CMO", "AI Chatbot", "Growth Intelligence", "Lead Gen"],
-    role: "CMO · Growth Systems",
-    year: "2024 — Now",
-    story: [
-      "Daycare is a trust business with a long, anxious buying journey. We rebuilt LittleChamp's positioning around the parent's real question — \"will my child be safe and seen here?\" — and engineered every touchpoint to answer it before they ask.",
-      "An AI enrollment concierge handles parent questions 24/7, books tours and qualifies leads straight into the CRM with parent context preserved. Response time collapsed from hours to seconds.",
-      "The Growth Intelligence System unifies ad spend, lead source, tour attendance and occupancy into one cockpit — so we steer the funnel against real centre utilization, not vanity clicks.",
-    ],
-    results: [
-      { v: "4.2×", l: "Qualified lead volume" },
-      { v: "<5s", l: "Average reply time" },
-      { v: "92%", l: "Centre occupancy" },
-      { v: "−38%", l: "Cost per enrollment" },
-    ],
-    gallery: [projLittlechamp, projImpactory],
-  },
-  {
-    n: "04",
-    tag: "Crowdfunding · Impact",
-    title: "BisaBaik.or.id",
-    desc: "End-to-end donation platform with campaign pages, payment gateway integration and an SEO foundation engineered for trust.",
-    img: projBisabaik,
-    meta: ["Platform", "Payments", "SEO"],
-    role: "Founder · Platform Lead",
-    year: "2024 — Now",
-    story: [
-      "BisaBaik was built to give grassroots and faith-driven causes a credible, modern home for online fundraising without the platform fees swallowing the donation.",
-      "The stack covers campaign authoring, multi-channel payment rails, donor receipts and a transparent reporting layer — designed so first-time donors trust the page within seconds of landing.",
-      "An SEO foundation around cause keywords and recurring giving content compounds organic traffic month over month, lowering reliance on paid acquisition.",
-    ],
-    results: [
-      { v: "0 → 1", l: "Platform shipped" },
-      { v: "100+", l: "Campaigns hosted" },
-      { v: "5★", l: "Donor trust signals" },
-    ],
-    gallery: [projBisabaik, projPasarbaik],
-  },
-  {
-    n: "05",
-    tag: "Home Decor · Lifestyle",
-    title: "ResinID Home Decor",
-    desc: "Built the digital sales engine for a designer resin home-decor brand — visual identity, e-commerce stack and creator-led performance media.",
-    img: projResinid,
-    meta: ["E-commerce", "Creator Ads", "Brand"],
-    role: "Growth Partner",
-    year: "2023",
-    story: [
-      "ResinID had a craft-led product but no commercial operating system. We rebuilt the visual identity around the material — light, color, depth — and translated it into a storefront that sells the feeling, not just the SKU.",
-      "Creator-led performance media (TikTok and Instagram Reels) replaced static ads. We scripted hooks around making-of moments, which lifted thumb-stop rate and dropped CPM materially.",
-    ],
-    results: [
-      { v: "5×", l: "Monthly orders" },
-      { v: "−42%", l: "CPA" },
-      { v: "3.8", l: "Blended ROAS" },
-    ],
-    gallery: [projResinid, projHalalpro],
-  },
-  {
-    n: "06",
-    tag: "Marketplace · Commerce",
-    title: "PasarBaik.com",
-    desc: "An aggregator concept connecting impact-driven products, communities and ethical commerce into one storefront.",
-    img: projPasarbaik,
-    meta: ["Aggregator", "Commerce", "Brand"],
-    role: "Founder · Concept & Build",
-    year: "2025",
-    story: [
-      "PasarBaik is the marketplace layer for the BisaBaik ecosystem — a place where impact-driven brands, cooperatives and community producers can reach buyers who care where their money goes.",
-      "Designed as an aggregator from day one: shared checkout, shared trust signals, shared fulfilment partners — so small producers plug in instead of rebuilding infrastructure.",
-    ],
-    results: [
-      { v: "1", l: "Unified storefront" },
-      { v: "Multi", l: "Brand onboarding" },
-      { v: "B2C+B2B", l: "Channels" },
-    ],
-    gallery: [projPasarbaik, projBisabaik, projImpactory],
-  },
-];
-
-const industries = [
-  { n: "01", t: "Health & Supplements", b: "Halal Pro · Muscle First" },
-  { n: "02", t: "Childcare & Early Education", b: "LittleChamp Daycare" },
-  { n: "03", t: "Home & Lifestyle Decor", b: "ResinID" },
-  { n: "04", t: "Humanitarian & NGO", b: "ACT · PalestinaID · PPPA Daarul Qur'an" },
-  { n: "05", t: "Social Impact Platforms", b: "Bisa Baik · Impactory · PasarBaik" },
-  { n: "06", t: "Education & Study Abroad", b: "KuliahdiTurki · StudydiTurki · BelajardiTurki" },
-  { n: "07", t: "Travel & Hospitality", b: "Biru Marmara Travel · Shilla at Sawangan" },
-  { n: "08", t: "Natural & Consumer Goods", b: "Adev Natural Indonesia" },
-  { n: "09", t: "Fitness & Sports Nutrition", b: "Muscle First" },
-  { n: "10", t: "Foundations & Faith-based", b: "Daarul Qur'an · Yayasan RPB" },
-];
-
-const experience = [
-  { y: "2024 — Now", r: "Founder & Digital Business Lead", c: "Bisa Baik / Yayasan Rumah Pembangunan Berkelanjutan" },
-  { y: "2022 — 2024", r: "CEO / CMO — Multiple Brands", c: "Meta Kreasi Indonusa Holding" },
-  { y: "2021 — 2022", r: "Marketing & Sales Manager", c: "PT. Adev Natural Indonesia" },
-  { y: "2021", r: "Martech Senior Manager", c: "Biru Marmara Group / MUSIAD Indonesia" },
-  { y: "2020 — 2021", r: "Digital Project Lead", c: "Shilla at Sawangan" },
-  { y: "2019 — 2020", r: "Digital Marketing Manager", c: "PPPA Daarul Qur'an Foundation" },
-  { y: "2014 — 2019", r: "Integrated Digital Marketing Supervisor", c: "ACT Foundation / Aksi Cepat Tanggap" },
-];
 
 const marqueeWords = [
   "Growth", "AI Agents", "Performance", "Strategy", "Impact",
@@ -253,7 +97,7 @@ function Hero() {
         <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" /> Rec · 00:00:24
       </div>
       <div className="pointer-events-none absolute top-[7vh] right-6 md:right-10 z-30 text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">
-        Reel 01 / 06 · 24fps · 2.39:1
+        Reel 01 / 09 · 24fps · 2.39:1
       </div>
 
       <div className="relative h-full max-w-[1400px] mx-auto px-6 md:px-10 flex flex-col justify-end pb-24 md:pb-32">
@@ -264,7 +108,7 @@ function Hero() {
           className="flex items-center gap-3 text-xs uppercase tracking-[0.28em] text-muted-foreground mb-8"
         >
           <span className="w-8 h-px bg-accent" />
-          Portfolio — Vol. 01 / 2026
+          Portfolio - Vol. 01 / 2026
         </motion.div>
 
         <h1 className="font-display text-balance text-[14vw] md:text-[8.5vw] leading-[0.95] tracking-tighter">
@@ -293,7 +137,7 @@ function Hero() {
           className="mt-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6"
         >
           <p className="max-w-md text-base md:text-lg text-muted-foreground leading-relaxed">
-            Maulana Arif Pratama — digital business leader, growth strategist
+            Maulana Arif Pratama - digital business leader, growth strategist
             and AI builder. Eight years turning ambition into measurable impact.
           </p>
           <div className="flex items-center gap-4">
@@ -390,14 +234,14 @@ function About() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 data-section-title className="font-display text-4xl md:text-6xl leading-tight tracking-tight text-balance">
-              I build the systems behind the growth — and the meaning behind the metrics.
+              I build the systems behind the growth - and the meaning behind the metrics.
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
             <div className="mt-10 grid sm:grid-cols-2 gap-8 text-muted-foreground leading-relaxed">
               <p>
                 For nearly a decade I've operated at the intersection of marketing,
-                technology and social impact — leading C-level roles across consumer
+                technology and social impact - leading C-level roles across consumer
                 brands, education, foundations and digital platforms.
               </p>
               <p>
@@ -408,17 +252,21 @@ function About() {
             </div>
           </Reveal>
           <Reveal delay={0.3}>
-            <div className="mt-14 grid grid-cols-3 gap-6 border-t border-border pt-10">
-              {[
-                { v: "8+", l: "Years operating" },
-                { v: "20B+", l: "IDR ad spend managed" },
-                { v: "10K", l: "USD Google Grant won" },
-              ].map((s) => (
-                <div key={s.l}>
-                  <div className="font-display text-4xl md:text-5xl text-accent">{s.v}</div>
+            <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 gap-6 border-t border-border pt-10">
+              {headlineStats.map((s) => (
+                <div key={s.l} title={s.note}>
+                  <div className="font-display text-3xl md:text-4xl text-accent leading-none">
+                    {s.v}
+                  </div>
                   <div className="mt-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">
                     {s.l}
                   </div>
+                  {s.evidence === "dashboard" && (
+                    <div className="mt-1.5 inline-flex items-center gap-1.5 text-[9px] uppercase tracking-[0.2em] text-accent/70 font-mono">
+                      <span className="w-1 h-1 rounded-full bg-accent/70" />
+                      Verified
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -445,7 +293,7 @@ function Expertise() {
           <Reveal delay={0.1}>
             <p className="text-muted-foreground max-w-sm">
               A multidisciplinary stack honed across NGOs, startups and consumer
-              brands — built to ship outcomes, not slides.
+              brands - built to ship outcomes, not slides.
             </p>
           </Reveal>
         </div>
@@ -491,7 +339,7 @@ function Industries() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="text-muted-foreground max-w-sm">
-              From supplements to study-abroad, daycare to humanitarian relief —
+              From supplements to study-abroad, daycare to humanitarian relief -
               brands I've directed, scaled or built from zero.
             </p>
           </Reveal>
@@ -573,7 +421,7 @@ function Work({ onOpen }: { onOpen: (p: CaseStudy) => void }) {
                           {p.tag}
                         </div>
                         <div className="absolute bottom-4 right-4 text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/70 bg-background/50 backdrop-blur px-3 py-1 rounded-full border border-border">
-                          {p.n} / 06
+                          {p.n} / {String(projects.length).padStart(2, "0")}
                         </div>
                         <div className="pointer-events-none absolute bottom-4 left-4 text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/0 group-hover:text-accent transition-colors duration-500 bg-background/0 group-hover:bg-background/60 backdrop-blur px-3 py-1 rounded-full border border-transparent group-hover:border-border">
                           View case →
@@ -660,6 +508,253 @@ function Moments() {
   );
 }
 
+function AdsPortfolio() {
+  return (
+    <section
+      id="ads"
+      data-section-reveal
+      className="relative py-32 md:py-48 border-t border-border bg-surface/20 overflow-hidden"
+    >
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-6">
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.28em] text-accent mb-4 font-mono">
+              ✦ Ads Portfolio
+            </p>
+            <h2
+              data-section-title
+              className="font-display text-4xl md:text-6xl leading-tight tracking-tight max-w-2xl"
+            >
+              The receipts, straight off the dashboards.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="text-muted-foreground max-w-sm">
+              Fourteen screenshots pulled from live ad accounts I ran end to end - account
+              setup, targeting, creative testing, budget scaling and reporting. Figures are
+              shown exactly as the platform reports them.
+            </p>
+          </Reveal>
+        </div>
+
+        <Reveal delay={0.15}>
+          <div className="border-t border-border pt-8 mb-20 md:mb-28 grid md:grid-cols-12 gap-8 items-end">
+            <div className="md:col-span-5">
+              <div className="font-display text-6xl md:text-7xl text-accent leading-[0.85] tracking-tight">
+                IDR 16.8B
+              </div>
+              <div className="mt-4 text-sm text-muted-foreground max-w-xs">
+                of ad spend, itemised line by line from the dashboards below.
+              </div>
+            </div>
+            <div className="md:col-span-7 md:pb-2 grid grid-cols-2 gap-8">
+              <div>
+                <div className="font-display text-3xl md:text-4xl leading-none">IDR 3.22B</div>
+                <div className="mt-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                  Marketplace revenue driven
+                </div>
+              </div>
+              <div>
+                <div className="font-display text-3xl md:text-4xl leading-none">11.4x</div>
+                <div className="mt-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                  Blended marketplace ROAS
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        {adsPortfolio.map((group) => (
+          <div key={group.section} className="mb-20 md:mb-32 last:mb-0">
+            <Reveal>
+              <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 border-t border-border pt-6 mb-10">
+                <h3 className="font-mono text-xs uppercase tracking-[0.28em] text-accent whitespace-nowrap">
+                  {group.section}
+                </h3>
+                <p className="text-sm text-muted-foreground">{group.blurb}</p>
+              </div>
+            </Reveal>
+
+            <div className="space-y-16 md:space-y-24">
+              {group.exhibits.map((ex, i) => (
+                <Reveal key={ex.id} delay={i * 0.04}>
+                  <figure className="grid md:grid-cols-12 gap-6 md:gap-10 items-start">
+                    <div className="md:col-span-7 lg:col-span-8">
+                      <Tilt max={3} className="relative overflow-hidden rounded-sm bg-white">
+                        <img
+                          src={ex.img}
+                          alt={`${ex.platform} dashboard - ${ex.client}`}
+                          loading="lazy"
+                          className="w-full h-auto"
+                        />
+                        <div className="absolute inset-0 ring-1 ring-inset ring-border pointer-events-none" />
+                      </Tilt>
+                    </div>
+
+                    <figcaption className="md:col-span-5 lg:col-span-4 md:pt-2">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent mb-3">
+                        {ex.platform}
+                        {ex.period ? ` · ${ex.period}` : ""}
+                      </p>
+                      <h4 className="font-display text-2xl md:text-3xl leading-tight tracking-tight">
+                        {ex.title}
+                      </h4>
+                      <p className="mt-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                        {ex.client}
+                      </p>
+
+                      {ex.headline && (
+                        <div className="mt-6 inline-flex items-baseline gap-3 border border-accent/40 rounded-full px-5 py-2">
+                          <span className="font-display text-2xl md:text-3xl text-accent leading-none">
+                            {ex.headline.v}
+                          </span>
+                          <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                            {ex.headline.l}
+                          </span>
+                        </div>
+                      )}
+
+                      <p className="mt-6 text-sm text-muted-foreground leading-relaxed">
+                        {ex.caption}
+                      </p>
+
+                      <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-border pt-5">
+                        {ex.figures.map((f) => (
+                          <div key={f.l}>
+                            <dt className="font-display text-xl text-foreground leading-none">
+                              {f.v}
+                            </dt>
+                            <dd className="mt-1.5 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                              {f.l}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        <SkuBoard />
+
+        <Reveal>
+          <p className="mt-16 text-xs text-muted-foreground/70 font-mono leading-relaxed max-w-3xl border-t border-border pt-6">
+            Every figure above is read directly off the screenshot beside it. Campaign-level
+            breakdowns and references are available on request.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/** Product creative next to the return it produced - the clearest single view
+ *  of what a performance marketer actually did. */
+function SkuBoard() {
+  return (
+    <div className="mt-24 md:mt-32 border-t border-border pt-10">
+      <Reveal>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-[0.28em] text-accent mb-3">
+              05 - Creative to revenue
+            </p>
+            <h3 className="font-display text-3xl md:text-4xl tracking-tight">
+              The {skuBoard.client} Pro line, SKU by SKU.
+            </h3>
+          </div>
+          <p className="text-sm text-muted-foreground max-w-sm">{skuBoard.note}</p>
+        </div>
+      </Reveal>
+
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        {skuBoard.skus.map((s, i) => (
+          <Reveal key={s.name} delay={i * 0.06}>
+            <figure className="group h-full border border-border rounded-sm overflow-hidden bg-surface/40 flex flex-col">
+              <div className="aspect-square overflow-hidden bg-white">
+                <img
+                  src={s.img}
+                  alt={`${skuBoard.client} ${s.name}`}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
+                />
+              </div>
+              <figcaption className="p-5 flex flex-col gap-4 flex-1">
+                <h4 className="font-display text-xl leading-none">{s.name}</h4>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <div className="font-display text-2xl text-accent leading-none">
+                      {s.shopeeRoas}
+                    </div>
+                    <div className="mt-1.5 text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+                      Shopee ROAS
+                    </div>
+                  </div>
+                  <div>
+                    <div className="font-display text-2xl text-foreground leading-none">
+                      {s.cpasRoas}
+                    </div>
+                    <div className="mt-1.5 text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+                      Meta CPAS
+                    </div>
+                  </div>
+                </div>
+                <dl className="mt-auto pt-3 border-t border-border text-[11px] text-muted-foreground space-y-1 font-mono">
+                  <div className="flex justify-between gap-2">
+                    <dt>Spend</dt>
+                    <dd className="text-foreground">{s.spend}</dd>
+                  </div>
+                  <div className="flex justify-between gap-2">
+                    <dt>Sales</dt>
+                    <dd className="text-foreground">{s.revenue}</dd>
+                  </div>
+                  <div className="flex justify-between gap-2">
+                    <dt>ACOS</dt>
+                    <dd className="text-foreground">{s.acos}</dd>
+                  </div>
+                </dl>
+              </figcaption>
+            </figure>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Stack() {
+  return (
+    <section data-section-reveal className="relative py-24 md:py-36 border-t border-border">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+        <Reveal>
+          <p className="text-xs uppercase tracking-[0.28em] text-accent mb-10 font-mono">
+            ✦ Stack
+          </p>
+        </Reveal>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
+          {stack.map((s, i) => (
+            <Reveal key={s.g} delay={i * 0.05}>
+              <div className="bg-background p-7 md:p-8 h-full">
+                <h3 className="font-display text-xl mb-5">{s.g}</h3>
+                <ul className="space-y-2">
+                  {s.items.map((it) => (
+                    <li key={it} className="text-sm text-muted-foreground leading-snug">
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Experience() {
   return (
     <section id="experience" data-section-reveal className="relative py-32 md:py-48 border-t border-border">
@@ -687,6 +782,19 @@ function Experience() {
                   <div className="md:col-span-9">
                     <h3 className="font-display text-2xl md:text-3xl">{e.r}</h3>
                     <p className="text-muted-foreground text-sm mt-1">{e.c}</p>
+                    {e.sub && (
+                      <p className="text-muted-foreground/70 text-xs mt-2 font-mono">{e.sub}</p>
+                    )}
+                    <ul className="mt-4 space-y-2 max-w-3xl">
+                      {e.bullets.map((b) => (
+                        <li
+                          key={b}
+                          className="relative pl-5 text-sm text-muted-foreground leading-relaxed before:absolute before:left-0 before:top-[0.65em] before:w-1.5 before:h-px before:bg-accent/60"
+                        >
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </li>
@@ -731,7 +839,7 @@ function Contact() {
           <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Magnetic strength={0.45}>
               <a
-                href="mailto:maulana.arif.pratama@gmail.com"
+                href={`mailto:${profile.email}`}
                 data-cursor="Email"
                 className="group inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-full text-sm font-medium hover:bg-accent transition-all duration-300 shadow-[0_0_60px_rgba(255,180,80,0.25)]"
               >
@@ -741,7 +849,7 @@ function Contact() {
             </Magnetic>
             <Magnetic strength={0.35}>
               <a
-                href="https://wa.me/6282112455705"
+                href={profile.whatsapp}
                 data-cursor="WA"
                 className="text-sm uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground transition-colors border border-border px-6 py-4 rounded-full"
               >
@@ -753,17 +861,17 @@ function Contact() {
 
         <Reveal delay={0.4}>
           <div className="mt-20 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs uppercase tracking-[0.2em] text-muted-foreground font-mono">
-            <a href="https://www.linkedin.com/in/maulana-arif-pratama" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>
+            <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>
             <span className="w-1 h-1 rounded-full bg-border" />
-            <a href="https://www.instagram.com/arifpratamadigital/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Instagram</a>
+            <a href={profile.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Instagram</a>
             <span className="w-1 h-1 rounded-full bg-border" />
-            <a href="https://github.com/maulanaarifpratama-dotcom" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">GitHub</a>
+            <a href={profile.github} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">GitHub</a>
             <span className="w-1 h-1 rounded-full bg-border" />
-            <a href="https://www.facebook.com/maulana.pratama/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Facebook</a>
+            <a href={profile.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Facebook</a>
             <span className="w-1 h-1 rounded-full bg-border" />
-            <a href="mailto:maulana.arif.pratama@gmail.com" className="hover:text-foreground transition-colors">Email</a>
+            <a href={`mailto:${profile.email}`} className="hover:text-foreground transition-colors">Email</a>
             <span className="w-1 h-1 rounded-full bg-border" />
-            <a href="https://wa.me/6282112455705" className="hover:text-foreground transition-colors">WhatsApp</a>
+            <a href={profile.whatsapp} className="hover:text-foreground transition-colors">WhatsApp</a>
           </div>
         </Reveal>
       </div>
@@ -775,7 +883,7 @@ function Footer() {
   return (
     <footer className="border-t border-border py-10 px-6 md:px-10">
       <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground font-mono uppercase tracking-[0.18em]">
-        <div>© 2026 Maulana Arif Pratama</div>
+        <div>© 2026 {profile.name}</div>
         <div>Crafted with intention · Depok / ID</div>
       </div>
     </footer>
@@ -802,12 +910,18 @@ function Home() {
         <Expertise />
         <Industries />
         <Work onOpen={setActive} />
+        <AdsPortfolio />
         <Moments />
+        <Stack />
         <Experience />
         <Contact />
       </main>
       <Footer />
-      <CaseStudyModal project={active} onClose={() => setActive(null)} />
+      <CaseStudyModal
+        project={active}
+        total={projects.length}
+        onClose={() => setActive(null)}
+      />
     </div>
   );
 }
