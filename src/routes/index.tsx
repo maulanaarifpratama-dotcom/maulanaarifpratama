@@ -66,7 +66,7 @@ function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
 
   return (
-    <section ref={ref} id="top" data-hero-section className="relative h-[100svh] w-full overflow-hidden grain">
+    <section ref={ref} id="top" data-hero-section className="relative h-[100svh] w-full overflow-hidden">
       <motion.div style={{ y, opacity }} className="absolute inset-0">
         <video
           data-hero-video
@@ -87,7 +87,7 @@ function Hero() {
         {/* Scanline overlay */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.06] mix-blend-overlay" style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent 0 2px, oklch(1 0 0) 2px 3px)" }} />
         {/* Light sweep */}
-        <div className="absolute -inset-x-20 top-1/3 h-40 opacity-30 blur-3xl animate-[sweep_9s_ease-in-out_infinite]" style={{ background: "linear-gradient(90deg, transparent, oklch(0.85 0.16 65 / 0.5), transparent)" }} />
+        <div className="absolute -inset-x-20 top-1/3 h-40 opacity-30 animate-[sweep_9s_ease-in-out_infinite] motion-reduce:animate-none" style={{ background: "linear-gradient(90deg, transparent, oklch(0.85 0.16 65 / 0.5), transparent)" }} />
       </motion.div>
 
       {/* Cinematic letterbox bars now provided globally by <FilmTreatment /> */}
@@ -417,13 +417,13 @@ function Work({ onOpen }: { onOpen: (p: CaseStudy) => void }) {
                         </div>
                         <div className="absolute inset-0 bg-gradient-to-tr from-background/60 via-transparent to-transparent pointer-events-none" />
                         <div className="absolute inset-0 ring-1 ring-inset ring-border pointer-events-none" />
-                        <div className="absolute top-4 left-4 text-xs font-mono text-foreground/80 bg-background/60 backdrop-blur px-3 py-1 rounded-full border border-border">
+                        <div className="absolute top-4 left-4 text-xs font-mono text-foreground/80 bg-background/85 px-3 py-1 rounded-full border border-border">
                           {p.tag}
                         </div>
-                        <div className="absolute bottom-4 right-4 text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/70 bg-background/50 backdrop-blur px-3 py-1 rounded-full border border-border">
+                        <div className="absolute bottom-4 right-4 text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/70 bg-background/50 px-3 py-1 rounded-full border border-border">
                           {p.n} / {String(projects.length).padStart(2, "0")}
                         </div>
-                        <div className="pointer-events-none absolute bottom-4 left-4 text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/0 group-hover:text-accent transition-colors duration-500 bg-background/0 group-hover:bg-background/60 backdrop-blur px-3 py-1 rounded-full border border-transparent group-hover:border-border">
+                        <div className="pointer-events-none absolute bottom-4 left-4 text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/0 group-hover:text-accent transition-colors duration-500 bg-background/0 group-hover:bg-background/85 px-3 py-1 rounded-full border border-transparent group-hover:border-border">
                           View case →
                         </div>
                       </button>
@@ -492,6 +492,7 @@ function Moments() {
                     src={im.src}
                     alt={im.c}
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
                   />
                 </div>
@@ -580,15 +581,18 @@ function AdsPortfolio() {
                 <Reveal key={ex.id} delay={i * 0.04}>
                   <figure className="grid md:grid-cols-12 gap-6 md:gap-10 items-start">
                     <div className="md:col-span-7 lg:col-span-8">
-                      <Tilt max={3} className="relative overflow-hidden rounded-sm bg-white">
+                      <div className="relative overflow-hidden rounded-sm bg-white">
                         <img
                           src={ex.img}
-                          alt={`${ex.platform} dashboard - ${ex.client}`}
+                          alt={`${ex.platform} dashboard, ${ex.client}`}
+                          width={ex.w}
+                          height={ex.h}
                           loading="lazy"
+                          decoding="async"
                           className="w-full h-auto"
                         />
                         <div className="absolute inset-0 ring-1 ring-inset ring-border pointer-events-none" />
-                      </Tilt>
+                      </div>
                     </div>
 
                     <figcaption className="md:col-span-5 lg:col-span-4 md:pt-2">
@@ -808,7 +812,7 @@ function Experience() {
 
 function Contact() {
   return (
-    <section id="contact" data-section-reveal className="relative py-32 md:py-48 border-t border-border overflow-hidden grain">
+    <section id="contact" data-section-reveal className="relative py-32 md:py-48 border-t border-border overflow-hidden">
       <div
         className="absolute inset-0 opacity-60"
         style={{

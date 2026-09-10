@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function CustomCursor() {
-  const [mounted, setMounted] = useState(false);
+  const [enabled, setEnabled] = useState(false);
   const [variant, setVariant] = useState<"default" | "hover" | "drag">("default");
   const [label, setLabel] = useState("");
   const x = useMotionValue(-100);
@@ -14,8 +14,11 @@ export function CustomCursor() {
   const visible = useRef(false);
 
   useEffect(() => {
-    setMounted(true);
-    if (window.matchMedia("(pointer: coarse)").matches) return;
+    // Fine pointers only. On touch this used to skip the listeners but still
+    // render a fixed mix-blend-difference layer, which costs compositing for a
+    // cursor that can never appear.
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    setEnabled(true);
 
     const move = (e: PointerEvent) => {
       x.set(e.clientX);
@@ -51,7 +54,7 @@ export function CustomCursor() {
     };
   }, [x, y]);
 
-  if (!mounted) return null;
+  if (!enabled) return null;
   const isHover = variant === "hover";
   const isDrag = variant === "drag";
 

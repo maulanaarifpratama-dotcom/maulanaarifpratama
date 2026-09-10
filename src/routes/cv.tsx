@@ -673,7 +673,13 @@ function CvPage() {
                           </div>
                         )}
                       </div>
-                      <img src={ex.img} alt={`${ex.platform}, ${ex.client}`} />
+                      <img
+                        src={ex.img}
+                        alt={`${ex.platform}, ${ex.client}`}
+                        width={ex.w}
+                        height={ex.h}
+                        decoding="async"
+                      />
                       <figcaption className="note">{ex.caption}</figcaption>
                       <div className="figs">
                         {ex.figures.map((f) => (

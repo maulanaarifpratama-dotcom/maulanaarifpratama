@@ -428,6 +428,10 @@ export type AdExhibit = {
   period?: string;
   caption: string;
   img: string;
+  /** Intrinsic pixel size, so the browser reserves space instead of relaying
+   *  out as each screenshot decodes. Keep in step with the file. */
+  w: number;
+  h: number;
   figures: { v: string; l: string }[];
   headline?: { v: string; l: string };
 };
@@ -447,6 +451,8 @@ export const adsPortfolio: { section: string; blurb: string; exhibits: AdExhibit
         caption:
           "Humanitarian appeal, Qurban, Zakat and Wakaf campaigns run side by side. Largest single account: Rp4.53B lifetime spend.",
         img: adMetaActBm,
+        w: 1788,
+        h: 930,
         figures: [
           { v: "7", l: "Ad accounts" },
           { v: "Rp4.53B", l: "Largest account" },
@@ -462,6 +468,8 @@ export const adsPortfolio: { section: string; blurb: string; exhibits: AdExhibit
         caption:
           "CSR- and grant-linked campaign portfolio: 3.67M impressions reaching 2.28M Accounts Centre accounts at 1.61 frequency. Best link-click cost Rp128.",
         img: adMetaPalestina,
+        w: 1648,
+        h: 486,
         figures: [
           { v: "3.67M", l: "Impressions" },
           { v: "2.28M", l: "Accounts reached" },
@@ -477,6 +485,8 @@ export const adsPortfolio: { section: string; blurb: string; exhibits: AdExhibit
         caption:
           "Catalog-synced dynamic product ads for the Pro Gainer line, tested across all three placements from a single product feed.",
         img: adMetaCpasVariants,
+        w: 1244,
+        h: 486,
         figures: [
           { v: "3", l: "Placements tested" },
           { v: "Catalog", l: "Dynamic product ads" },
@@ -490,6 +500,8 @@ export const adsPortfolio: { section: string; blurb: string; exhibits: AdExhibit
         caption:
           "Influencer and UGC creative formats attributed down to individual SKU return, so creative decisions were made on revenue rather than engagement.",
         img: adMetaUgc,
+        w: 1082,
+        h: 402,
         figures: [
           { v: "13.56x", l: "Pro Isolate" },
           { v: "11.37x", l: "Pro Whey" },
@@ -505,6 +517,8 @@ export const adsPortfolio: { section: string; blurb: string; exhibits: AdExhibit
         caption:
           "Lookalike traffic, lookalike purchase, business-pixel and broad sales campaigns running in parallel. Cheapest link click at Rp168 on the LAL traffic campaign.",
         img: adCpasShopee,
+        w: 1602,
+        h: 482,
         figures: [
           { v: "9", l: "Campaigns" },
           { v: "487K", l: "Impressions" },
@@ -520,6 +534,8 @@ export const adsPortfolio: { section: string; blurb: string; exhibits: AdExhibit
         caption:
           "A deliberately small test of institutional donor targeting: 24,263 impressions and 295 clicks on USD 94.62 - a 1.22% CTR against a B2B audience.",
         img: adLinkedin,
+        w: 994,
+        h: 534,
         figures: [
           { v: "1.22%", l: "CTR" },
           { v: "24,263", l: "Impressions" },
@@ -542,6 +558,8 @@ export const adsPortfolio: { section: string; blurb: string; exhibits: AdExhibit
         caption:
           "Four years of always-on humanitarian search and display. Top converting campaigns: SEM Global Qurban (206 conversions) and Gempa & Tsunami Palu (93,924 clicks).",
         img: adGoogleAct,
+        w: 1574,
+        h: 774,
         figures: [
           { v: "284M", l: "Impressions" },
           { v: "3.02M", l: "Clicks" },
@@ -557,6 +575,8 @@ export const adsPortfolio: { section: string; blurb: string; exhibits: AdExhibit
         period: "Q4 2023 - Q4 2025",
         caption: "31.5K clicks from 2.94M impressions at an average CPC of Rp2,840.",
         img: adGoogleWellspaces,
+        w: 1598,
+        h: 584,
         figures: [
           { v: "31.5K", l: "Clicks" },
           { v: "2.94M", l: "Impressions" },
@@ -572,6 +592,8 @@ export const adsPortfolio: { section: string; blurb: string; exhibits: AdExhibit
         caption:
           "Brand / Core / Broad / Competitor split into separate campaigns so intent tiers could be budgeted and read independently - 6,561 clicks total, with Core converting at a 2.91% interaction rate.",
         img: adWellspacesKw,
+        w: 1474,
+        h: 468,
         figures: [
           { v: "6,561", l: "Clicks across 4 tiers" },
           { v: "2.91%", l: "Best interaction rate" },
@@ -586,6 +608,8 @@ export const adsPortfolio: { section: string; blurb: string; exhibits: AdExhibit
         caption:
           "29.9K clicks from 538K impressions at an average CPC of Rp620 - a high-intent, tightly geo-fenced local search build.",
         img: adGoogleLittlechamp,
+        w: 1524,
+        h: 498,
         figures: [
           { v: "29.9K", l: "Clicks" },
           { v: "538K", l: "Impressions" },
@@ -608,6 +632,8 @@ export const adsPortfolio: { section: string; blurb: string; exhibits: AdExhibit
         caption:
           "The humanitarian e-commerce storefront. Rp25.3M of TopAds spend generated 1.28M product views and Rp562.7M in revenue.",
         img: adTokopediaAct,
+        w: 2038,
+        h: 616,
         figures: [
           { v: "Rp562.7M", l: "Revenue" },
           { v: "Rp25.3M", l: "Spend" },
@@ -623,6 +649,8 @@ export const adsPortfolio: { section: string; blurb: string; exhibits: AdExhibit
         caption:
           "Pro Whey 11.07x, Pro Creatine 11.96x, Pro Isolate 10.07x and two Pro Gainer SKUs at 10.26x and 8.41x - Rp257M of spend returning Rp2.66B in ad-attributed sales at a 9-12% ACOS.",
         img: adShopeeMf,
+        w: 1930,
+        h: 872,
         figures: [
           { v: "Rp2.66B", l: "Ad-attributed sales" },
           { v: "Rp257M", l: "Spend" },
@@ -645,6 +673,8 @@ export const adsPortfolio: { section: string; blurb: string; exhibits: AdExhibit
         caption:
           "Blended CPC of Rp484 and CPM of Rp7,913 held across the full flight. Largest single campaign: Video Conversion Daily at Rp343.4M.",
         img: adTiktok76,
+        w: 1930,
+        h: 886,
         figures: [
           { v: "76", l: "Campaigns" },
           { v: "Rp484", l: "Blended CPC" },
@@ -661,6 +691,8 @@ export const adsPortfolio: { section: string; blurb: string; exhibits: AdExhibit
         caption:
           "246.8M impressions and 2.78M destination clicks producing 85,780 conversions on Rp2.20B of spend within this window.",
         img: adTiktokTrends,
+        w: 1528,
+        h: 722,
         figures: [
           { v: "246.8M", l: "Impressions" },
           { v: "2.78M", l: "Clicks" },

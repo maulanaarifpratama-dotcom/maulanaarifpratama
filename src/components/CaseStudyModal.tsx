@@ -79,7 +79,7 @@ export function CaseStudyModal({
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: 40, opacity: 0, scale: 0.985 }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="relative mx-auto my-6 md:my-10 max-w-[1200px] w-[calc(100%-1.5rem)] bg-surface border border-border rounded-sm overflow-hidden grain"
+            className="relative mx-auto my-6 md:my-10 max-w-[1200px] w-[calc(100%-1.5rem)] bg-surface border border-border rounded-sm overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <MouseLight />

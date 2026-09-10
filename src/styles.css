@@ -77,12 +77,14 @@
   .font-mono { font-family: var(--font-mono); }
   .text-balance { text-wrap: balance; }
 
-  .grain::after {
-    content: "";
-    position: absolute; inset: 0;
+  /* Grain is applied ONCE, by <FilmTreatment/>, on a fixed pointer-events-none
+     layer. It used to sit on scrolling sections as a blended pseudo-element,
+     which forces the compositor to re-blend that whole region every frame the
+     section moved. */
+  .grain-layer {
     background-image: var(--grain);
-    opacity: var(--grain-intensity, 0.06); pointer-events: none; mix-blend-mode: overlay;
-    transition: opacity 200ms linear;
+    opacity: var(--grain-intensity, 0.07);
+    mix-blend-mode: overlay;
   }
 
   .kenburns { animation: kenburns 24s ease-in-out infinite alternate; }
@@ -124,7 +126,8 @@
     opacity: var(--grain-intensity-noise, 0.08);
     pointer-events: none;
     mix-blend-mode: overlay;
-    animation: noise 1.2s steps(6) infinite;
+    /* The 1.2s infinite step animation repainted a blended layer forever, on a
+       band most visitors scroll straight past. Static grain reads the same. */
     transition: opacity 200ms linear;
   }
   @keyframes noise {
@@ -152,9 +155,12 @@
   .float-blob {
     animation: floatBlob 14s ease-in-out infinite alternate;
   }
+  /* Translate only. Scaling a 64px-blurred 40rem circle makes the compositor
+     re-rasterise the blur at every step; translating just moves the cached
+     layer, and the drift looks the same. */
   @keyframes floatBlob {
-    0%   { transform: translate(0,0) scale(1); }
-    100% { transform: translate(4%, -3%) scale(1.08); }
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(4%, -3%); }
   }
 
   @keyframes vignettePulse {
