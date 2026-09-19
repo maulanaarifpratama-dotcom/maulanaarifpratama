@@ -1,27 +1,23 @@
 /**
- * Fixed cinematic overlay: letterbox bars and a vignette.
+ * Fixed cinematic overlay: grain and a vignette.
  *
- * WHAT THIS USED TO DO, AND WHY IT NO LONGER DOES
+ * THE LETTERBOX BARS ARE GONE, DELIBERATELY
  *
- * The previous version cost more than the rest of the page combined:
+ * They were `fixed`, `6vh` tall, at `z-[75]`. The navigation bar is `fixed`,
+ * 64px tall, at `z-50`. On any viewport shorter than about 1070px the top bar
+ * therefore covered the nav outright, and on taller ones it sliced off its upper
+ * half; once the nav gained a background on scroll you could see the two
+ * stacked. That was the reported collision, and no z-index change fixes it,
+ * because two opaque fixed bars were competing for the same 64px of screen.
  *
- *  - A full-viewport `backdrop-filter: saturate() contrast()` at z-70. A
- *    backdrop-filter spanning the whole viewport forces the compositor to
- *    re-filter every pixel behind it on every frame, for the life of the page.
- *    The grade it produced was a few percent of saturation; it is now baked into
- *    the palette instead, for free.
- *  - Two more full-viewport layers with `mix-blend-screen` for a chromatic
- *    aberration tied to scroll velocity.
- *  - A `requestAnimationFrame` loop that ran forever and called `setState` on
- *    every frame while scrolling, re-rendering this component at 60fps.
- *  - Letterbox bars animating `height`, which is a layout property, so every
- *    scroll frame triggered layout on the whole document.
- *  - A vignette animating `box-shadow` with a 320px blur radius, plus an
- *    infinite CSS pulse, so it rasterised continuously.
+ * Removing them rather than reordering them is the right call twice over: the
+ * pair also ate 12vh of every viewport for the whole length of the page, which
+ * on a laptop is roughly 100px of permanently black screen on a document people
+ * are meant to read. The vignette and grain below carry the cinematic treatment
+ * on their own, and the hero still has its colour grade, scanlines and sweep.
  *
- * What survives is the part you actually see: the bars and the vignette. Both
- * are static, composited once, and cost nothing per frame. The bars keep their
- * exact resting size, so the framing is unchanged.
+ * What is left composites once and costs nothing per frame. See the git history
+ * of this file for the four per-frame effects removed on 2026-09-10.
  */
 export function FilmTreatment() {
   return (
@@ -38,23 +34,9 @@ export function FilmTreatment() {
         className="pointer-events-none fixed inset-0 z-[72]"
         style={{
           background:
-            "radial-gradient(ellipse 90% 75% at 50% 50%, transparent 45%, oklch(0 0 0 / 0.55) 100%)",
+            "radial-gradient(ellipse 92% 78% at 50% 50%, transparent 48%, oklch(0 0 0 / 0.5) 100%)",
         }}
       />
-
-      {/* Letterbox bars, fixed at their resting height. */}
-      <div
-        aria-hidden
-        className="pointer-events-none fixed top-0 inset-x-0 z-[75] h-[6vh] bg-background"
-      >
-        <div className="absolute bottom-0 inset-x-0 h-px bg-foreground/10" />
-      </div>
-      <div
-        aria-hidden
-        className="pointer-events-none fixed bottom-0 inset-x-0 z-[75] h-[6vh] bg-background"
-      >
-        <div className="absolute top-0 inset-x-0 h-px bg-foreground/10" />
-      </div>
     </>
   );
 }

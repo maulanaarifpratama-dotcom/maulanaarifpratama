@@ -90,15 +90,10 @@ function Hero() {
         <div className="absolute -inset-x-20 top-1/3 h-40 opacity-30 animate-[sweep_9s_ease-in-out_infinite] motion-reduce:animate-none" style={{ background: "linear-gradient(90deg, transparent, oklch(0.85 0.16 65 / 0.5), transparent)" }} />
       </motion.div>
 
-      {/* Cinematic letterbox bars now provided globally by <FilmTreatment /> */}
-
-      {/* Corner TVC marks */}
-      <div className="pointer-events-none absolute top-[7vh] left-6 md:left-10 z-30 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] text-accent/80">
-        <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" /> Rec · 00:00:24
-      </div>
-      <div className="pointer-events-none absolute top-[7vh] right-6 md:right-10 z-30 text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">
-        Reel 01 / 09 · 24fps · 2.39:1
-      </div>
+      {/* The "Rec 00:00:24" and "Reel 01/09 - 24fps - 2.39:1" marks used to sit
+          here. They described a letterbox format the page no longer has, and a
+          fake timecode was never telling the reader anything. Removing them also
+          frees the top of the hero for the nav, which is what they crowded. */}
 
       <div className="relative h-full max-w-[1400px] mx-auto px-6 md:px-10 flex flex-col justify-end pb-24 md:pb-32">
         <motion.div
@@ -147,7 +142,7 @@ function Hero() {
                 data-cursor="View"
                 className="group inline-flex items-center gap-3 bg-foreground text-background px-6 py-3 rounded-full text-sm font-medium hover:bg-accent transition-all duration-300"
               >
-                <ScrambleText text="View selected work" duration={900} />
+                View selected work
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
             </Magnetic>
@@ -165,15 +160,6 @@ function Hero() {
         </motion.div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 1 }}
-        className="absolute bottom-6 right-6 md:right-10 text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-mono rotate-180"
-        style={{ writingMode: "vertical-rl" }}
-      >
-        Scroll to explore
-      </motion.div>
     </section>
   );
 }
@@ -406,14 +392,34 @@ function Work({ onOpen }: { onOpen: (p: CaseStudy) => void }) {
                         aria-label={`Open case study: ${p.title}`}
                         className="block w-full text-left"
                       >
-                        <div className="aspect-[4/3] overflow-hidden">
-                          <img
-                            src={p.img}
-                            alt={p.title}
-                            loading="lazy"
-                            data-parallax-bg="-12"
-                            className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-110"
-                          />
+                        <div className="aspect-[16/10] overflow-hidden">
+                          {p.img ? (
+                            <img
+                              src={p.img}
+                              alt={p.title}
+                              loading="lazy"
+                              decoding="async"
+                              className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-110"
+                            />
+                          ) : (
+                            /* No genuine asset exists for this engagement, so it
+                               gets a typographic panel rather than stock. */
+                            <div className="w-full h-full bg-surface flex flex-col justify-end p-8 md:p-10">
+                              <div className="font-display text-5xl md:text-6xl leading-[0.95] tracking-tight text-foreground/90">
+                                {p.title}
+                              </div>
+                              <div className="mt-4 flex flex-wrap gap-2">
+                                {p.meta.slice(0, 3).map((m) => (
+                                  <span
+                                    key={m}
+                                    className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground border border-border rounded-full px-3 py-1"
+                                  >
+                                    {m}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                         </div>
                         <div className="absolute inset-0 bg-gradient-to-tr from-background/60 via-transparent to-transparent pointer-events-none" />
                         <div className="absolute inset-0 ring-1 ring-inset ring-border pointer-events-none" />

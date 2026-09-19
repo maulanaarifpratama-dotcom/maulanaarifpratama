@@ -378,7 +378,7 @@ function Bar({ compact }: { compact: boolean }) {
         <a href="/cv" className={compact ? "" : "on"}>
           Full portfolio
         </a>
-        <a href="/cv?compact" className={compact ? "on" : ""}>
+        <a href="/cv?compact=true" className={compact ? "on" : ""}>
           Short CV
         </a>
       </span>

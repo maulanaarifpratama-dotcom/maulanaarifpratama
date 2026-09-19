@@ -18,7 +18,8 @@ export type CaseStudy = {
   tag: string;
   title: string;
   desc: string;
-  img: string;
+  /** Omitted when no genuine asset exists. Never fill this with stock. */
+  img?: string;
   meta: string[];
   role?: string;
   year?: string;
@@ -137,17 +138,21 @@ export function CaseStudyModal({
               transition={{ delay: 0.1, duration: 1.1, ease: EASE }}
               className="px-5 md:px-12"
             >
-              <Tilt max={4} className="relative overflow-hidden rounded-sm">
-                <div className="aspect-[16/9] overflow-hidden">
-                  <img
-                    src={project.img}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-tr from-background/60 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute inset-0 ring-1 ring-inset ring-border pointer-events-none" />
-              </Tilt>
+              {project.img && (
+                <Tilt max={4} className="relative overflow-hidden rounded-sm">
+                  <div className="aspect-[16/9] overflow-hidden">
+                    <img
+                      src={project.img}
+                      alt={project.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-background/60 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 ring-1 ring-inset ring-border pointer-events-none" />
+                </Tilt>
+              )}
             </motion.div>
 
             {/* Results */}

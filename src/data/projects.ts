@@ -9,12 +9,13 @@
 
 import type { CaseStudy } from "@/components/CaseStudyModal";
 
-import projImpactory from "@/assets/project-impactory.jpg";
-import projBisabaik from "@/assets/project-bisabaik.jpg";
-import projPasarbaik from "@/assets/project-pasarbaik.jpg";
-import projHalalpro from "@/assets/project-halalpro.jpg";
-import projLittlechamp from "@/assets/project-littlechamp.jpg";
-import projResinid from "@/assets/project-resinid.jpg";
+// Live captures of the real products, taken 2026-09-19, plus the real Halal Pro
+// pack shot composited onto a card canvas. These replace six AI-generated stock
+// images that were previously standing in for this work.
+import siteImpactory from "@/assets/sites/site-impactory.jpg";
+import siteBisabaik from "@/assets/sites/site-bisabaik.jpg";
+import sitePasarbaik from "@/assets/sites/site-pasarbaik.jpg";
+import siteHalalpro from "@/assets/sites/site-halalpro.jpg";
 
 import adMetaActBm from "@/assets/ads/meta-act-business-manager.jpg";
 import adGoogleAct from "@/assets/ads/google-ads-act-sem-youtube-gdn.jpg";
@@ -34,7 +35,6 @@ import skuIsolate from "@/assets/brands/musclefirst-pro-isolate.jpg";
 import skuWhey from "@/assets/brands/musclefirst-pro-whey.jpg";
 import skuCreatine from "@/assets/brands/musclefirst-pro-creatine.jpg";
 import skuGainer from "@/assets/brands/musclefirst-pro-gainer.jpg";
-import halalproCreaspark from "@/assets/brands/halalpro-creaspark.webp";
 
 export const projects: CaseStudy[] = [
   {
@@ -86,28 +86,28 @@ export const projects: CaseStudy[] = [
     tag: "AI · SaaS",
     title: "Impactory.id",
     desc: "A production AI SaaS platform for NGOs and CSR teams - grant pipeline, AI grant writer, donor CRM and LFA/logframe builder, on an end-to-end RAG stack.",
-    img: projImpactory,
+    img: siteImpactory,
     meta: ["Azure OpenAI", "Supabase", "RAG + pgvector", "Prompt Governance"],
     role: "Founder · Product & AI",
     year: "2024 - Now",
     story: [
       "NGOs and foundations lose weeks every quarter chasing grants, formatting proposals and stitching reports. Impactory collapses that loop with agentic workflows built around how the impact sector actually works.",
       "The platform runs an end-to-end RAG pipeline - Supabase Edge Functions, Azure OpenAI and pgvector - over donor databases, regulatory documents and historical proposals. A prompt governance layer keeps outputs auditable and aligned to each organisation's voice.",
-      "It was built with a structured multi-agent engineering workflow so production code could ship safely without a large team behind it. Twelve-plus modules are live; the MVP placed in the top ~100 of more than 1,500 hackathon entrants, and the ecosystem has since been accepted into a top-tier accelerator cohort and shortlisted for an international social-impact fund.",
+      "It was built with a structured multi-agent engineering workflow so production code could ship safely without a large team behind it. Twelve-plus modules are live; the MVP placed 101st of more than 1,500 entrants at the Google Cloud Gen AI Academy APAC Hackathon, and the ecosystem has since been accepted into an accelerator cohort and shortlisted for an international social-impact fund.",
     ],
     results: [
       { v: "12+", l: "Live modules shipped", evidence: "stated" },
-      { v: "Top ~100", l: "of 1,500+ hackathon entrants", evidence: "stated" },
+      { v: "Top 101", l: "of 1,500+, Google Cloud Gen AI APAC", evidence: "stated" },
       { v: "0 → 1", l: "RAG pipeline in production", evidence: "stated" },
     ],
-    gallery: [projImpactory, projBisabaik],
+    gallery: [siteImpactory, siteBisabaik],
   },
   {
     n: "04",
     tag: "Health · Supplements",
     title: "Halal Pro Supplement",
     desc: "Multi-brand C-level mandate on a premium halal sports nutrition line - brand, performance funnels and the marketplace engine behind a 3x revenue climb.",
-    img: projHalalpro,
+    img: siteHalalpro,
     meta: ["Brand", "Meta CPAS", "TikTok Shop", "Marketplace"],
     role: "Director, Partnership & Marketing",
     year: "2024 - Now",
@@ -120,14 +120,14 @@ export const projects: CaseStudy[] = [
       { v: "3x", l: "Monthly revenue (4B → 12B)", evidence: "stated" },
       { v: "9 mo", l: "To new institutional investment", evidence: "stated" },
     ],
-    gallery: [projHalalpro, halalproCreaspark, adCpasShopee],
+    gallery: [siteHalalpro, adCpasShopee],
   },
   {
     n: "05",
     tag: "Childcare · Education",
     title: "LittleChamp Daycare",
     desc: "Growth mandate end to end: positioning, parent-acquisition search, a 24/7 AI enrolment concierge, and a Growth Intelligence System tying ad spend to centre occupancy.",
-    img: projLittlechamp,
+    img: adGoogleLittlechamp,
     meta: ["Google Ads", "AI Concierge", "Growth Intelligence", "Lead Gen"],
     role: "Growth & Marketing Lead",
     year: "2024 - Now",
@@ -141,7 +141,7 @@ export const projects: CaseStudy[] = [
       { v: "Rp620", l: "Average CPC", evidence: "dashboard" },
       { v: "24/7", l: "AI enrolment concierge", evidence: "stated" },
     ],
-    gallery: [projLittlechamp, adGoogleLittlechamp],
+    gallery: [adGoogleLittlechamp],
   },
   {
     n: "06",
@@ -169,7 +169,7 @@ export const projects: CaseStudy[] = [
     tag: "Crowdfunding · Impact",
     title: "BisaBaik.or.id",
     desc: "An end-to-end donation platform with campaign pages, payment gateway integration and an SEO foundation engineered for trust.",
-    img: projBisabaik,
+    img: siteBisabaik,
     meta: ["Platform", "Payments", "SEO"],
     role: "Founder · Platform Lead",
     year: "2024 - Now",
@@ -183,14 +183,13 @@ export const projects: CaseStudy[] = [
       { v: "Rp128", l: "Best cost per link click", evidence: "dashboard" },
       { v: "2.28M", l: "Accounts reached", evidence: "dashboard" },
     ],
-    gallery: [projBisabaik, adMetaPalestina],
+    gallery: [siteBisabaik, adMetaPalestina],
   },
   {
     n: "08",
     tag: "Home Decor · Lifestyle",
     title: "ResinID Home Decor",
     desc: "The digital sales engine for a designer resin home-decor brand - visual identity, e-commerce stack and creator-led performance media.",
-    img: projResinid,
     meta: ["E-commerce", "Creator Ads", "Brand"],
     role: "Growth Partner",
     year: "2023",
@@ -202,14 +201,14 @@ export const projects: CaseStudy[] = [
       { v: "0 → 1", l: "E-commerce stack", evidence: "stated" },
       { v: "Creator-led", l: "Performance media model", evidence: "stated" },
     ],
-    gallery: [projResinid, projHalalpro],
+    gallery: [],
   },
   {
     n: "09",
     tag: "Marketplace · Commerce",
     title: "PasarBaik.com",
     desc: "An aggregator connecting impact-driven products, communities and ethical commerce into one storefront.",
-    img: projPasarbaik,
+    img: sitePasarbaik,
     meta: ["Aggregator", "Commerce", "Brand"],
     role: "Founder · Concept & Build",
     year: "2025",
@@ -221,6 +220,6 @@ export const projects: CaseStudy[] = [
       { v: "1", l: "Unified storefront", evidence: "stated" },
       { v: "B2C + B2B", l: "Channels", evidence: "stated" },
     ],
-    gallery: [projPasarbaik, projBisabaik, projImpactory],
+    gallery: [sitePasarbaik, siteBisabaik, siteImpactory],
   },
 ];
