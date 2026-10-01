@@ -140,7 +140,7 @@ function Hero() {
               <a
                 href="#work"
                 data-cursor="View"
-                className="group inline-flex items-center gap-3 bg-foreground text-background px-6 py-3 rounded-full text-sm font-medium hover:bg-accent transition-all duration-300"
+                className="group inline-flex items-center gap-3 bg-foreground text-background px-6 py-3 rounded-full text-sm font-medium hover:bg-accent transition-[background-color,transform] duration-200 ease-out active:scale-[0.97]"
               >
                 View selected work
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -150,7 +150,7 @@ function Hero() {
               <a
                 href="#contact"
                 data-cursor="Talk"
-                className="text-sm uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground transition-colors"
+                className="inline-flex items-center h-11 px-1 text-sm uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
                 Contact
               </a>
@@ -202,7 +202,7 @@ function About() {
             <img
               src={portrait}
               alt="Maulana Arif Pratama"
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-[filter] duration-500 ease-out"
               loading="lazy"
             />
             <div className="absolute inset-0 ring-1 ring-inset ring-border" />
@@ -288,7 +288,7 @@ function Expertise() {
           {expertise.map((e, i) => (
             <Reveal key={e.k} delay={i * 0.05}>
               <div className="group relative p-8 md:p-10 border-b border-r border-border h-full overflow-hidden hover:bg-surface transition-colors duration-500">
-                <div className="absolute top-0 left-0 h-px w-0 bg-accent group-hover:w-full transition-all duration-700" />
+                <div className="absolute top-0 left-0 h-px w-0 bg-accent group-hover:w-full transition-[width] duration-500 ease-out" />
                 <div className="flex items-start justify-between mb-12">
                   <span className="font-mono text-xs text-muted-foreground">{e.k}</span>
                   <span className="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -345,11 +345,11 @@ function Industries() {
                   <p className="col-span-12 md:col-span-5 text-sm text-muted-foreground md:text-right">
                     {it.b}
                   </p>
-                  <span className="hidden md:block col-span-1 text-right text-accent opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+                  <span className="hidden md:block col-span-1 text-right text-accent opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity,transform] duration-300 ease-out">
                     ↗
                   </span>
                 </div>
-                <span className="absolute left-0 bottom-0 h-px w-0 bg-accent group-hover:w-full transition-all duration-700" />
+                <span className="absolute left-0 bottom-0 h-px w-0 bg-accent group-hover:w-full transition-[width] duration-500 ease-out" />
               </li>
             </Reveal>
           ))}
@@ -458,7 +458,7 @@ function Work({ onOpen }: { onOpen: (p: CaseStudy) => void }) {
                         type="button"
                         onClick={() => onOpen(p)}
                         data-cursor="Open"
-                        className="inline-flex items-center gap-2 text-sm border-b border-accent pb-1 hover:text-accent transition-colors"
+                        className="inline-flex items-center gap-2 h-11 text-sm border-b border-accent hover:text-accent transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                       >
                         Read the story <span>→</span>
                       </button>
@@ -499,7 +499,7 @@ function Moments() {
                     alt={im.c}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-[filter,transform] duration-500 ease-out scale-105 group-hover:scale-100"
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
@@ -851,7 +851,7 @@ function Contact() {
               <a
                 href={`mailto:${profile.email}`}
                 data-cursor="Email"
-                className="group inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-full text-sm font-medium hover:bg-accent transition-all duration-300 shadow-[0_0_60px_rgba(255,180,80,0.25)]"
+                className="group inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-full text-sm font-medium hover:bg-accent transition-[background-color,transform] duration-200 ease-out active:scale-[0.97] shadow-[0_0_60px_rgba(255,180,80,0.25)]"
               >
                 maulana.arif.pratama@gmail.com
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -871,17 +871,17 @@ function Contact() {
 
         <Reveal delay={0.4}>
           <div className="mt-20 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs uppercase tracking-[0.2em] text-muted-foreground font-mono">
-            <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>
+            <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center h-11 px-1 hover:text-foreground transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">LinkedIn</a>
             <span className="w-1 h-1 rounded-full bg-border" />
-            <a href={profile.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Instagram</a>
+            <a href={profile.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center h-11 px-1 hover:text-foreground transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">Instagram</a>
             <span className="w-1 h-1 rounded-full bg-border" />
-            <a href={profile.github} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">GitHub</a>
+            <a href={profile.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center h-11 px-1 hover:text-foreground transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">GitHub</a>
             <span className="w-1 h-1 rounded-full bg-border" />
-            <a href={profile.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Facebook</a>
+            <a href={profile.facebook} target="_blank" rel="noopener noreferrer" className="inline-flex items-center h-11 px-1 hover:text-foreground transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">Facebook</a>
             <span className="w-1 h-1 rounded-full bg-border" />
-            <a href={`mailto:${profile.email}`} className="hover:text-foreground transition-colors">Email</a>
+            <a href={`mailto:${profile.email}`} className="inline-flex items-center h-11 px-1 hover:text-foreground transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">Email</a>
             <span className="w-1 h-1 rounded-full bg-border" />
-            <a href={profile.whatsapp} className="hover:text-foreground transition-colors">WhatsApp</a>
+            <a href={profile.whatsapp} className="inline-flex items-center h-11 px-1 hover:text-foreground transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">WhatsApp</a>
           </div>
         </Reveal>
       </div>

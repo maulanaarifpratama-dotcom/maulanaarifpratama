@@ -272,7 +272,7 @@ export function CaseStudyModal({
                     <a
                       href="mailto:maulana.arif.pratama@gmail.com"
                       data-cursor="Email"
-                      className="group inline-flex items-center gap-3 bg-foreground text-background px-6 py-3 rounded-full text-sm font-medium hover:bg-accent transition-all duration-300"
+                      className="group inline-flex items-center gap-3 bg-foreground text-background px-6 py-3 rounded-full text-sm font-medium hover:bg-accent transition-[background-color,transform] duration-200 ease-out active:scale-[0.97]"
                     >
                       Start a conversation
                       <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

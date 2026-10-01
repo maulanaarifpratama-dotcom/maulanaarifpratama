@@ -16,6 +16,9 @@ export function MouseLight({ className = "" }: { className?: string }) {
     const el = ref.current?.parentElement;
     if (!el) return;
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    // A gradient tracking the pointer is movement; reduced-motion opts out and
+    // the section keeps its static lighting.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let raf = 0;
     let nx = 0;

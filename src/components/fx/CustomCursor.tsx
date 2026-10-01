@@ -18,6 +18,9 @@ export function CustomCursor() {
     // render a fixed mix-blend-difference layer, which costs compositing for a
     // cursor that can never appear.
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    // The trailing ring is spring lag chasing the real cursor; under
+    // reduced-motion the native cursor is left alone.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     setEnabled(true);
 
     const move = (e: PointerEvent) => {

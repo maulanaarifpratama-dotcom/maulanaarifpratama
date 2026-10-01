@@ -18,6 +18,11 @@ gsap.registerPlugin(ScrollTrigger);
  */
 export function CinematicScroll() {
   useEffect(() => {
+    // Parallax drift and scrubbed scale are the textbook triggers for motion
+    // sickness. Under reduced-motion nothing is built, so every section simply
+    // renders in its final, readable state.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const ctx = gsap.context(() => {
       const hasMM = typeof ScrollTrigger.matchMedia === "function";
 

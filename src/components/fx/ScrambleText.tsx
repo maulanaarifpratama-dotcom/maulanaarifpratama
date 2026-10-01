@@ -18,6 +18,12 @@ export function ScrambleText({
   const raf = useRef<number>(0);
 
   const run = () => {
+    // Scrambling replaces readable text with noise. Under reduced-motion the
+    // word simply appears.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDisplay(text);
+      return;
+    }
     cancelAnimationFrame(raf.current);
     const start = performance.now();
     const tick = (now: number) => {

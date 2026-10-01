@@ -7,6 +7,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function SmoothScroll() {
   useEffect(() => {
+    // Interpolated scrolling is the single most motion-sickness-prone effect on
+    // this page, because it applies to every scroll the visitor makes rather
+    // than to one element. Under reduced-motion we never construct Lenis at all
+    // and leave the browser's own scrolling alone; ScrollTrigger keeps working
+    // off native scroll events.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     // Organic, cinematic easing. Damping ~1.2.
     const lenis = new Lenis({
       duration: 1.35,

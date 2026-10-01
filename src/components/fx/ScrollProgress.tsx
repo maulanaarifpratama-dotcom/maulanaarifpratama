@@ -1,8 +1,12 @@
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 
 export function ScrollProgress() {
   const { scrollYProgress } = useScroll();
-  const x = useSpring(scrollYProgress, { stiffness: 120, damping: 25, mass: 0.4 });
+  const reduce = useReducedMotion();
+  // The bar reports position, so it stays. The spring is decorative lag, so it
+  // goes: under reduced-motion the bar tracks scroll exactly.
+  const smooth = useSpring(scrollYProgress, { stiffness: 120, damping: 25, mass: 0.4 });
+  const x = reduce ? scrollYProgress : smooth;
   return (
     <motion.div
       aria-hidden
