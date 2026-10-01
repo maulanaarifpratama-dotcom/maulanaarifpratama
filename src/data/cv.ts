@@ -222,7 +222,6 @@ export const experience: Role[] = [
     bullets: [
       "Lead partnership, branding and performance marketing strategy across four portfolio brands - consumer health, impact consulting, foundation/CSR and early-childhood education.",
       "Manage and optimise acquisition across Meta Ads, Google Ads, TikTok Ads/Shop/GMV Max, Shopee Ads, SEO and social commerce funnels - supporting growth from startup phase through market penetration.",
-      "Scaled Halal Pro Supplement's monthly revenue from IDR 4B to IDR 12B, helping attract new institutional investment within 9 months.",
       "Own the LittleChamp Daycare growth mandate end to end: positioning, parent-acquisition funnels, an AI enrolment concierge answering parent enquiries around the clock, and a Growth Intelligence System that unifies ad spend, lead source, tour attendance and centre occupancy into one cockpit.",
     ],
   },
@@ -258,6 +257,7 @@ export const experience: Role[] = [
     bullets: [
       "Led e-branding and marketing strategy across owned and paid media; created 5 top-performing products on TikTok Shop that earned an invitation to TikTok Summit Indonesia 2023.",
       "Owned brand and paid media through the growth run that contributed to the founder's Forbes Asia 30 Under 30 recognition.",
+      "Scaled monthly revenue 3x, from IDR 4B to IDR 12B, helping attract new institutional investment within 9 months.",
       "Ran IDR 2.59B of TikTok Ads across 76 campaigns at a blended CPC of Rp484 and CPM of Rp7,913 (2022-2024).",
       "Drove IDR 2.66B in Shopee ad-attributed sales from IDR 257M of spend across the Pro Whey, Creatine, Isolate and Gainer SKUs - a 10.4x blended return, with individual SKUs between 8.4x and 12.0x.",
       "Managed PR, live streaming, affiliate programmes and marketplace ads (Tokopedia, Shopee, Meta CPAS).",
@@ -324,7 +324,7 @@ export const achievements = [
   "IDR 20B+ in digital ad spend managed across Meta, Google, TikTok, LinkedIn and marketplace platforms over 8+ years - IDR 16.8B of it itemised from platform dashboards in this portfolio.",
   "IDR 3.22B in marketplace revenue driven from IDR 281.8M of ad spend (11.4x blended ROAS), verified in Tokopedia and Shopee dashboards.",
   "Shipped a production 12-module AI SaaS platform (Impactory) with a working end-to-end RAG pipeline for AI-assisted grant writing.",
-  "Scaled Halal Pro Supplement's monthly revenue 3x (IDR 4B → IDR 12B), helping attract new institutional investment within 9 months.",
+  "Scaled Muscle First's monthly revenue 3x (IDR 4B to IDR 12B), helping attract new institutional investment within 9 months.",
   "Owned brand and paid media at Muscle First through the growth run that contributed to the founder's Forbes Asia 30 Under 30 recognition.",
   "Delivered a 6-month consultancy engagement with Save the Children Indonesia on the SAPA DKI Jakarta provincial protection programme.",
   "Secured a USD 10,000 Google Ad Grant and grew social media reach by 29.7% at PPPA Daarul Qur'an.",

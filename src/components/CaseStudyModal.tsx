@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Tilt } from "@/components/fx/Tilt";
 import { MouseLight } from "@/components/fx/MouseLight";
 import { ScrambleText } from "@/components/fx/ScrambleText";
 import { Magnetic } from "@/components/fx/Magnetic";
@@ -139,19 +138,16 @@ export function CaseStudyModal({
               className="px-5 md:px-12"
             >
               {project.img && (
-                <Tilt max={4} className="relative overflow-hidden rounded-sm">
-                  <div className="aspect-[16/9] overflow-hidden">
-                    <img
-                      src={project.img}
-                      alt={project.title}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-tr from-background/60 via-transparent to-transparent pointer-events-none" />
+                <figure className="relative overflow-hidden rounded-sm bg-background/40">
+                  <img
+                    src={project.img}
+                    alt={project.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-auto max-h-[70vh] object-contain"
+                  />
                   <div className="absolute inset-0 ring-1 ring-inset ring-border pointer-events-none" />
-                </Tilt>
+                </figure>
               )}
             </motion.div>
 
@@ -231,28 +227,25 @@ export function CaseStudyModal({
                 <p className="text-xs uppercase tracking-[0.28em] text-accent mb-6 font-mono">
                   ✦ Selected Media
                 </p>
-                <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+                <div className="flex flex-col gap-4 md:gap-6">
                   {project.gallery.map((g, i) => (
-                    <motion.div
+                    <motion.figure
                       key={i}
-                      initial={{ opacity: 0, y: 30 }}
+                      initial={{ opacity: 0, y: 24 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-80px" }}
-                      transition={{ duration: 0.7, delay: i * 0.05, ease: EASE }}
-                      className={i % 3 === 0 ? "md:col-span-2" : ""}
+                      transition={{ duration: 0.6, delay: Math.min(i, 4) * 0.05, ease: EASE }}
+                      className="relative overflow-hidden rounded-sm bg-background/40"
                     >
-                      <Tilt max={5} className="relative overflow-hidden rounded-sm group">
-                        <div className={`${i % 3 === 0 ? "aspect-[16/8]" : "aspect-[4/3]"} overflow-hidden`}>
-                          <img
-                            src={g}
-                            alt={`${project.title} media ${i + 1}`}
-                            loading="lazy"
-                            className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-105"
-                          />
-                        </div>
-                        <div className="absolute inset-0 ring-1 ring-inset ring-border pointer-events-none" />
-                      </Tilt>
-                    </motion.div>
+                      <img
+                        src={g}
+                        alt={`${project.title} evidence ${i + 1}`}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-auto max-h-[78vh] object-contain"
+                      />
+                      <div className="absolute inset-0 ring-1 ring-inset ring-border pointer-events-none" />
+                    </motion.figure>
                   ))}
                 </div>
               </section>
