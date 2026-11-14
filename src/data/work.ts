@@ -2,9 +2,13 @@
  * Data for /work. Same evidence policy as cv.ts: only things that were checked
  * against a live page, a platform screen or the owner's own public post.
  * Anything ambiguous stays out. Last verified: 2026-11-14.
+ *
+ * `w` and `h` are the real pixel size of each image. The page uses them to
+ * reserve the exact box, so nothing is ever cropped and nothing shifts.
  */
 
 import siteImpactory from "@/assets/sites/site-impactory.jpg";
+import siteTools from "@/assets/sites/site-tools.jpg";
 import siteBisabaik from "@/assets/sites/site-bisabaik.jpg";
 import sitePasarbaik from "@/assets/sites/site-pasarbaik.jpg";
 import siteHalalpro from "@/assets/sites/site-halalpro.jpg";
@@ -19,319 +23,248 @@ import adMetaUgc from "@/assets/ads/meta-ugc-creatives-roas.jpg";
 import photoResin from "@/assets/resin/resin-white-house.jpg";
 import photoMendag from "@/assets/authority/mendag-audiensi.png";
 
-export type Category = "web" | "property" | "creator" | "motion" | "recognition";
+export type Shot = { src: string; w: number; h: number; alt: string };
 
-export const categories: { id: "all" | Category; label: string }[] = [
-  { id: "all", label: "All" },
-  { id: "web", label: "Websites" },
-  { id: "property", label: "Property" },
-  { id: "creator", label: "Creator & UGC" },
-  { id: "motion", label: "Motion & content" },
-  { id: "recognition", label: "Recognition" },
-];
-
-export type WorkItem = {
+export type Site = {
   id: string;
-  cat: Category;
-  title: string;
-  kicker: string;
+  name: string;
+  /** What it is, in a few words. */
+  line: string;
   body: string;
-  img?: string;
-  imgAlt?: string;
-  facts?: string[];
-  href?: string;
-  hrefLabel?: string;
+  role?: string;
+  tags?: string[];
+  shot: Shot;
+  href: string;
+  label: string;
 };
 
-/** Live sites: each answered HTTP 200 on 2026-11-14. */
-const web: WorkItem[] = [
+const wide = { w: 896, h: 352 };
+const std = { w: 1200, h: 750 };
+
+/** Products I own and run. Larger treatment. */
+export const platforms: Site[] = [
   {
     id: "impactory",
-    cat: "web",
-    title: "Impactory.id",
-    kicker: "AI SaaS for NGOs and CSR teams",
-    body: "Grant pipeline, AI grant writer, donor CRM and logframe builder on a RAG pipeline (Supabase, Azure OpenAI, pgvector). Product and go-to-market owner.",
-    img: siteImpactory,
-    imgAlt: "Impactory.id home page",
-    facts: ["Founder", "Supabase", "Azure OpenAI", "Vercel"],
+    name: "Impactory.id",
+    line: "AI workspace for NGOs and CSR teams",
+    body: "Grant pipeline, an AI grant writer, a donor CRM and a logframe builder, running on a RAG pipeline over each organisation's own documents.",
+    role: "Founder. Product, build and go-to-market.",
+    tags: ["Supabase", "Azure OpenAI", "pgvector"],
+    shot: { src: siteImpactory, ...std, alt: "Impactory.id home page" },
     href: "https://impactory.id",
-    hrefLabel: "impactory.id",
+    label: "impactory.id",
   },
   {
     id: "tools",
-    cat: "web",
-    title: "tools.impactory.id",
-    kicker: "Acquisition site for the digital product line",
-    body: "186 pages in English and Indonesian that sell a 72-product line of NGO templates and systems sold on Etsy, Gumroad and Lynk.id.",
-    facts: ["Astro", "EN + ID", "186 pages", "SEO"],
+    name: "tools.impactory.id",
+    line: "Storefront for a 72-product NGO template line",
+    body: "186 pages in English and Indonesian, built to rank in search and to hand buyers over to Etsy, Gumroad and Lynk.id.",
+    role: "Founder. Strategy, build and SEO.",
+    tags: ["Astro", "EN + ID", "186 pages"],
+    shot: { src: siteTools, ...wide, alt: "tools.impactory.id home page" },
     href: "https://tools.impactory.id",
-    hrefLabel: "tools.impactory.id",
+    label: "tools.impactory.id",
   },
   {
     id: "bisabaik",
-    cat: "web",
-    title: "BisaBaik.or.id",
-    kicker: "Donation platform",
-    body: "Campaign pages, payment rails, donor receipts and an SEO foundation for grassroots causes. Paid acquisition runs alongside it.",
-    img: siteBisabaik,
-    imgAlt: "BisaBaik.or.id home page",
-    facts: ["Founder", "Payments", "SEO"],
+    name: "BisaBaik.or.id",
+    line: "Donation platform for grassroots causes",
+    body: "Campaign pages, payment rails, receipts and reporting, designed so a first-time donor trusts the page within seconds. Paid acquisition runs alongside it.",
+    role: "Founder. Platform and paid acquisition.",
+    tags: ["Payments", "SEO"],
+    shot: { src: siteBisabaik, ...std, alt: "BisaBaik.or.id home page" },
     href: "https://www.bisabaik.or.id",
-    hrefLabel: "bisabaik.or.id",
+    label: "bisabaik.or.id",
   },
   {
     id: "pasarbaik",
-    cat: "web",
-    title: "PasarBaik.com",
-    kicker: "Impact marketplace",
-    body: "An aggregator that connects impact-driven products, cooperatives and community producers into one storefront with shared checkout and trust signals.",
-    img: sitePasarbaik,
-    imgAlt: "PasarBaik.com home page",
-    facts: ["Founder", "Aggregator", "Commerce"],
+    name: "PasarBaik.com",
+    line: "Marketplace for impact-driven products",
+    body: "One storefront for cooperatives and community producers, with shared checkout and trust signals so small makers plug in instead of rebuilding.",
+    role: "Founder. Concept and build.",
+    tags: ["Aggregator", "Commerce"],
+    shot: { src: sitePasarbaik, ...std, alt: "PasarBaik.com home page" },
     href: "https://pasarbaik.com",
-    hrefLabel: "pasarbaik.com",
+    label: "pasarbaik.com",
+  },
+];
+
+/** Sites for brands and clients. Compact treatment. */
+export const clientSites: Site[] = [
+  {
+    id: "halalpro",
+    name: "Halal Pro",
+    line: "Halal fitness supplements",
+    body: "Brand site for CreaSpark creatine, Whey Radiant and NaturSpark herbal, wired to Shopee and Tokopedia.",
+    role: "Growth and brand lead",
+    shot: { src: siteHalalpro, ...std, alt: "Halal Pro home page" },
+    href: "https://www.halalpro.id",
+    label: "halalpro.id",
   },
   {
     id: "littlechamp",
-    cat: "web",
-    title: "LittleChamp.id",
-    kicker: "Premium daycare, South Jakarta",
-    body: "Parent-acquisition site and funnels for a daycare that sells within a few kilometres of its door. Growth and marketing lead.",
-    img: siteLittlechamp,
-    imgAlt: "LittleChamp.id home page",
-    facts: ["Growth lead", "Google Ads", "AI concierge"],
+    name: "LittleChamp",
+    line: "Premium daycare, South Jakarta",
+    body: "Parent-acquisition site for a daycare that only sells within a few kilometres. Paired with Google Ads and a 24/7 AI enrolment concierge.",
+    role: "Growth and marketing lead",
+    shot: { src: siteLittlechamp, ...wide, alt: "LittleChamp.id home page" },
     href: "https://littlechamp.id",
-    hrefLabel: "littlechamp.id",
-  },
-  {
-    id: "arrustendi",
-    cat: "web",
-    title: "Arrustendi.org",
-    kicker: "Donation and news site",
-    body: "Donation section, news, field photos and a Decap CMS login so the team can publish without a developer.",
-    facts: ["Decap CMS", "Vercel"],
-    href: "https://www.arrustendi.org",
-    hrefLabel: "arrustendi.org",
-  },
-  {
-    id: "halalpro",
-    cat: "web",
-    title: "Halal Pro",
-    kicker: "Halal fitness supplements",
-    body: "Brand site for CreaSpark creatine, Whey Radiant and NaturSpark herbal, with marketplace links to Shopee and Tokopedia. Growth and brand lead for the line.",
-    img: siteHalalpro,
-    imgAlt: "Halal Pro home page",
-    facts: ["Brand", "SEO", "Marketplace"],
-    href: "https://www.halalpro.id",
-    hrefLabel: "halalpro.id",
+    label: "littlechamp.id",
   },
   {
     id: "palestina",
-    cat: "web",
-    title: "Palestina.id",
-    kicker: "Digital exhibition and merchandise",
-    body: "A scroll-driven exhibition of tumblers, leather and apparel with tatreez, Al-Aqsa and watermelon motifs, shipped to 25 provinces. Humanity Merchandise Movement.",
-    img: sitePalestina,
-    imgAlt: "Palestina.id home page",
-    facts: ["Storytelling", "Commerce"],
+    name: "Palestina.id",
+    line: "Exhibition and merchandise",
+    body: "A scroll-driven exhibition of tumblers, leather and apparel carrying tatreez and Al-Aqsa motifs, shipped to 25 provinces.",
+    shot: { src: sitePalestina, ...wide, alt: "Palestina.id home page" },
     href: "https://www.palestina.id",
-    hrefLabel: "palestina.id",
+    label: "palestina.id",
   },
   {
     id: "immersia",
-    cat: "web",
-    title: "Immersia",
-    kicker: "Strategic impact advisory",
-    body: "Corporate site for an impact advisory firm: services, engagements such as the YCAB Foundation ANDAL baseline and feasibility study, publications and a proposal request flow.",
-    img: siteImmersia,
-    imgAlt: "Immersia home page",
-    facts: ["Advisory", "Publications"],
+    name: "Immersia",
+    line: "Strategic impact advisory",
+    body: "Corporate site with services, engagements such as the YCAB ANDAL baseline study, publications and a proposal request flow.",
+    shot: { src: siteImmersia, ...wide, alt: "Immersia home page" },
     href: "https://immersia.id",
-    hrefLabel: "immersia.id",
+    label: "immersia.id",
   },
   {
     id: "rfdental",
-    cat: "web",
-    title: "RF Dental Care",
-    kicker: "Dental clinic, two branches",
-    body: "Branch selector, services, doctor profiles, clinic photos and a visit request that goes to the branch admin on WhatsApp.",
-    img: siteRf,
-    imgAlt: "RF Dental Care home page",
-    facts: ["Netlify", "WhatsApp flow"],
+    name: "RF Dental Care",
+    line: "Dental clinic, two branches",
+    body: "A branch picker, services, doctors and a visit request that lands in the branch admin's WhatsApp.",
+    shot: { src: siteRf, ...wide, alt: "RF Dental Care home page" },
     href: "https://rfdentalcare.netlify.app",
-    hrefLabel: "rfdentalcare.netlify.app",
+    label: "rfdentalcare.netlify.app",
   },
   {
     id: "drandri",
-    cat: "web",
-    title: "drg. Andri Kusbandi",
-    kicker: "Dentist practice, Ciseeng",
-    body: "Practice site with services, morning and evening schedule and an appointment request through the admin's WhatsApp. Pre-rendered HTML for search.",
-    img: siteAndri,
-    imgAlt: "drg. Andri Kusbandi home page",
-    facts: ["React", "Vite", "Netlify", "SEO"],
+    name: "drg. Andri Kusbandi",
+    line: "Dentist practice, Ciseeng",
+    body: "Services, morning and evening schedule and appointment requests by WhatsApp. Pre-rendered HTML so it can be found in search.",
+    shot: { src: siteAndri, ...wide, alt: "drg. Andri Kusbandi home page" },
     href: "https://drgandrikusbandi.netlify.app",
-    hrefLabel: "drgandrikusbandi.netlify.app",
+    label: "drgandrikusbandi.netlify.app",
   },
   {
     id: "faeyza",
-    cat: "web",
-    title: "Faeyza Bouquet",
-    kicker: "Graduation bouquets and gifts, Bogor",
-    body: "Catalogue of graduation, satin flower and money bouquets with a budget-based browse and ordering through WhatsApp chat.",
-    img: siteFaeyza,
-    imgAlt: "Faeyza Bouquet home page",
-    facts: ["Netlify", "WhatsApp ordering"],
+    name: "Faeyza Bouquet",
+    line: "Bouquets and gifts, Bogor",
+    body: "Graduation, satin and money bouquets, browsed by budget and ordered through WhatsApp.",
+    shot: { src: siteFaeyza, ...wide, alt: "Faeyza Bouquet home page" },
     href: "https://faeyzabouquet.netlify.app",
-    hrefLabel: "faeyzabouquet.netlify.app",
+    label: "faeyzabouquet.netlify.app",
   },
   {
     id: "isra",
-    cat: "web",
-    title: "Isra Amanah Internasional",
-    kicker: "Umrah and Hajj travel, Banggai branch",
-    body: "Package pages for regular Umrah, Umrah Plus Aqsa and Fast Umrah Turkey, with a direct contact line for the branch.",
-    img: siteIsra,
-    imgAlt: "Isra Amanah Internasional home page",
-    facts: ["Travel", "Lead generation"],
+    name: "Isra Amanah",
+    line: "Umrah and Hajj travel, Banggai",
+    body: "Package pages for regular Umrah, Umrah Plus Aqsa and Fast Umrah Turkey, with a direct line to the branch.",
+    shot: { src: siteIsra, ...wide, alt: "Isra Amanah home page" },
     href: "https://www.israamanahtravel.com",
-    hrefLabel: "israamanahtravel.com",
-  },
-  {
-    id: "halalprogym",
-    cat: "web",
-    title: "Halal Pro Gym",
-    kicker: "Web app",
-    body: "A personal gym and body-weight tracker deployed on Vercel.",
-    facts: ["Vercel", "Web app"],
-    href: "https://halalprogym.vercel.app",
-    hrefLabel: "halalprogym.vercel.app",
+    label: "israamanahtravel.com",
   },
 ];
 
-const property: WorkItem[] = [
-  {
-    id: "resin",
-    cat: "property",
-    title: "Resin Indonesia (PT Resin Indonesia Cemerlang)",
-    kicker: "Design and build, interiors, home decor",
-    body: "A one-person limited company that designs and builds houses, office pantries, kitchen sets, wardrobes, vanity and meeting tables, and cafe fit-outs. The Instagram account documents each project, from site works to finishing.",
-    img: photoResin,
-    imgAlt: "House project by Resin Indonesia",
-    facts: ["Founder", "Instagram 3.7K", "60 posts"],
-    href: "https://www.instagram.com/resindotid/",
-    hrefLabel: "@resindotid",
-  },
-];
-
-const creator: WorkItem[] = [
-  {
-    id: "diskonhebat",
-    cat: "creator",
-    title: "@diskonhebat on TikTok",
-    kicker: "Affiliate and UGC-style product videos",
-    body: "Product videos made and posted from my own account. One example is the FogX Lens Cleaner video from August 2025, with 251 likes, 41 saves and 6 shares. The channel stands at 48.8K followers and 128.4K likes (checked 2026-11-05).",
-    facts: ["Own account", "Affiliate", "TikTok Shop"],
-    href: "https://www.tiktok.com/@diskonhebat/video/7537361426411719943",
-    hrefLabel: "Watch the FogX video",
-  },
-  {
-    id: "ugc-roas",
-    cat: "creator",
-    title: "UGC creatives with product-level ROAS",
-    kicker: "Muscle First, Meta CPAS",
-    body: "Influencer and UGC formats mapped to return on ad spend per product: Pro Gainer 8.07x, Pro Whey 11.37x, Pro Isolate 13.56x, Pro Creatine 9.54x. Read from the Meta dashboard.",
-    img: adMetaUgc,
-    imgAlt: "Meta CPAS dashboard showing UGC creatives and ROAS",
-    facts: ["Dashboard evidence", "Meta CPAS"],
-  },
-];
-
-const reels = [
-  ["Where does a Rp100,000 donation go?", "https://www.instagram.com/impactoryindonesia/reel/DfHY7WAK6Xm/"],
-  ["Why donors quietly leave", "https://www.instagram.com/impactoryindonesia/reel/DfHpdNcqqNZ/"],
-  ["How much grant money is left?", "https://www.instagram.com/impactoryindonesia/reel/DfHsUbaqdPb/"],
-  ["Zakat is not a general donation", "https://www.instagram.com/impactoryindonesia/reel/DfHwgy5KGEK/"],
-] as const;
-
-const motion: WorkItem[] = [
-  {
-    id: "remotion",
-    cat: "motion",
-    title: "Remotion explainers for NGOs",
-    kicker: "@impactoryindonesia on Instagram",
-    body: "Short vertical explainers built in code with Remotion and three.js: 3D cutaways, Indonesian voice-over, per-word captions, QA by reading frames. Topics are checked against the legal text before posting.",
-    facts: ["Remotion", "three.js", "Azure TTS", "Indonesian"],
-    href: "https://www.instagram.com/impactoryindonesia/",
-    hrefLabel: "@impactoryindonesia",
-  },
-];
-
-const recognition: WorkItem[] = [
-  {
-    id: "mendag",
-    cat: "recognition",
-    title: "Audience with the Minister of Trade",
-    kicker: "Bisa Baik Bersama, January 2026",
-    body: "An audience with Trade Minister Dr. Budi Santoso, M.Si. (Kemendag RI) on strengthening the MSME ecosystem, marketing strategy and collaboration so that local products compete better.",
-    img: photoMendag,
-    imgAlt: "Maulana Arif Pratama shaking hands with the Minister of Trade at Kemendag",
-    href: "https://www.instagram.com/p/DTdJatFiTbJ/",
-    hrefLabel: "Original post",
-  },
-  {
-    id: "innofund",
-    cat: "recognition",
-    title: "InnoFund: Siap Pendanaan",
-    kicker: "LittleChamp Daycare, October 2026",
-    body: "Selected as one of 14 SMEs for the Siap Pendanaan programme by InnoFund, run by Instellar Impact with Youth Business International and funded by Standard Chartered Foundation. Selected participants move on to blended finance.",
-    facts: ["14 SMEs", "Instellar Impact", "YBI"],
-  },
-  {
-    id: "hackathon",
-    cat: "recognition",
-    title: "Google Cloud Gen AI Hackathon",
-    kicker: "Impactory, Hack2skill",
-    body: "Ranked 68th of the 101 shortlisted from more than 1,500 entrants, with the MVP of Impactory. Later Top 20 at APINDO UMKM.",
-    facts: ["68th of 101", "1,500+ entrants", "APINDO Top 20"],
-    href: "https://impactory.id",
-    hrefLabel: "impactory.id",
-  },
-  {
-    id: "earlier",
-    cat: "recognition",
-    title: "Earlier milestones",
-    kicker: "2016 to 2023",
-    body: "Best Employee of the Year 2016 at ACT Foundation. USD 10,000 Google Ad Grant secured at PPPA Daarul Qur'an. Invited to TikTok Summit Indonesia 2023 for five top-performing TikTok Shop products.",
-  },
-];
-
-export const workItems: WorkItem[] = [
-  ...web,
-  ...property,
-  ...creator,
-  ...motion,
-  ...recognition,
-];
-
-export const reelLinks = reels;
-
-export const contentSystem = {
-  pillars: [
-    ["Personal branding", "How to build a name and trust, from real experience."],
-    ["Digital marketing for NGOs", "Tactics a small organisation can use today."],
-    ["Impact stories", "Make an organisation's work visible and human."],
-  ],
-  pipeline: [
-    "Brief",
-    "Hook",
-    "Script",
-    "Voice",
-    "Build",
-    "QA on frames",
-    "Render",
-    "Caption",
-    "Publish",
-    "Log metrics",
-  ],
+export const alsoBuilt = {
+  text: "Also live: Halal Pro Gym, a gym and body-weight tracker app.",
+  href: "https://halalprogym.vercel.app",
+  label: "halalprogym.vercel.app",
 };
+
+export const resin = {
+  name: "Resin Indonesia",
+  legal: "PT Resin Indonesia Cemerlang",
+  body: "A one-person limited company that designs and builds houses, office pantries, kitchen sets, wardrobes, vanity and meeting tables and cafe fit-outs. Each project is documented on Instagram, from site works to finishing.",
+  role: "Founder",
+  stats: "3.7K followers · 60 posts",
+  shot: { src: photoResin, w: 720, h: 900, alt: "A house project by Resin Indonesia" } as Shot,
+  href: "https://www.instagram.com/resindotid/",
+  label: "@resindotid",
+};
+
+export const creator = {
+  ugc: {
+    title: "UGC creatives, measured per product",
+    body: "Influencer and UGC formats mapped to return on ad spend for each Muscle First product on Meta CPAS. Read from the dashboard.",
+    shot: {
+      src: adMetaUgc,
+      w: 1082,
+      h: 402,
+      alt: "Meta CPAS dashboard showing UGC creatives with ROAS per product",
+    } as Shot,
+    roas: [
+      ["Pro Gainer", "8.07x"],
+      ["Pro Creatine", "9.54x"],
+      ["Pro Whey", "11.37x"],
+      ["Pro Isolate", "13.56x"],
+    ] as [string, string][],
+  },
+  tiktok: {
+    title: "@diskonhebat on TikTok",
+    body: "Product videos shot and posted from my own account. The FogX Lens Cleaner video from August 2025 earned 251 likes, 41 saves and 6 shares. The channel has 48.8K followers (checked 5 Nov 2026).",
+    href: "https://www.tiktok.com/@diskonhebat/video/7537361426411719943",
+    label: "Watch the FogX video",
+  },
+};
+
+export const motion = {
+  title: "Explainers built in code",
+  body: "Short vertical videos for @impactoryindonesia, made with Remotion and three.js: 3D cutaways, Indonesian voice-over, per-word captions. Every legal claim is checked against the regulation text before posting.",
+  reels: [
+    ["Where does a Rp100,000 donation go?", "https://www.instagram.com/impactoryindonesia/reel/DfHY7WAK6Xm/"],
+    ["Why donors quietly leave", "https://www.instagram.com/impactoryindonesia/reel/DfHpdNcqqNZ/"],
+    ["How much grant money is left?", "https://www.instagram.com/impactoryindonesia/reel/DfHsUbaqdPb/"],
+    ["Zakat is not a general donation", "https://www.instagram.com/impactoryindonesia/reel/DfHwgy5KGEK/"],
+  ] as [string, string][],
+  account: { href: "https://www.instagram.com/impactoryindonesia/", label: "@impactoryindonesia" },
+  pillars: [
+    ["Personal branding", "Building a name and trust from real experience."],
+    ["Digital marketing for NGOs", "Tactics a small organisation can use today."],
+    ["Impact stories", "Making an organisation's work visible and human."],
+  ] as [string, string][],
+  pipeline: ["Brief", "Hook", "Script", "Voice", "Build", "Frame QA", "Render", "Caption", "Publish", "Metrics"],
+};
+
+export const mendag = {
+  title: "Audience with the Minister of Trade",
+  when: "January 2026",
+  body: "Bisa Baik Bersama met Trade Minister Dr. Budi Santoso, M.Si. (Kemendag RI) to discuss strengthening the MSME ecosystem, marketing strategy and collaboration so local products compete better.",
+  shot: {
+    src: photoMendag,
+    w: 900,
+    h: 600,
+    alt: "Maulana Arif Pratama shaking hands with the Minister of Trade at Kemendag",
+  } as Shot,
+  href: "https://www.instagram.com/p/DTdJatFiTbJ/",
+  label: "Original post",
+};
+
+/** Plain list. Left column is when, right is what. */
+export const milestones: { k: string; t: string; d: string }[] = [
+  {
+    k: "Oct 2026",
+    t: "InnoFund Siap Pendanaan",
+    d: "LittleChamp Daycare was selected as one of 14 SMEs. The programme is run by Instellar Impact with Youth Business International and funded by Standard Chartered Foundation. Selected participants move on to blended finance.",
+  },
+  {
+    k: "2026",
+    t: "Google Cloud Gen AI Hackathon",
+    d: "Impactory ranked 68th of the 101 shortlisted from more than 1,500 entrants (Hack2skill).",
+  },
+  { k: "2026", t: "APINDO UMKM", d: "Top 20 with Impactory." },
+  {
+    k: "2023",
+    t: "TikTok Summit Indonesia",
+    d: "Invited for creating five top-performing TikTok Shop products at Muscle First.",
+  },
+  { k: "2019", t: "Google Ad Grant", d: "Secured USD 10,000 for PPPA Daarul Qur'an." },
+  { k: "2016", t: "Best Employee of the Year", d: "ACT Foundation (Aksi Cepat Tanggap)." },
+];
+
+/** Every image in the overview strip, in reading order. */
+export const overview: { id: string; name: string; shot: Shot; target: "platforms" | "sites" }[] = [
+  ...platforms.map((s) => ({ id: s.id, name: s.name, shot: s.shot, target: "platforms" as const })),
+  ...clientSites.map((s) => ({ id: s.id, name: s.name, shot: s.shot, target: "sites" as const })),
+];
