@@ -9,15 +9,17 @@ interface Props {
   widths?: number[];
   eager?: boolean;
   external?: boolean;
+  url?: string;
 }
-const { img, alt, href, label, sizes = "(min-width: 1024px) 700px, 100vw", widths = [480, 800, 1200], eager = false, external = true } = Astro.props;
+const { img, alt, href, label, sizes = "(min-width: 1024px) 700px, 100vw", widths = [480, 800, 1200], eager = false, external = true, url } = Astro.props;
+const cls = url ? "frame browser" : "frame";
 ---
 {href ? (
-  <a class="frame" href={href} aria-label={label} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
+  <a class={cls} data-url={url} href={href} aria-label={label} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
     <Image src={img} alt={alt} widths={widths} sizes={sizes} loading={eager ? "eager" : "lazy"} decoding="async" format="webp" quality={82} />
   </a>
 ) : (
-  <div class="frame">
+  <div class={cls} data-url={url}>
     <Image src={img} alt={alt} widths={widths} sizes={sizes} loading={eager ? "eager" : "lazy"} decoding="async" format="webp" quality={82} />
   </div>
 )}

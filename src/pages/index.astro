@@ -24,8 +24,13 @@ const results = [
   ["IDR 20B+", "Ad spend managed over twelve years", "IDR 16.8B of it is itemised from platform dashboards below.", "Stated"],
 ] as const;
 
+const [featured, ...moreProducts] = platforms;
 const current = experience.filter((r) => r.kind === "current");
 const earlier = experience.filter((r) => r.kind !== "current");
+const groups = adsPortfolio.map((g) => ({
+  ...g,
+  label: g.section.replace(/^\d+\s-\s/, "").replace(/\s?Ads$/, ""),
+}));
 ---
 <Base
   title="Maulana Arif Pratama | Senior Performance Marketing Manager"
@@ -62,12 +67,23 @@ const earlier = experience.filter((r) => r.kind !== "current");
       <div style="height: clamp(56px, 9vw, 96px);"></div>
     </section>
 
+    <!-- STATEMENT -->
+    <section class="statement divider">
+      <div class="wrap">
+        <p class="reveal">
+          <b>Paid growth</b> on Meta, Google, TikTok, Shopee and Tokopedia. <b>Creator and affiliate programs</b>
+          that sell. <b>CRM and WhatsApp automation</b> that follows up. And the build: <em>sites, an AI product
+          and a 72-product shop.</em>
+        </p>
+      </div>
+    </section>
+
     <!-- RESULTS -->
     <section id="results" class="divider">
       <div class="wrap">
         <div class="section-head reveal">
           <h2 class="display">Results, with the receipts.</h2>
-          <p>Every figure below is either read off a platform dashboard or marked as stated. The screenshots are further down.</p>
+          <p>Each figure is either read off a platform dashboard or marked as stated. The screenshots are in Evidence.</p>
         </div>
         <dl class="results">
           {results.map(([big, line, note, ev]) => (
@@ -87,39 +103,62 @@ const earlier = experience.filter((r) => r.kind !== "current");
         <div class="section-head reveal">
           <h2 class="display">What I build and run.</h2>
           <p>Four products I own, eight sites for brands and clinics, a building business, creator work and the content that feeds them. Every link was opened on 14 November 2026.</p>
+          <nav class="chips" aria-label="Jump within Work">
+            <a href="#platforms">Products</a>
+            <a href="#sites">Brand sites</a>
+            <a href="#property">Property</a>
+            <a href="#creator">Creator</a>
+            <a href="#motion">Motion</a>
+          </nav>
         </div>
 
+        <!-- Products: one featured, three on a rail -->
         <div class="sub-head first-sub reveal" id="platforms">
           <h3 class="display">Products I own</h3>
-          <p>An AI workspace for NGOs, the store that sells its templates, a donation platform and a marketplace.</p>
+          <p>Start with the one that took the longest to build.</p>
         </div>
         <div class="rows">
-          {platforms.map((s, i) => (
-            <article class={`row reveal ${i % 2 ? "flip" : ""}`} id={s.id}>
-              <div class="media">
-                <Shot img={s.shot.src} alt={s.shot.alt} href={s.href} label={`Open ${s.label}`} sizes="(min-width: 1024px) 700px, 100vw" />
-              </div>
-              <div>
-                <h3 class="display">{s.name}</h3>
-                <p class="what">{s.line}</p>
-                <p class="detail">{s.body}</p>
-                <p class="meta">{s.role}{s.tags && <small>{s.tags.join(" · ")}</small>}</p>
-                <a class="link" href={s.href} target="_blank" rel="noopener noreferrer">{s.label} <Arrow /></a>
-              </div>
-            </article>
-          ))}
+          <article class="row reveal" id={featured.id}>
+            <div class="media">
+              <Shot img={featured.shot.src} alt={featured.shot.alt} href={featured.href} label={`Open ${featured.label}`} url={featured.label} sizes="(min-width: 1024px) 700px, 100vw" eager />
+            </div>
+            <div>
+              <h3 class="display">{featured.name}</h3>
+              <p class="what">{featured.line}</p>
+              <p class="detail">{featured.body}</p>
+              <p class="meta">{featured.role}{featured.tags && <small>{featured.tags.join(", ")}</small>}</p>
+              <a class="link" href={featured.href} target="_blank" rel="noopener noreferrer">{featured.label} <Arrow /></a>
+            </div>
+          </article>
         </div>
 
+        <div class="rail-wrap reveal">
+          <h3 class="display">Three more, one swipe apart</h3>
+          <ul class="rail" tabindex="0" aria-label="More products, scroll sideways">
+            {moreProducts.map((s) => (
+              <li id={s.id}>
+                <Shot img={s.shot.src} alt={s.shot.alt} href={s.href} label={`Open ${s.label}`} url={s.label} sizes="(min-width: 600px) 520px, 84vw" widths={[480, 800]} />
+                <h4>{s.name}</h4>
+                <p class="what">{s.line}</p>
+                <p class="detail">{s.body}</p>
+                <p class="meta">{s.role}</p>
+                <a class="link" href={s.href} target="_blank" rel="noopener noreferrer">{s.label} <Arrow /></a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Brand sites: masonry -->
         <div class="sub-head reveal" id="sites">
           <h3 class="display">Sites for brands and clinics</h3>
           <p>Most hand the visitor to WhatsApp or a marketplace, because that is where the sale happens.</p>
         </div>
-        <div class="sites">
+        <div class="masonry">
           {clientSites.map((s) => (
             <article class="reveal" id={s.id}>
-              <Shot img={s.shot.src} alt={s.shot.alt} href={s.href} label={`Open ${s.label}`} sizes="(min-width: 768px) 560px, 100vw" widths={[480, 800]} />
+              <Shot img={s.shot.src} alt={s.shot.alt} href={s.href} label={`Open ${s.label}`} url={s.label} sizes="(min-width: 1040px) 360px, (min-width: 700px) 50vw, 100vw" widths={[360, 560, 800]} />
               <h3 class="display">{s.name}</h3>
-              <p class="what">{s.line}{s.role && <small> · {s.role}</small>}</p>
+              <p class="what">{s.line}{s.role && <small>. {s.role}</small>}</p>
               <p class="detail">{s.body}</p>
               <a class="link" href={s.href} target="_blank" rel="noopener noreferrer">{s.label} <Arrow /></a>
             </article>
@@ -127,6 +166,7 @@ const earlier = experience.filter((r) => r.kind !== "current");
         </div>
         <p class="also">{alsoBuilt.text} <a class="link" href={alsoBuilt.href} target="_blank" rel="noopener noreferrer">{alsoBuilt.label} <Arrow /></a></p>
 
+        <!-- Property -->
         <div class="sub-head reveal" id="property">
           <h3 class="display">A building business of my own</h3>
           <p>Run alongside the digital work.</p>
@@ -139,11 +179,12 @@ const earlier = experience.filter((r) => r.kind !== "current");
             <h3 class="display">{resin.name}</h3>
             <p class="what" style="margin-top: 8px;">{resin.legal}</p>
             <p class="detail muted measure" style="margin-top: 14px;">{resin.body}</p>
-            <p class="kv">{resin.role} <span class="muted">· {resin.stats}</span></p>
+            <p class="kv">{resin.role}, {resin.stats.replace(" · ", " and ")}</p>
             <a class="link" href={resin.href} target="_blank" rel="noopener noreferrer">{resin.label} <Arrow /></a>
           </div>
         </div>
 
+        <!-- Creator -->
         <div class="sub-head reveal" id="creator">
           <h3 class="display">Creator and UGC</h3>
           <p>Making the content, then reading what it returned.</p>
@@ -154,7 +195,7 @@ const earlier = experience.filter((r) => r.kind !== "current");
             <h3 class="display" style="margin-top: 24px; font-size: 1.75rem;">{creator.ugc.title}</h3>
             <p class="detail muted measure" style="margin-top: 8px; font-size: 0.9375rem;">{creator.ugc.body}</p>
             <p class="kv tnum">
-              {creator.ugc.roas.map(([n, v], i) => (<span>{i > 0 && <span class="muted"> · </span>}{n} <span class="accent">{v}</span></span>))}
+              {creator.ugc.roas.map(([n, v], i) => (<span>{i > 0 && <span class="muted">, </span>}{n} <span class="accent">{v}</span></span>))}
             </p>
           </div>
           <div>
@@ -164,6 +205,7 @@ const earlier = experience.filter((r) => r.kind !== "current");
           </div>
         </div>
 
+        <!-- Motion -->
         <div class="sub-head reveal" id="motion">
           <h3 class="display">{motion.title}</h3>
           <p>{motion.body}</p>
@@ -179,38 +221,49 @@ const earlier = experience.filter((r) => r.kind !== "current");
             <ul class="pillars">
               {motion.pillars.map(([t, d]) => (<li><b>{t}</b><span>{d}</span></li>))}
             </ul>
-            <p class="pipeline">{motion.pipeline.join(" → ")}</p>
+            <p class="pipeline">{motion.pipeline.join(", ")}.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- EVIDENCE -->
+    <!-- EVIDENCE: one platform at a time -->
     <section id="evidence" class="divider">
       <div class="wrap">
         <div class="section-head reveal">
           <h2 class="display">Evidence from the ad accounts.</h2>
-          <p>Screenshots pulled from live accounts I ran. Tap any image to open it at full size.</p>
+          <p>Screenshots pulled from live accounts I ran. Pick a platform, then tap any image to open it at full size.</p>
         </div>
-        {adsPortfolio.map((g) => (
-          <div class="ev-group">
-            <h3 class="display reveal">{g.section.replace(/^\d+\s-\s/, "")}</h3>
-            <p class="reveal">{g.blurb}</p>
-            <div class="ev-grid">
-              {g.exhibits.map((ex) => (
-                <figure class="reveal" id={ex.id}>
-                  <Shot img={ex.img} alt={`${ex.platform}, ${ex.client}: ${ex.title}`} href={ex.img.src} label={`Open ${ex.title} at full size`} sizes="(min-width: 900px) 560px, 100vw" widths={[480, 800, 1200]} />
-                  <figcaption>
-                    <p class="who">{ex.platform} · {ex.client}{ex.period && ` · ${ex.period}`}</p>
-                    <p class="t">{ex.title}</p>
-                    <p class="c">{ex.caption}</p>
-                    {ex.headline && <p class="f tnum"><b>{ex.headline.v}</b> <span class="muted">{ex.headline.l}</span></p>}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+        <div class="evtabs">
+          {groups.map((g, i) => (
+            <input class="sr" type="radio" name="evtab" id={`evt-${i}`} checked={i === 0} aria-label={`${g.label} ads`} />
+          ))}
+          <div class="tablist">
+            {groups.map((g, i) => (
+              <label for={`evt-${i}`}>{g.label}<span>{g.exhibits.length}</span></label>
+            ))}
           </div>
-        ))}
+          <div class="panels">
+            {groups.map((g) => (
+              <div class="panel">
+                <p>{g.blurb}</p>
+                <div class="ev-grid">
+                  {g.exhibits.map((ex) => (
+                    <figure id={ex.id}>
+                      <Shot img={ex.img} alt={`${ex.platform}, ${ex.client}: ${ex.title}`} href={ex.img.src} label={`Open ${ex.title} at full size`} sizes="(min-width: 900px) 560px, 100vw" widths={[480, 800, 1200]} />
+                      <figcaption>
+                        <p class="who">{ex.platform}, {ex.client}{ex.period && `, ${ex.period}`}</p>
+                        <p class="t">{ex.title}</p>
+                        <p class="c">{ex.caption}</p>
+                        {ex.headline && <p class="f tnum"><b>{ex.headline.v}</b> <span class="muted">{ex.headline.l}</span></p>}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
 
@@ -223,7 +276,7 @@ const earlier = experience.filter((r) => r.kind !== "current");
         <figure class="mendag reveal">
           <Shot img={mendag.shot.src} alt={mendag.shot.alt} href={mendag.href} label={mendag.label} sizes="(min-width: 900px) 832px, 100vw" widths={[600, 900]} />
           <figcaption>
-            <b>{mendag.title}</b> <span class="muted">· {mendag.when}</span>
+            <b>{mendag.title}</b> <span class="muted">({mendag.when})</span>
             <p>{mendag.body}</p>
           </figcaption>
         </figure>
@@ -285,6 +338,8 @@ const earlier = experience.filter((r) => r.kind !== "current");
       </div>
     </section>
   </main>
+
+  <div class="m-cta"><a class="btn btn-primary" href="#contact">Let&rsquo;s talk</a></div>
 
   <script>
     // The reel is decoration. It starts after the page is ready, pauses when it

@@ -1,7 +1,7 @@
 ---
 const links = [
-  ["/#work", "Work"],
   ["/#results", "Results"],
+  ["/#work", "Work"],
   ["/#evidence", "Evidence"],
   ["/#experience", "Experience"],
   ["/cv", "CV"],
@@ -35,5 +35,26 @@ const links = [
         (menu.querySelector("summary") as HTMLElement)?.focus();
       }
     });
+  }
+</script>
+
+<script>
+  // Scroll-spy: mark the nav link of the section currently in view.
+  const ids = ["results", "work", "evidence", "recognition", "experience", "contact"];
+  const map: Record<string, string> = { recognition: "evidence" };
+  const links = [...document.querySelectorAll<HTMLAnchorElement>(".nav-links a, .menu-panel a")];
+  const els = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+  if (els.length && "IntersectionObserver" in window) {
+    const set = (id: string) =>
+      links.forEach((a) => {
+        const on = a.getAttribute("href") === `/#${map[id] ?? id}`;
+        if (on) a.setAttribute("aria-current", "true");
+        else a.removeAttribute("aria-current");
+      });
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && set(e.target.id)),
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    els.forEach((el) => io.observe(el));
   }
 </script>
