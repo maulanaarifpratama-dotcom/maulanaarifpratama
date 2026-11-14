@@ -48,7 +48,7 @@ export const Route = createFileRoute("/cv")({
       {
         name: "description",
         content:
-          "Digital Growth & Performance Marketing Leader, AI Systems & SaaS Builder. IDR 16.8B of ad spend evidenced in-platform across Meta, Google, TikTok and marketplaces.",
+          "Senior Performance Marketing Manager: Growth, Commerce, CRM & AI Marketing Automation. IDR 16.8B of ad spend evidenced in-platform across Meta, Google, TikTok and marketplaces.",
       },
     ],
   }),

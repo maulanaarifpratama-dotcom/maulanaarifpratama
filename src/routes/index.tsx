@@ -37,13 +37,13 @@ import googleImg from "@/assets/google.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Maulana Arif Pratama - Digital Business Leader & AI Builder" },
+      { title: "Maulana Arif Pratama - Senior Performance Marketing Manager" },
       {
         name: "description",
         content:
-          "8+ years building growth engines, AI workflows, and social impact platforms. Managed IDR 20B+ in performance media across Meta, Google, TikTok.",
+          "12 years in growth, commerce and AI marketing automation. Managed IDR 20B+ in performance media across Meta, Google, TikTok.",
       },
-      { property: "og:title", content: "Maulana Arif Pratama - Digital Business Leader" },
+      { property: "og:title", content: "Maulana Arif Pratama - Senior Performance Marketing Manager" },
       {
         property: "og:description",
         content: "Growth strategist, AI agent builder, social impact technologist.",
@@ -863,7 +863,7 @@ function Contact() {
                 data-cursor="WA"
                 className="text-sm uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground transition-colors border border-border px-6 py-4 rounded-full"
               >
-                +62 821-1245-5705
+                +62 878-8379-9175
               </a>
             </Magnetic>
           </div>

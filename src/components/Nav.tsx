@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
 const links = [
-  { href: "#work", label: "Work" },
-  { href: "#ads", label: "Ads" },
-  { href: "#industries", label: "Industries" },
-  { href: "#experience", label: "Experience" },
+  { href: "/work", label: "Work" },
+  { href: "/#work", label: "Case studies" },
+  { href: "/#ads", label: "Ads" },
+  { href: "/#experience", label: "Experience" },
   { href: "/cv", label: "CV" },
 ];
 
@@ -79,7 +79,7 @@ export function Nav() {
       >
         <nav className="max-w-[1400px] mx-auto px-6 md:px-10 h-16 flex items-center justify-between gap-6">
           <a
-            href="#top"
+            href="/"
             onClick={() => setOpen(false)}
             className="font-display text-xl tracking-tight shrink-0 rounded-sm py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
           >
@@ -102,7 +102,7 @@ export function Nav() {
           </ul>
 
           <a
-            href="#contact"
+            href="/#contact"
             className="hidden md:inline-flex shrink-0 items-center gap-2 h-11 whitespace-nowrap rounded-full border border-border px-5 text-xs uppercase tracking-[0.18em] transition-colors duration-200 hover:bg-foreground hover:text-background focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
           >
             Let&rsquo;s talk <span aria-hidden>&rarr;</span>
@@ -161,7 +161,7 @@ export function Nav() {
           </ul>
           <div className="max-w-[1400px] mx-auto px-6 pb-5 pt-1">
             <a
-              href="#contact"
+              href="/#contact"
               onClick={() => setOpen(false)}
               className="flex items-center justify-center gap-2 h-12 rounded-full bg-foreground px-5 text-xs uppercase tracking-[0.18em] text-background transition-transform duration-150 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
             >

@@ -49,11 +49,11 @@ export type Metric = {
 
 export const profile = {
   name: "Maulana Arif Pratama",
-  title: "Digital Growth & Performance Marketing Leader",
-  subtitle: "AI Systems & SaaS Builder",
+  title: "Senior Performance Marketing Manager",
+  subtitle: "Growth, Commerce, CRM & AI Marketing Automation",
   location: "Depok, Jawa Barat, Indonesia",
   email: "maulana.arif.pratama@gmail.com",
-  phone: "+62 821-1245-5705",
+  phone: "+62 878-8379-9175",
   site: "arif.impactory.id",
   siteUrl: "https://arif.impactory.id",
   linkedin: "linkedin.com/in/maulana-arif-pratama",
@@ -61,15 +61,15 @@ export const profile = {
   github: "https://github.com/maulanaarifpratama-dotcom",
   instagram: "https://www.instagram.com/arifpratamadigital/",
   facebook: "https://www.facebook.com/maulana.pratama/",
-  whatsapp: "https://wa.me/6282112455705",
+  whatsapp: "https://wa.me/6287883799175",
 } as const;
 
 export const summary =
-  "Digital business leader with 8+ years scaling NGOs, startups and consumer brands, with hands-on ownership of IDR 20B+ in managed advertising spend across Meta, Google, TikTok, LinkedIn and marketplace ecosystems. IDR 16.8B of it evidenced dashboard-by-dashboard in the portfolio that follows. Proven at turning ad budgets into measurable revenue: IDR 3.2B in marketplace sales from IDR 282M of spend, an 11.4x blended return. Equally at home building the systems behind the growth: SOPs, WhatsApp Business API integrations, CRM/ERP rollouts and measurement infrastructure. Since 2024, expanded into hands-on AI product delivery as Founder of Impactory, shipping a production 12-module AI SaaS platform with an end-to-end RAG pipeline (Supabase Edge Functions + Azure OpenAI + pgvector) via a structured multi-agent development workflow. A rare hybrid of performance-marketing operator, brand and growth strategist, and AI-native systems builder.";
+  "Senior performance marketing and growth manager with 12 years in digital marketing, 6+ of them in manager-level roles across multi-brand portfolios. Operates the full funnel: paid acquisition on Meta, Google, TikTok, Shopee and Tokopedia, affiliate and live-commerce programmes, conversion optimisation, CRM-driven retention and AI marketing automation, with IDR 20B+ in ad spend managed. IDR 16.8B of it is evidenced dashboard-by-dashboard in the portfolio that follows. Focuses on profitable growth, meaning efficient acquisition and repeat revenue, not ROAS alone: a 22.3x ROAS Tokopedia campaign, IDR 3.2B in marketplace sales from IDR 282M of spend (11.4x blended), and a 3x revenue scale-up at Muscle First (IDR 4B to IDR 12B monthly) in nine months. Since 2024 also builds the systems behind the growth as Founder of Impactory: a self-funded AI SaaS for NGOs and CSR teams, plus a 72-product digital line sold on Etsy, Gumroad and Lynk.id.";
 
 /** Screening-length version of `summary`, for the two-page CV. Same claims, no elaboration. */
 export const summaryShort =
-  "Digital business leader with 8+ years scaling NGOs, startups and consumer brands, with hands-on ownership of IDR 20B+ in managed ad spend across Meta, Google, TikTok, LinkedIn and marketplaces - IDR 16.8B of it evidenced dashboard-by-dashboard, including IDR 3.2B in marketplace revenue at an 11.4x blended return. Since 2024, also shipping AI product: a production 12-module SaaS platform for the impact sector on an end-to-end RAG pipeline (Supabase Edge Functions + Azure OpenAI + pgvector). A hybrid of performance-marketing operator, growth strategist and AI-native systems builder.";
+  "Senior performance marketing and growth manager with 12 years in digital marketing and IDR 20B+ in managed ad spend across Meta, Google, TikTok, Shopee and Tokopedia - IDR 16.8B of it evidenced dashboard-by-dashboard, including IDR 3.2B in marketplace revenue at an 11.4x blended return. Since 2024, also shipping product: a production AI SaaS for NGOs (Impactory) and a 72-product digital line on Etsy, Gumroad and Lynk.id.";
 
 /* ------------------------------------------------------------------ */
 /* Headline metrics                                                    */
@@ -95,8 +95,8 @@ export const headlineStats: Metric[] = [
     note: "Tokopedia Rp562.7M + Shopee Rp2.66B, from Rp281.8M combined spend - 11.4x blended.",
   },
   {
-    v: "8+",
-    l: "Years operating",
+    v: "12",
+    l: "Years in digital marketing",
     evidence: "stated",
   },
   {
@@ -125,7 +125,7 @@ export const capabilities = [
   },
   {
     k: "02",
-    t: "Brand & Business Leadership",
+    t: "Brand & Partnership Leadership",
     d: "Multi-brand C-level growth ownership, go-to-market strategy, PR and live commerce, affiliate programmes, brand collaborations, market penetration.",
   },
   {
@@ -215,27 +215,27 @@ export type Role = {
 export const experience: Role[] = [
   {
     y: "Feb 2024 - Present",
-    r: "Director, Partnership & Marketing (Multi-Brand C-Level)",
+    r: "Head of Growth & Performance Marketing (official title: Director, Partnership & Marketing)",
     c: "PT Meta Kreasi Indonusa Holding",
-    sub: "Halal Pro Supplement · Immersia Impact Consulting · Bisa Baik Bersama (Yayasan Rumah Pembangunan Berkelanjutan) · LittleChamp Daycare",
+    sub: "Halal Pro · Immersia · Bisa Baik Bersama · LittleChamp Daycare",
     kind: "current",
     bullets: [
-      "Lead partnership, branding and performance marketing strategy across four portfolio brands - consumer health, impact consulting, foundation/CSR and early-childhood education.",
-      "Manage and optimise acquisition across Meta Ads, Google Ads, TikTok Ads/Shop/GMV Max, Shopee Ads, SEO and social commerce funnels - supporting growth from startup phase through market penetration.",
-      "Own the LittleChamp Daycare growth mandate end to end: positioning, parent-acquisition funnels, an AI enrolment concierge answering parent enquiries around the clock, and a Growth Intelligence System that unifies ad spend, lead source, tour attendance and centre occupancy into one cockpit.",
+      "Own growth across four brands (consumer health, impact consulting, foundation/CSR, early-childhood education): acquisition, conversion and partnerships, coordinating brand, creative and operations leads and external vendors.",
+      "Run acquisition on Meta, Google, TikTok Shop/GMV Max, Shopee Ads and SEO; built LittleChamp's parent-acquisition funnels, a 24/7 AI enrolment concierge and a system linking ad spend to centre occupancy.",
+      "Use CRM, WhatsApp Business API and AI-assisted workflows for lead nurturing and customer follow-up.",
     ],
   },
   {
     y: "Feb 2024 - Present",
-    r: "Founder & AI Systems Builder",
+    r: "Growth & Marketing Systems Lead (founder-led venture)",
     c: "Impactory / Bisa Baik Ecosystem",
-    sub: "AI SaaS · grant & impact management · crowdfunding · Web 2.5 experimentation",
+    sub: "AI SaaS for NGOs · digital product line · acquisition sites",
     kind: "current",
     bullets: [
-      "Built and scaled a multi-platform impact ecosystem: Impactory.id, BisaBaik.or.id/.org, PasarBaik.com and App.Impactory.id.",
-      "Shipped Impactory.id as a production AI SaaS platform for NGOs and CSR teams - 12+ live modules including grant pipeline, AI grant writer, donor CRM and LFA/logframe builder; placed top ~100 of 1,500+ hackathon entrants at MVP.",
-      "Architected an end-to-end RAG pipeline (Supabase Edge Functions + Azure OpenAI + pgvector) using a structured multi-agent engineering workflow to ship production code safely.",
-      "Progressed the ecosystem into formal recognition tracks: accepted into a top-tier accelerator cohort and shortlisted for an international social-impact fund cohort.",
+      "Own go-to-market for a self-funded AI SaaS for NGOs and CSR teams (Impactory.id: grant pipeline, AI grant writer, donor CRM, LFA builder), plus BisaBaik.or.id, PasarBaik.com and App.Impactory.id. Ranked 68th of the 101 shortlisted from 1,500+ entrants at the Google Cloud Gen AI Hackathon (Hack2skill) and reached the Top 20 at APINDO UMKM.",
+      "Grew a 72-product digital line on Etsy, Gumroad and Lynk.id, supported by acquisition sites tools.impactory.id (Astro, English and Indonesian, 186 pages) and impactory.id/berdaya (Indonesian sales page with Lynk.id checkout). Etsy visits rose from about 114 to about 570 per 30 days in under three weeks (Oct 2026).",
+      "Productised a done-for-you Grant Digital Setup service for NGOs and published two grant-systems guides: Grant Banyak, Sistem Nggak Ada (Indonesian) and The Grants Are There, International Edition.",
+      "Built the end-to-end RAG pipeline behind the product (Supabase Edge Functions + Azure OpenAI + pgvector).",
     ],
   },
   {
@@ -321,11 +321,12 @@ export const experience: Role[] = [
 /* ------------------------------------------------------------------ */
 
 export const achievements = [
-  "IDR 20B+ in digital ad spend managed across Meta, Google, TikTok, LinkedIn and marketplace platforms over 8+ years - IDR 16.8B of it itemised from platform dashboards in this portfolio.",
+  "IDR 20B+ in digital ad spend managed across Meta, Google, TikTok, LinkedIn and marketplace platforms over 12 years - IDR 16.8B of it itemised from platform dashboards in this portfolio.",
   "IDR 3.22B in marketplace revenue driven from IDR 281.8M of ad spend (11.4x blended ROAS), verified in Tokopedia and Shopee dashboards.",
-  "Shipped a production 12-module AI SaaS platform (Impactory) with a working end-to-end RAG pipeline for AI-assisted grant writing.",
+  "Shipped a production AI SaaS platform for NGOs (Impactory) with a working end-to-end RAG pipeline for AI-assisted grant writing; ranked 68th of the 101 shortlisted from 1,500+ entrants at the Google Cloud Gen AI Hackathon (Hack2skill); Top 20 at APINDO UMKM.",
   "Scaled Muscle First's monthly revenue 3x (IDR 4B to IDR 12B), helping attract new institutional investment within 9 months.",
   "Owned brand and paid media at Muscle First through the growth run that contributed to the founder's Forbes Asia 30 Under 30 recognition.",
+  "Led LittleChamp Daycare into the 14 SMEs selected for InnoFund's Siap Pendanaan programme (Instellar Impact and Youth Business International, funded by Standard Chartered Foundation), Oct 2026.",
   "Delivered a 6-month consultancy engagement with Save the Children Indonesia on the SAPA DKI Jakarta provincial protection programme.",
   "Secured a USD 10,000 Google Ad Grant and grew social media reach by 29.7% at PPPA Daarul Qur'an.",
   "Invited to TikTok Summit Indonesia 2023 (Muscle First) for creating 5 top-performing TikTok Shop products.",

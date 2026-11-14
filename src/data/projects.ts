@@ -26,6 +26,7 @@ import adTiktokTrends from "@/assets/ads/tiktok-performance-trends.jpg";
 import adMetaUgc from "@/assets/ads/meta-ugc-creatives-roas.jpg";
 import adGoogleWellspaces from "@/assets/ads/google-ads-wellspaces.jpg";
 import adWellspacesKw from "@/assets/ads/wellspaces-keyword-structure.jpg";
+import photoResinWhiteHouse from "@/assets/resin/resin-white-house.jpg";
 import adGoogleLittlechamp from "@/assets/ads/google-ads-littlechamp.jpg";
 import adMetaPalestina from "@/assets/ads/meta-palestinaid-bukitasam-bisabaik.jpg";
 import adCpasShopee from "@/assets/ads/cpas-shopee-halalpro-musclefirst.jpg";
@@ -95,11 +96,11 @@ export const projects: CaseStudy[] = [
     story: [
       "NGOs and foundations lose weeks every quarter chasing grants, formatting proposals and stitching reports. Impactory collapses that loop with agentic workflows built around how the impact sector actually works.",
       "The platform runs an end-to-end RAG pipeline - Supabase Edge Functions, Azure OpenAI and pgvector - over donor databases, regulatory documents and historical proposals. A prompt governance layer keeps outputs auditable and aligned to each organisation's voice.",
-      "It was built with a structured multi-agent engineering workflow so production code could ship safely without a large team behind it. Twelve-plus modules are live; the MVP placed 101st of more than 1,500 entrants at the Google Cloud Gen AI Academy APAC Hackathon, and the ecosystem has since been accepted into an accelerator cohort and shortlisted for an international social-impact fund.",
+      "It was built with a structured multi-agent engineering workflow so production code could ship safely without a large team behind it. Twelve-plus modules are live; the MVP ranked 68th of the 101 shortlisted from more than 1,500 entrants at the Google Cloud Gen AI Hackathon, and it later reached the Top 20 at APINDO UMKM.",
     ],
     results: [
       { v: "12+", l: "Live modules shipped", evidence: "stated" },
-      { v: "Top 101", l: "of 1,500+, Google Cloud Gen AI APAC", evidence: "stated" },
+      { v: "68th / 101", l: "shortlisted of 1,500+, Google Cloud Gen AI Hackathon", evidence: "stated" },
       { v: "0 → 1", l: "RAG pipeline in production", evidence: "stated" },
     ],
     gallery: [siteImpactory, siteBisabaik],
@@ -141,6 +142,7 @@ export const projects: CaseStudy[] = [
     results: [
       { v: "29.9K", l: "Search clicks", evidence: "dashboard" },
       { v: "Rp620", l: "Average CPC", evidence: "dashboard" },
+      { v: "14", l: "SMEs selected, InnoFund Siap Pendanaan (Oct 2026)", evidence: "stated" },
       { v: "24/7", l: "AI enrolment concierge", evidence: "stated" },
     ],
     gallery: [adGoogleLittlechamp],
@@ -189,21 +191,22 @@ export const projects: CaseStudy[] = [
   },
   {
     n: "08",
-    tag: "Home Decor · Lifestyle",
-    title: "ResinID Home Decor",
-    desc: "The digital sales engine for a designer resin home-decor brand - visual identity, e-commerce stack and creator-led performance media.",
-    meta: ["E-commerce", "Creator Ads", "Brand"],
-    role: "Growth Partner",
-    year: "2023",
+    tag: "Property · Home Decor",
+    title: "Resin Indonesia (PT Resin Indonesia Cemerlang)",
+    desc: "Design-and-build for homes, offices and cafes: renovation, kitchen sets, wardrobes, vanity and meeting tables, built in a workshop in Sawangan.",
+    img: photoResinWhiteHouse,
+    meta: ["Design & Build", "Interior", "Instagram", "Kitchen Set"],
+    role: "Founder",
+    year: "Ongoing",
     story: [
-      "ResinID had a craft-led product but no commercial operating system. The visual identity was rebuilt around the material itself - light, colour, depth - and translated into a storefront that sells the feeling rather than the SKU.",
-      "Creator-led performance media on TikTok and Instagram Reels replaced static ads, with hooks scripted around making-of moments. Thumb-stop rate rose and CPM fell materially as a result.",
+      "Resin Indonesia is a one-person limited company (PT perorangan) that designs and builds furniture and interiors: house building, procurement, office pantries, kitchen sets, home renovation, wardrobes, vanity tables, office and meeting tables, and cafe or restaurant fit-outs.",
+      "Its Instagram account, @resindotid, documents the work project by project, with highlights for each category and a making-of reel so clients can see how a piece is built before they commission it.",
     ],
     results: [
-      { v: "0 → 1", l: "E-commerce stack", evidence: "stated" },
-      { v: "Creator-led", l: "Performance media model", evidence: "stated" },
+      { v: "3.7K", l: "Instagram followers, @resindotid (Nov 2026)", evidence: "stated" },
+      { v: "60", l: "Posts documenting finished projects", evidence: "stated" },
     ],
-    gallery: [],
+    gallery: [photoResinWhiteHouse],
   },
   {
     n: "09",
