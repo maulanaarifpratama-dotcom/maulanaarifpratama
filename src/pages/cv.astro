@@ -1,0 +1,76 @@
+---
+import Base from "../layouts/Base.astro";
+import {
+  profile,
+  summary,
+  achievements,
+  experience,
+  capabilities,
+  education,
+  certifications,
+  organizations,
+  languages,
+} from "../data/cv";
+---
+<Base
+  title="CV | Maulana Arif Pratama"
+  description="Curriculum vitae of Maulana Arif Pratama, senior performance marketing manager: experience, results, expertise, education and certifications."
+  path="/cv"
+>
+  <main id="main" class="cv">
+    <div class="wrap">
+      <h1 class="display" style="font-size: clamp(2.5rem, 6vw, 4.25rem); line-height: 1;">{profile.name}</h1>
+      <p class="lead" style="margin-top: 12px;">{profile.title}. {profile.subtitle}.</p>
+      <p class="contact-line">
+        {profile.email} · {profile.phone} · {profile.location} · arif.impactory.id · {profile.linkedin}
+      </p>
+      <div class="cv-actions">
+        <a class="btn btn-primary" href="/Maulana-Arif-Pratama-CV-2026.pdf" download>Download PDF</a>
+        <button class="btn" type="button" id="print">Print this page</button>
+        <a class="btn" href="/#work">See the work</a>
+      </div>
+
+      <h2>Profile</h2>
+      <p class="cv-list" style="margin-top: 12px;">{summary}</p>
+
+      <h2>Key results</h2>
+      <ul class="cv-list">{achievements.map((a) => <li>{a}</li>)}</ul>
+
+      <h2>Experience</h2>
+      <div class="roles" style="max-width: none; margin-top: 8px;">
+        {experience.map((r) => (
+          <article class="role">
+            <p class="y">{r.y}</p>
+            <div>
+              <h3>{r.r}</h3>
+              <p class="c">{r.c}{r.sub && ` · ${r.sub}`}</p>
+              <ul>{r.bullets.map((b) => <li>{b}</li>)}</ul>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <h2>Core expertise</h2>
+      <ul class="cv-list">{capabilities.map((c) => <li><b>{c.t}.</b> {c.d}</li>)}</ul>
+
+      <div class="grid2">
+        <div>
+          <h2>Education</h2>
+          <ul class="cv-list">{education.map((e) => <li><b>{e.d}</b>, {e.i} ({e.y})</li>)}</ul>
+        </div>
+        <div>
+          <h2>Languages</h2>
+          <ul class="cv-list">{languages.map((l) => <li><b>{l.l}</b>, {l.v}</li>)}</ul>
+          <h2>Organizations</h2>
+          <ul class="cv-list">{organizations.map((o) => <li><b>{o.r}</b>, {o.o}. {o.d}</li>)}</ul>
+        </div>
+      </div>
+
+      <h2>Certifications and training</h2>
+      <ul class="cv-list">{certifications.map((c) => <li><b>{c.t}</b>, {c.i} ({c.y}){c.d && `. ${c.d}`}</li>)}</ul>
+    </div>
+  </main>
+  <script>
+    document.getElementById("print")?.addEventListener("click", () => window.print());
+  </script>
+</Base>

@@ -1,0 +1,39 @@
+---
+const links = [
+  ["/#work", "Work"],
+  ["/#results", "Results"],
+  ["/#evidence", "Evidence"],
+  ["/#experience", "Experience"],
+  ["/cv", "CV"],
+];
+---
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Maulana Arif Pratama, home">Maulana<span>.</span></a>
+    <nav class="nav-links" aria-label="Main">
+      {links.map(([href, label]) => <a href={href}>{label}</a>)}
+    </nav>
+    <a class="btn nav-cta" href="/#contact">Let&rsquo;s talk</a>
+    <details class="menu" id="menu">
+      <summary aria-label="Menu"><span class="burger"></span></summary>
+      <div class="menu-panel">
+        {links.map(([href, label]) => <a href={href}>{label}</a>)}
+        <a class="btn btn-primary" href="/#contact">Let&rsquo;s talk</a>
+      </div>
+    </details>
+  </div>
+</header>
+<script>
+  const menu = document.getElementById("menu") as HTMLDetailsElement | null;
+  if (menu) {
+    menu.addEventListener("click", (e) => {
+      if ((e.target as HTMLElement).closest("a")) menu.open = false;
+    });
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && menu.open) {
+        menu.open = false;
+        (menu.querySelector("summary") as HTMLElement)?.focus();
+      }
+    });
+  }
+</script>

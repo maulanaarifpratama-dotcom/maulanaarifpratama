@@ -23,7 +23,7 @@ import adMetaUgc from "@/assets/ads/meta-ugc-creatives-roas.jpg";
 import photoResin from "@/assets/resin/resin-white-house.jpg";
 import photoMendag from "@/assets/authority/mendag-audiensi.png";
 
-export type Shot = { src: string; w: number; h: number; alt: string };
+export type Shot = { src: ImageMetadata; w: number; h: number; alt: string };
 
 export type Site = {
   id: string;

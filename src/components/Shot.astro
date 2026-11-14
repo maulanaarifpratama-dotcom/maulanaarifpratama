@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+interface Props {
+  img: ImageMetadata;
+  alt: string;
+  href?: string;
+  label?: string;
+  sizes?: string;
+  widths?: number[];
+  eager?: boolean;
+  external?: boolean;
+}
+const { img, alt, href, label, sizes = "(min-width: 1024px) 700px, 100vw", widths = [480, 800, 1200], eager = false, external = true } = Astro.props;
+---
+{href ? (
+  <a class="frame" href={href} aria-label={label} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
+    <Image src={img} alt={alt} widths={widths} sizes={sizes} loading={eager ? "eager" : "lazy"} decoding="async" format="webp" quality={82} />
+  </a>
+) : (
+  <div class="frame">
+    <Image src={img} alt={alt} widths={widths} sizes={sizes} loading={eager ? "eager" : "lazy"} decoding="async" format="webp" quality={82} />
+  </div>
+)}

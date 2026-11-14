@@ -1,0 +1,311 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Shot from "../components/Shot.astro";
+import Arrow from "../components/Arrow.astro";
+import { profile, experience, adsPortfolio } from "../data/cv";
+import {
+  platforms,
+  clientSites,
+  alsoBuilt,
+  resin,
+  creator,
+  motion,
+  mendag,
+  milestones,
+  overview,
+} from "../data/work";
+
+const results = [
+  ["22.3x", "Return on Tokopedia Ads for ACT Foundation", "Rp562.7M revenue from Rp25.3M spend.", "Dashboard"],
+  ["11.4x", "Blended return across Tokopedia and Shopee ads", "IDR 3.22B in sales from IDR 281.8M of spend.", "Dashboard"],
+  ["3x", "Muscle First monthly revenue in nine months", "From IDR 4B to IDR 12B, running TikTok Shop, Shopee and Tokopedia.", "Stated"],
+  ["13.56x", "Best product ROAS on Meta CPAS", "Pro Isolate. The other three products sit between 8.07x and 11.37x.", "Dashboard"],
+  ["IDR 20B+", "Ad spend managed over twelve years", "IDR 16.8B of it is itemised from platform dashboards below.", "Stated"],
+] as const;
+
+const current = experience.filter((r) => r.kind === "current");
+const earlier = experience.filter((r) => r.kind !== "current");
+---
+<Base
+  title="Maulana Arif Pratama | Senior Performance Marketing Manager"
+  description="Twelve years of profitable growth and IDR 20B+ in managed ad spend, plus my own products: an AI workspace for NGOs, a 72-product digital line and fourteen live sites."
+>
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" style="padding-block-end: 0;" id="top">
+      <div class="hero-bg" aria-hidden="true">
+        <video id="reel" data-src="/work-reel.mp4" poster="/poster.jpg" muted loop playsinline preload="none" disablepictureinpicture></video>
+      </div>
+      <div class="wrap">
+        <h1 class="display">I grow brands <span class="accent" style="font-style: italic;">profitably</span>, then build the systems behind them.</h1>
+        <p class="lead">
+          Senior performance marketing manager. Twelve years and IDR 20B+ in ad spend, and since 2024 my own
+          products: an AI workspace for NGOs, a 72-product digital line and fourteen live sites.
+        </p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#work">See the work</a>
+          <a class="btn" href="/cv">Read the CV</a>
+          <a class="btn" href={profile.whatsapp} rel="noopener">WhatsApp</a>
+        </div>
+        <ul class="strip" aria-label="All sites at a glance">
+          {overview.map((o, i) => (
+            <li style={`--i:${i}`}>
+              <a href={`#${o.id}`}>
+                <Image src={o.shot.src} alt="" widths={[160, 320]} sizes="160px" loading="eager" decoding="async" format="webp" quality={70} />
+                <span>{o.name}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div style="height: clamp(56px, 9vw, 96px);"></div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results" class="divider">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="display">Results, with the receipts.</h2>
+          <p>Every figure below is either read off a platform dashboard or marked as stated. The screenshots are further down.</p>
+        </div>
+        <dl class="results">
+          {results.map(([big, line, note, ev]) => (
+            <div class="reveal">
+              <dt class="tnum">{big}</dt>
+              <dd>{line}<small>{note}</small></dd>
+              <dd class="ev">{ev}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="divider">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="display">What I build and run.</h2>
+          <p>Four products I own, eight sites for brands and clinics, a building business, creator work and the content that feeds them. Every link was opened on 14 November 2026.</p>
+        </div>
+
+        <div class="sub-head first-sub reveal" id="platforms">
+          <h3 class="display">Products I own</h3>
+          <p>An AI workspace for NGOs, the store that sells its templates, a donation platform and a marketplace.</p>
+        </div>
+        <div class="rows">
+          {platforms.map((s, i) => (
+            <article class={`row reveal ${i % 2 ? "flip" : ""}`} id={s.id}>
+              <div class="media">
+                <Shot img={s.shot.src} alt={s.shot.alt} href={s.href} label={`Open ${s.label}`} sizes="(min-width: 1024px) 700px, 100vw" />
+              </div>
+              <div>
+                <h3 class="display">{s.name}</h3>
+                <p class="what">{s.line}</p>
+                <p class="detail">{s.body}</p>
+                <p class="meta">{s.role}{s.tags && <small>{s.tags.join(" · ")}</small>}</p>
+                <a class="link" href={s.href} target="_blank" rel="noopener noreferrer">{s.label} <Arrow /></a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div class="sub-head reveal" id="sites">
+          <h3 class="display">Sites for brands and clinics</h3>
+          <p>Most hand the visitor to WhatsApp or a marketplace, because that is where the sale happens.</p>
+        </div>
+        <div class="sites">
+          {clientSites.map((s) => (
+            <article class="reveal" id={s.id}>
+              <Shot img={s.shot.src} alt={s.shot.alt} href={s.href} label={`Open ${s.label}`} sizes="(min-width: 768px) 560px, 100vw" widths={[480, 800]} />
+              <h3 class="display">{s.name}</h3>
+              <p class="what">{s.line}{s.role && <small> · {s.role}</small>}</p>
+              <p class="detail">{s.body}</p>
+              <a class="link" href={s.href} target="_blank" rel="noopener noreferrer">{s.label} <Arrow /></a>
+            </article>
+          ))}
+        </div>
+        <p class="also">{alsoBuilt.text} <a class="link" href={alsoBuilt.href} target="_blank" rel="noopener noreferrer">{alsoBuilt.label} <Arrow /></a></p>
+
+        <div class="sub-head reveal" id="property">
+          <h3 class="display">A building business of my own</h3>
+          <p>Run alongside the digital work.</p>
+        </div>
+        <div class="split reveal">
+          <div class="portrait">
+            <Shot img={resin.shot.src} alt={resin.shot.alt} href={resin.href} label={`Open ${resin.label}`} sizes="352px" widths={[352, 704]} />
+          </div>
+          <div>
+            <h3 class="display">{resin.name}</h3>
+            <p class="what" style="margin-top: 8px;">{resin.legal}</p>
+            <p class="detail muted measure" style="margin-top: 14px;">{resin.body}</p>
+            <p class="kv">{resin.role} <span class="muted">· {resin.stats}</span></p>
+            <a class="link" href={resin.href} target="_blank" rel="noopener noreferrer">{resin.label} <Arrow /></a>
+          </div>
+        </div>
+
+        <div class="sub-head reveal" id="creator">
+          <h3 class="display">Creator and UGC</h3>
+          <p>Making the content, then reading what it returned.</p>
+        </div>
+        <div class="split wide-left reveal">
+          <div>
+            <Shot img={creator.ugc.shot.src} alt={creator.ugc.shot.alt} sizes="(min-width: 900px) 740px, 100vw" widths={[600, 1000, 1400]} />
+            <h3 class="display" style="margin-top: 24px; font-size: 1.75rem;">{creator.ugc.title}</h3>
+            <p class="detail muted measure" style="margin-top: 8px; font-size: 0.9375rem;">{creator.ugc.body}</p>
+            <p class="kv tnum">
+              {creator.ugc.roas.map(([n, v], i) => (<span>{i > 0 && <span class="muted"> · </span>}{n} <span class="accent">{v}</span></span>))}
+            </p>
+          </div>
+          <div>
+            <h3 class="display" style="font-size: 1.75rem;">{creator.tiktok.title}</h3>
+            <p class="detail muted" style="margin-top: 8px; font-size: 0.9375rem;">{creator.tiktok.body}</p>
+            <a class="link" href={creator.tiktok.href} target="_blank" rel="noopener noreferrer">{creator.tiktok.label} <Arrow /></a>
+          </div>
+        </div>
+
+        <div class="sub-head reveal" id="motion">
+          <h3 class="display">{motion.title}</h3>
+          <p>{motion.body}</p>
+        </div>
+        <div class="split reveal" style="margin-top: 40px;">
+          <ul class="reels">
+            {motion.reels.map(([t, href]) => (
+              <li><a href={href} target="_blank" rel="noopener noreferrer"><span>{t}</span><Arrow /></a></li>
+            ))}
+            <li><a class="accent" href={motion.account.href} target="_blank" rel="noopener noreferrer"><span>All reels on {motion.account.label}</span><Arrow /></a></li>
+          </ul>
+          <div>
+            <ul class="pillars">
+              {motion.pillars.map(([t, d]) => (<li><b>{t}</b><span>{d}</span></li>))}
+            </ul>
+            <p class="pipeline">{motion.pipeline.join(" → ")}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVIDENCE -->
+    <section id="evidence" class="divider">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="display">Evidence from the ad accounts.</h2>
+          <p>Screenshots pulled from live accounts I ran. Tap any image to open it at full size.</p>
+        </div>
+        {adsPortfolio.map((g) => (
+          <div class="ev-group">
+            <h3 class="display reveal">{g.section.replace(/^\d+\s-\s/, "")}</h3>
+            <p class="reveal">{g.blurb}</p>
+            <div class="ev-grid">
+              {g.exhibits.map((ex) => (
+                <figure class="reveal" id={ex.id}>
+                  <Shot img={ex.img} alt={`${ex.platform}, ${ex.client}: ${ex.title}`} href={ex.img.src} label={`Open ${ex.title} at full size`} sizes="(min-width: 900px) 560px, 100vw" widths={[480, 800, 1200]} />
+                  <figcaption>
+                    <p class="who">{ex.platform} · {ex.client}{ex.period && ` · ${ex.period}`}</p>
+                    <p class="t">{ex.title}</p>
+                    <p class="c">{ex.caption}</p>
+                    {ex.headline && <p class="f tnum"><b>{ex.headline.v}</b> <span class="muted">{ex.headline.l}</span></p>}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- RECOGNITION -->
+    <section id="recognition" class="divider">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="display">Rooms I have been in, and results someone else checked.</h2>
+        </div>
+        <figure class="mendag reveal">
+          <Shot img={mendag.shot.src} alt={mendag.shot.alt} href={mendag.href} label={mendag.label} sizes="(min-width: 900px) 832px, 100vw" widths={[600, 900]} />
+          <figcaption>
+            <b>{mendag.title}</b> <span class="muted">· {mendag.when}</span>
+            <p>{mendag.body}</p>
+          </figcaption>
+        </figure>
+        <dl class="milestones">
+          {milestones.map((m) => (
+            <div class="reveal"><dt>{m.k}</dt><dd><b>{m.t}</b><span>{m.d}</span></dd></div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="divider">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="display">Twelve years, in the order they happened.</h2>
+        </div>
+        <div class="roles">
+          {current.map((r) => (
+            <article class="role reveal">
+              <p class="y">{r.y}</p>
+              <div>
+                <h3>{r.r}</h3>
+                <p class="c">{r.c}</p>
+                <ul>{r.bullets.slice(0, 3).map((b) => <li>{b}</li>)}</ul>
+              </div>
+            </article>
+          ))}
+          <details class="earlier">
+            <summary>Earlier roles ({earlier.length})</summary>
+            {earlier.map((r) => (
+              <article class="role">
+                <p class="y">{r.y}</p>
+                <div>
+                  <h3>{r.r}</h3>
+                  <p class="c">{r.c}</p>
+                  <ul>{r.bullets.map((b) => <li>{b}</li>)}</ul>
+                </div>
+              </article>
+            ))}
+          </details>
+        </div>
+        <p class="also"><a class="link" href="/cv">The full CV, ready to print <Arrow /></a></p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="divider contact">
+      <div class="wrap">
+        <h2 class="display reveal">Want something built, or grown?</h2>
+        <p class="lead reveal" style="margin-top: 20px;">Tell me the goal and the budget. I reply the same day.</p>
+        <div class="contact-links reveal">
+          <a class="accent" href={`mailto:${profile.email}`}>{profile.email}</a>
+          <a href={profile.whatsapp} rel="noopener">WhatsApp</a>
+          <a href={profile.linkedinUrl} rel="noopener">LinkedIn</a>
+          <a href={profile.instagram} rel="noopener">Instagram</a>
+          <a href={profile.github} rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // The reel is decoration. It starts after the page is ready, pauses when it
+    // scrolls out of view, and is skipped for reduced motion or data saving.
+    const v = document.getElementById("reel") as HTMLVideoElement | null;
+    const conn = (navigator as any).connection;
+    const skip =
+      matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      (conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || "")));
+    if (v && !skip) {
+      const start = () => {
+        v.src = v.dataset.src!;
+        v.play().catch(() => {});
+        new IntersectionObserver(([e]) => {
+          if (e.isIntersecting) v.play().catch(() => {});
+          else v.pause();
+        }).observe(v);
+      };
+      const idle = (window as any).requestIdleCallback || ((f: () => void) => setTimeout(f, 600));
+      if (document.readyState === "complete") idle(start);
+      else addEventListener("load", () => idle(start), { once: true });
+    }
+  </script>
+</Base>

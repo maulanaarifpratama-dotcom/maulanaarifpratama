@@ -428,7 +428,7 @@ export type AdExhibit = {
   title: string;
   period?: string;
   caption: string;
-  img: string;
+  img: ImageMetadata;
   /** Intrinsic pixel size, so the browser reserves space instead of relaying
    *  out as each screenshot decodes. Keep in step with the file. */
   w: number;
